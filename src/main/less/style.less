@@ -1,0 +1,46 @@
+@import "variables.less";
+@import "normalize-3.0.2.less";
+
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	@media (min-width: @min-sm) {
+		max-width: 750px;
+	}
+
+	@media (min-width: @min-md) {
+		max-width: 970px;
+	}
+
+	@media (min-width: @min-lg) {
+		max-width: 1170px;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+header {
+	nav {
+		background-color: lighten(@theme-color, 15%);
+		li {
+/* 			background-color: @theme-color; */
+		}
+	}
+}
+
+body {
+	background-color: lighten(@theme-color, 40%);
+	font-family: @font;
+	font-size: 15px;
+}
+
+div.main{
+	background-color: white;
+}
+
+
+@import "superfish.less";
+
