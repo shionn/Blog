@@ -69,6 +69,8 @@
 					<outputDirectory>${project.basedir}/src/main/webapp/css/generated</outputDirectory>
 					<includes>
 						<include>style.less</include>
+						<include>sh-menu.less</include>
+						<include>menu.less</include>
 					</includes>
 				</configuration>
 				<executions>
