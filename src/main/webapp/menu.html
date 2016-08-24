@@ -20,6 +20,8 @@
 								<li><a href="#">Submenu x</a></li>
 								<li><a href="#">Submenu y</a></li>
 								<li><a href="#">Submenu z</a></li>
+								<li><a href="#">Submenu v</a></li>
+								<li><a href="#">Submenu u</a></li>
 							</ul></li>
 						<li><a href="#">Header b</a>
 							<ul>
@@ -41,6 +43,8 @@
 								<li><a href="#">Submenu x</a></li>
 								<li><a href="#">Submenu y</a></li>
 								<li><a href="#">Submenu z</a></li>
+								<li><a href="#">Submenu c</a></li>
+								<li><a href="#">Submenu d</a></li>
 							</ul></li>
 					</ul></li>
 				<li><a href="#">Menu 3</a></li>
@@ -49,5 +53,15 @@
 			</ul>
 		</nav>
 	</header>
+	Le contenu de la page
+	<script src="js/lib/jquery-3.1.0.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		$("#nav > ul > li > a").on("click", function(e){
+			$("#nav .open").removeClass("open");
+			$(e.target).closest("li").addClass("open");
+		})
+	});
+	</script>
 </body>
 </html>
