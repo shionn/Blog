@@ -28,124 +28,101 @@ body {
 	float: left;
 	position: relative;
 	width: 100%;
-	span {
-		display: none;
+	li a , ul {
+		-moz-transition: all 450ms ease-in-out 0s;
+		-ms-transition: all 450ms ease-in-out 0s;
+		-o-transition: all 450ms ease-in-out 0s;
+		-webkit-transition: all 450ms ease-in-out 0s;
+		transition: all 450ms ease-in-out 0s;
 	}
 
 	ul {
 		list-style: none outside none;
 		margin: 0;
 		padding: 0;
-	}
+		li {
+			float: left;
+			text-align: left;
+			&.open ul {
+				display: block;
+			}
 
-	li a {
-		display: block;
-		text-decoration: none;
-		-moz-transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
-		-ms-transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
-		-o-transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
-		-webkit-transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
-		transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
-		white-space: normal;
-	}
+			&.active > a {
+				background-color: #333333;
+				color: #FFFFFF;
+			}
 
-	ul li {
-		float: left;
-		text-align: left;
-		&.open ul {
-			display: block;
-		}
-	}
-
-	ul ul li {
-		float: none;
-	}
-
-	ul ul ul li {
-		padding-left: 8px;
-		-moz-transition: padding 150ms ease-out 0s;
-		-ms-transition: padding 150ms ease-out 0s;
-		-o-transition: padding 150ms ease-out 0s;
-		-webkit-transition: padding 150ms ease-out 0s;
-		transition: padding 150ms ease-out 0s;
-		&:hover {
-			padding-left: 15px;
-		}
-	}
-	
-	ul {
-		
-	}
-	
-	ul ul {
-		background-color: #FFFFFF;
-		box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-		color: #333333;
-		display: none;
-		top: 54px;
-		position: absolute;
-		left :0;
-		right : 0;
-	}
-	
-	ul ul ul {
-		box-shadow : none;
-		position: relative;
-		top:0;
-	}
-
-	& > ul > li {
-		-moz-transition: all 300ms ease-in-out 0s;
-		-ms-transition: all 300ms ease-in-out 0s;
-		-o-transition: all 300ms ease-in-out 0s;
-		-webkit-transition: all 300ms ease-in-out 0s;
-		transition: all 300ms ease-in-out 0s;
-		& > a {
-			color: #333333;
-			font-size: 1.3em;
-			line-height: 49px;
-			padding: 0 15px;
-			text-transform: uppercase;
-		}
-
-		&:hover > a , & > a:hover {
-			background-color: #F55856;
-			color: #FFFFFF;
-		}
-	}
-
-
-	ul ul.subs {
-		padding: 2%;
-		li a:hover {
-			color: #F55856;
-		}
-
-		& > li {
-			display: inline-block;
-			padding: 10px 1%;
-			vertical-align: top;
-			width: 33%;
 			a {
-				color: #777777;
-				line-height: 20px;
+				display: block;
+				text-decoration: none;
+				white-space: normal;
+				color: #333333;
+				font-size: 1.3em;
+				line-height: 49px;
+				padding: 0 15px;
+				text-transform: uppercase;
+				&:hover {
+					background-color: #F55856;
+					color: #FFFFFF;
+				}
+			}
+		}
+
+		ul {
+			background-color: #FFFFFF;
+			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+			color: #333333;
+			display: none;
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: 5px 0 0 0 ;
+			padding: 10px;
+			li {
+				display: inline-block;
+				float: none;
+				vertical-align: top;
+				width: 33%;
+				padding: 10px 1px;
+				a {
+					color: #777777;
+					line-height: 20px;
+					font-size: 1.3em;
+					&:hover {
+						color: #F55856;
+						background: none;
+					}
+				}
 			}
 
-			& > a {
-				font-size: 1.3em;
-				margin-bottom: 10px;
-				text-transform: uppercase;
+			ul {
+				box-shadow: none;
+				position: relative;
+				padding: 0;
+				li {
+					display: block;
+					width: 100%;
+					padding: 0 0 0 8px;
+					-moz-transition: padding 150ms ease-out 0s;
+					-ms-transition: padding 150ms ease-out 0s;
+					-o-transition: padding 150ms ease-out 0s;
+					-webkit-transition: padding 150ms ease-out 0s;
+					transition: padding 150ms ease-out 0s;
+					&:hover {
+						padding-left: 15px;
+					}
+
+					a {
+						font-size: 1em;
+						text-transform: none;
+					}
+				}
 			}
 		}
 	}
 }
 
-#nav li.active > a {
-	background-color: #333333;
-	color: #FFFFFF;
-}
-
-@media all and (max-width: 980px) {
+@media all and (max-width: 300px) {
 	#nav > ul > li {
 		float: none;
 		border-bottom: 0;

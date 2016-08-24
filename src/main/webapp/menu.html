@@ -13,8 +13,8 @@
 		<nav id="nav">
 			<ul>
 				<li><a href="#">Home</a></li>
-				<li><a href="#s1">Menu 1</a> <span id="s1"></span>
-					<ul class="subs">
+				<li><a href="#s1">Menu 1</a>
+					<ul>
 						<li><a href="#">Header a</a>
 							<ul>
 								<li><a href="#">Submenu x</a></li>
@@ -30,8 +30,8 @@
 								<li><a href="#">Submenu z</a></li>
 							</ul></li>
 					</ul></li>
-				<li class="active"><a href="#s2">Menu 2</a> <span id="s2"></span>
-					<ul class="subs">
+				<li class="active"><a href="#s2">Menu 2</a>
+					<ul>
 						<li><a href="#">Header c</a>
 							<ul>
 								<li><a href="#">Submenu x</a></li>
@@ -56,12 +56,12 @@
 	Le contenu de la page
 	<script src="js/lib/jquery-3.1.0.js"></script>
 	<script type="text/javascript">
-	$(function() {
-		$("#nav > ul > li > a").on("click", function(e){
-			$("#nav .open").removeClass("open");
-			$(e.target).closest("li").addClass("open");
-		})
-	});
+		$(function() {
+			$("#nav > ul > li > a").on("click", function(e) {
+				$("#nav .open").removeClass("open");
+				$(e.target).closest("li").addClass("open");
+			})
+		});
 	</script>
 </body>
 </html>
