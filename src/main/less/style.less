@@ -1,7 +1,13 @@
 @import "variables.less";
 @import "normalize-3.0.2.less";
+@import "functions.less";
 
 * {box-sizing: border-box}
+
+body {
+	color: @text-color;
+	font: 0.75em / 1.5em @font
+}
 
 .container {
 	margin-right: auto;
@@ -24,25 +30,4 @@ a {
 	color: black;
 }
 
-header {
-	nav {
-		background-color: lighten(@theme-color, 15%);
-		li {
-/* 			background-color: @theme-color; */
-		}
-	}
-}
-
-body {
-	background-color: lighten(@theme-color, 40%);
-	font-family: @font;
-	font-size: 15px;
-}
-
-div.main{
-	background-color: white;
-}
-
-
-@import "superfish.less";
-
+@import "menu.less";
