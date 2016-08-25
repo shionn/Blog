@@ -1,0 +1,9 @@
+
+.auto-width (@element , @counter) when (@counter > 0) {
+	.auto-width (@element , (@counter - 1));
+	@{element}:first-child:nth-last-child(@{counter}) , @{element}:first-child:nth-last-child(@{counter}) ~ li {
+		width: 100% / @counter;
+	}
+}
+
+

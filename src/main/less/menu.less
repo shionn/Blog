@@ -1,23 +1,23 @@
-* {
-	margin: 0;
-	padding: 0;
-}
+@import "normalize-3.0.2.less";
+@import "functions.less";
 
-html {
-	background-color: #fff;
-	height: 100%;
-}
+* {box-sizing: border-box}
 
 body {
 	color: #333333;
 	font: 0.75em / 1.5em Arial, sans-serif;
+	margin : 10px 10px 0 10px;
 }
 
 .container {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 30px;
-	width: 96%;
+	width: 100%;
+}
+
+* {
+	box-sizing: border-box
 }
 
 #nav {
@@ -28,7 +28,7 @@ body {
 	float: left;
 	position: relative;
 	width: 100%;
-	li a , ul {
+	ul, li, li a  {
 		-moz-transition: all 450ms ease-in-out 0s;
 		-ms-transition: all 450ms ease-in-out 0s;
 		-o-transition: all 450ms ease-in-out 0s;
@@ -36,18 +36,21 @@ body {
 		transition: all 450ms ease-in-out 0s;
 	}
 
+	& > a {
+		display: none;
+	}
+
 	ul {
 		list-style: none outside none;
 		margin: 0;
 		padding: 0;
 		li {
-			@media all and (min-width: 300px) {
-				float: left;
-			}
-
+			float: left;
 			text-align: left;
 			&.open ul {
 				display: block;
+				opacity:1;
+				visibility: visible;
 			}
 
 			&.active > a {
@@ -75,24 +78,18 @@ body {
 			background-color: #FFFFFF;
 			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 			color: #333333;
-			display: none;
-			@media all and (min-width: 300px) {
-				position: absolute;
-				margin: 5px 0 0 0;
-				padding: 10px;
-				left: 0;
-				right: 0;
-			}
-
+			visibility: hidden;
+			position: absolute;
+			margin: 5px 0 0 0;
+			padding: 10px;
+			left: 0;
+			right: 0;
+			opacity:0;
+			.auto-width (li , 5);
 			li {
-				@media all and (min-width: 300px) {
-					display: inline-block;
-					float: none;
-					vertical-align: top;
-					width: 33%;
-					padding: 10px 1px;
-				}
-
+				display: inline-block;
+				vertical-align: top;
+				padding: 10px 1px;
 				a {
 					color: #777777;
 					font-size: 1.3em;
@@ -113,13 +110,9 @@ body {
 				padding: 0;
 				li {
 					display: block;
-					width: 100%;
+					width: 100% ! important;
 					padding: 0 0 0 8px;
-					-moz-transition: padding 150ms ease-out 0s;
-					-ms-transition: padding 150ms ease-out 0s;
-					-o-transition: padding 150ms ease-out 0s;
-					-webkit-transition: padding 150ms ease-out 0s;
-					transition: padding 150ms ease-out 0s;
+					float: none;
 					&:hover {
 						padding-left: 15px;
 					}
@@ -131,6 +124,47 @@ body {
 						}
 					}
 				}
+			}
+		}
+	}
+
+	@media all and (max-width: 300px) {
+		& > a {
+			display: block;
+			text-decoration: none;
+			white-space: normal;
+			color: #333333;
+			font-size: 1.3em;
+			line-height: 49px;
+			padding: 0 15px;
+			text-transform: uppercase;
+			&:hover {
+				background-color: #F55856;
+				color: #FFFFFF;
+			}
+		}
+		
+		& > ul {
+			display : none;
+		}
+		
+		&.open > ul {
+			display : block;
+		}
+
+		ul li {
+			float: none
+		}
+
+		ul ul {
+			display : none;
+			position: relative;
+			margin: 0;
+			padding: 0;
+			li {
+				width: 100% ! important;
+				display: block;
+				padding: 0;
 			}
 		}
 	}
