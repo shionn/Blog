@@ -1,0 +1,28 @@
+header .banner {
+	text-align: center;
+	h1 {
+		font-family: 'Press Start 2P', cursive;
+		font-size: 2em;
+		padding:15px 0 8px;
+		a {
+			color : @text-color;
+		}
+		&:before {
+			content : '{';
+			font-size : 2em;
+			vertical-align:middle;
+			color: @theme-color;
+		}
+		&:after {
+			content : '}';
+			font-size : 2em;
+			vertical-align:middle;
+			color: @theme-color;
+		}
+	}
+	h2 {
+		font-size : 0.8em;
+		color: darken(@theme-color,20%);
+		font-family : @font;
+	}
+}

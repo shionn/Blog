@@ -1,8 +1,9 @@
 @import "variables.less";
 @import "normalize-3.0.2.less";
 @import "functions.less";
-
-* {box-sizing: border-box}
+* {
+	box-sizing: border-box
+}
 
 body {
 	color: @text-color;
@@ -30,4 +31,11 @@ a {
 	color: @theme-color;
 }
 
+@import "banner.less";
 @import "menu.less";
+
+h1 , h2 , h3 , h4 , h5 , h6 {
+	font-family: 'Press Start 2P';
+	color: @theme-color;
+}
+
