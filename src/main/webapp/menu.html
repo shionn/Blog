@@ -60,7 +60,12 @@
 			$("#nav > ul > li > a").on("click", function(e) {
 				$("#nav .open").removeClass("open");
 				$(e.target).closest("li").addClass("open");
-			})
+			});
+			$("body").on("click", function(e) {
+				if ($(e.target).parents("#nav").length==0) {
+					$("#nav .open").removeClass("open");
+				}
+			});
 		});
 	</script>
 </body>

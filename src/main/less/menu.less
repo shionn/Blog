@@ -41,7 +41,10 @@ body {
 		margin: 0;
 		padding: 0;
 		li {
-			float: left;
+			@media all and (min-width: 300px) {
+				float: left;
+			}
+
 			text-align: left;
 			&.open ul {
 				display: block;
@@ -73,21 +76,30 @@ body {
 			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 			color: #333333;
 			display: none;
-			position: absolute;
-			left: 0;
-			right: 0;
-			margin: 5px 0 0 0 ;
-			padding: 10px;
+			@media all and (min-width: 300px) {
+				position: absolute;
+				margin: 5px 0 0 0;
+				padding: 10px;
+				left: 0;
+				right: 0;
+			}
+
 			li {
-				display: inline-block;
-				float: none;
-				vertical-align: top;
-				width: 33%;
-				padding: 10px 1px;
+				@media all and (min-width: 300px) {
+					display: inline-block;
+					float: none;
+					vertical-align: top;
+					width: 33%;
+					padding: 10px 1px;
+				}
+
 				a {
 					color: #777777;
-					line-height: 20px;
 					font-size: 1.3em;
+					@media all and (min-width: 300px) {
+						line-height: 20px;
+					}
+
 					&:hover {
 						color: #F55856;
 						background: none;
@@ -113,38 +125,14 @@ body {
 					}
 
 					a {
-						font-size: 1em;
-						text-transform: none;
+						@media all and (min-width: 300px) {
+							font-size: 1em;
+							text-transform: none;
+						}
 					}
 				}
 			}
 		}
-	}
-}
-
-@media all and (max-width: 300px) {
-	#nav > ul > li {
-		float: none;
-		border-bottom: 0;
-		margin-bottom: 0;
-	}
-
-	#nav ul.subs {
-		position: relative;
-		top: 0;
-	}
-
-	#nav li:hover ul.subs {
-		display: none;
-	}
-
-	#nav li #s1:target + ul.subs , #nav li #s2:target + ul.subs {
-		display: block;
-	}
-
-	#nav ul.subs > li {
-		display: block;
-		width: auto;
 	}
 }
 
