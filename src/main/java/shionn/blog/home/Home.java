@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author <b>Shionn</b>, shionn@gmail.com <i>http://shionn.org</i><br>
  *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
  */
+@WebServlet(name = "home", urlPatterns = "")
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

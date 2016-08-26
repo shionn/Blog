@@ -11,8 +11,10 @@ body {
 }
 
 .container {
+	position: relative;
 	margin-right: auto;
 	margin-left: auto;
+	height: auto;
 	@media (min-width: @min-sm) {
 		max-width: 750px;
 	}
@@ -24,6 +26,23 @@ body {
 	@media (min-width: @min-lg) {
 		max-width: 1170px;
 	}
+
+	.main {
+		width: 80%;
+		float: left;
+		padding: 0 1.5em;
+	}
+
+	.side {
+		width: 20%;
+		float: left;
+	}
+
+	&:after {
+		content: "";
+		display : block; 
+		clear: both;
+	}
 }
 
 a {
@@ -33,9 +52,51 @@ a {
 
 @import "banner.less";
 @import "menu.less";
+.side {
+	& > div {
+		margin-top: 3em;
+	}
 
-h1 , h2 , h3 , h4 , h5 , h6 {
-	font-family: 'Press Start 2P';
-	color: @theme-color;
+	h1 {
+		text-align: center;
+		background-color: @theme-grey;
+		border-bottom: @theme-border-color solid @theme-border-width;
+		padding: 1em 0;
+		font-family: @font-alternate;
+		font-size: 1.2em;
+	}
+}
+
+article {
+	margin-top: 3em;
+	h1 , h2 , h3 , h4 , h5 , h6 {
+		font-family: @font-alternate;
+		color: @theme-color;
+	}
+
+	p {
+		text-align: justify;
+	}
+
+	header img {
+		margin: 0 auto;
+		border: 1px solid black;
+		border-radius: 3px;
+		display: block;
+	}
+}
+
+footer.footer {
+	.container {
+		margin-top: 4em;
+		min-height: 8em;
+		background-color: @theme-dark;
+		border-top: @theme-border-width solid @theme-grey;
+		color: @theme-grey;
+		span {
+			text-align: center;
+			display: block;
+		}
+	}
 }
 

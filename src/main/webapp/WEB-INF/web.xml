@@ -33,14 +33,14 @@
 <!-- 		<url-pattern>/jsp/article.jsp</url-pattern> -->
 <!-- 	</servlet-mapping> -->
 
-	<servlet>
-		<servlet-name>Home</servlet-name>
-		<servlet-class>shionn.blog.home.Home</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Home</servlet-name>
-		<url-pattern></url-pattern>
-	</servlet-mapping>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>Home</servlet-name> -->
+<!-- 		<servlet-class>shionn.blog.home.Home</servlet-class> -->
+<!-- 	</servlet> -->
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>Home</servlet-name> -->
+<!-- 		<url-pattern></url-pattern> -->
+<!-- 	</servlet-mapping> -->
 
 <!-- 	<servlet> -->
 <!-- 		<servlet-name>Article</servlet-name> -->
