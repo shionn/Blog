@@ -10,10 +10,8 @@
 <meta name="viewport"	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
 <spring:url value="/css/generated/style.css" var="styleCss" />
-<spring:url value="/css/fonts.css" var="fontsCss" />
 
 <link rel="stylesheet" href="${styleCss}" />
-<link rel="stylesheet" href="${fontsCss}" />
 
 </head>
 <body>

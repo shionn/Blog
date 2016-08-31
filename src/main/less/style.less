@@ -10,46 +10,19 @@ body {
 	font: 0.75em / 1.5em @font
 }
 
-.container {
-	position: relative;
-	margin-right: auto;
-	margin-left: auto;
-	height: auto;
-	@media (min-width: @min-sm) {
-		max-width: 750px;
-	}
-
-	@media (min-width: @min-md) {
-		max-width: 970px;
-	}
-
-	@media (min-width: @min-lg) {
-		max-width: 1170px;
-	}
-
-	.main {
-		width: 80%;
-		float: left;
-		padding: 0 1.5em;
-	}
-
-	.side {
-		width: 20%;
-		float: left;
-	}
-
-	&:after {
-		content: "";
-		display : block; 
-		clear: both;
-	}
-}
-
 a {
 	text-decoration: none;
 	color: @theme-color;
 }
 
+@font-face {
+	font-family: 'Press Start 2P';
+	font-weight: 400;
+	font-style: normal;
+	src: local('Press Start 2P'), local('Press-Start-2P-regular'), url('../../font/Press-Start-2P-regular.eot'), url('../../font/Press-Start-2P-regular.woff2') format('woff2'), url('../../font/Press-Start-2P-regular.woff') format('woff'), url('../../font/Press-Start-2P-regular.ttf') format('truetype'), url('../../font/Press-Start-2P-regular.svg') format('svg');
+}
+
+@import "structure.less";
 @import "banner.less";
 @import "menu.less";
 .side {
