@@ -1,7 +1,5 @@
 package shionn.blog.logger;
 
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
 
 import org.slf4j.Logger;
 
@@ -13,10 +11,10 @@ import org.slf4j.Logger;
  */
 public class LoggerFactory {
 
-	@Produces
-	public Logger logger(InjectionPoint point) {
-		return logger(point.getMember().getDeclaringClass());
-	}
+//	@Produces
+//	public Logger logger(InjectionPoint point) {
+//		return logger(point.getMember().getDeclaringClass());
+//	}
 
 	public Logger logger(Class<?> clazz) {
 		return org.slf4j.LoggerFactory.getLogger(clazz.getName());

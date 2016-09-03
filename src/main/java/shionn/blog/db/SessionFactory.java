@@ -1,9 +1,5 @@
 package shionn.blog.db;
 
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Disposes;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -33,23 +29,23 @@ public class SessionFactory {
 		return Holder.instance.factory;
 	}
 
-	@Inject
+//	@Inject
 	private Logger logger;
 
-	@Produces
-	@RequestScoped
+//	@Produces
+//	@RequestScoped
 	public SqlSession open() {
 		SqlSession session = factory().openSession();
 		logger.debug("Session " + session.hashCode() + " opened");
 		return session;
 	}
 
-	public void close(@Disposes SqlSession session) {
-		logger.debug("Session " + session.hashCode() + " closed");
-		try {
-			session.rollback();
-		} finally {
-			session.close();
-		}
-	}
+//	public void close(@Disposes SqlSession session) {
+//		logger.debug("Session " + session.hashCode() + " closed");
+//		try {
+//			session.rollback();
+//		} finally {
+//			session.close();
+//		}
+//	}
 }
