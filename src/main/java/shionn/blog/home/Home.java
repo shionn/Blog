@@ -1,5 +1,7 @@
 package shionn.blog.home;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,15 +15,17 @@ import org.springframework.web.servlet.ModelAndView;
  * @author <b>Shionn</b>, shionn@gmail.com <i>http://shionn.org</i><br>
  *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
  */
-@Controller
+@Controller()
+@Scope(value = "request")
 public class Home  {
 
-//	@Inject
-//	private Toto toto;
+	@Autowired
+	private Toto toto;
+
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(ModelMap model) {
-		model.addAttribute("message", "Spring 3 MVC Hello World");
+		model.addAttribute("message", toto);
 		return "home";
 	}
 

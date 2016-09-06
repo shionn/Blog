@@ -1,8 +1,10 @@
 package shionn.blog.home;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-//@Named
-//@RequestScoped
+@Component
+@Scope(value = "request")
 public class Toto {
 
 	private String a = "" + System.currentTimeMillis();

@@ -148,7 +148,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>4.0.2.RELEASE</version>
+			<version>${version.spring}</version>
 		</dependency>
 
 		<dependency>
@@ -157,6 +157,11 @@
 			<version>${version.jstl}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
+		</dependency>
 
 		<!-- rest -->
 		<!-- <dependency> -->
