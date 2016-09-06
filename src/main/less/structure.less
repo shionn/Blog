@@ -1,3 +1,5 @@
+@import "variables.less";
+
 .container {
 	position: relative;
 	margin-right: auto;
@@ -16,14 +18,26 @@
 	}
 
 	.main {
-		width: 80%;
-		float: left;
 		padding: 0 1.5em;
+			@media (min-width: @min-sm) {
+			width: 70%;
+			float: left;
+		}
+
+		@media (min-width: @min-md) {
+			width: 80%;
+		}
 	}
 
 	.side {
-		width: 20%;
-		float: left;
+		@media (min-width: @min-sm) {
+			width: 30%;
+			float: left;
+		}
+
+		@media (min-width: @min-md) {
+			width: 20%;
+		}
 	}
 
 	&:after {
