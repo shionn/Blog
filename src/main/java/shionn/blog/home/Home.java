@@ -34,12 +34,5 @@ public class Home  {
 		return new ModelAndView("home");
 	}
 
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-//			throws ServletException, IOException {
-//		System.out.println(toto.getA());
-//		System.out.println("home");
-//		this.getServletContext().getRequestDispatcher("/jsp/home.jsp").forward(req, resp);
-//	}
 
 }
