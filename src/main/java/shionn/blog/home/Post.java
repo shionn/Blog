@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
  */
 @WebServlet(name = "article", urlPatterns = "/post/*")
-public class Article extends HttpServlet {
+public class Post extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 //	@Inject

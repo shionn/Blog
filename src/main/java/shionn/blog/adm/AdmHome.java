@@ -14,12 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller()
 @Scope(value = "request")
-public class Admin  {
-
+public class AdmHome {
 
 	@RequestMapping(value = "/adm", method = RequestMethod.GET)
 	public String home(ModelMap model) {
-		model.addAttribute("page", "home");
 		return "adm/home";
 	}
 

@@ -10,7 +10,7 @@
 <body>
 	<div class="menu">
 		<ul>
-			<li><a href="articles">Articles</a></li>
+			<li><a href="posts">Articles</a></li>
 			<li><a href="comments">Commentaires</a></li>
 		</ul>
 	</div>
