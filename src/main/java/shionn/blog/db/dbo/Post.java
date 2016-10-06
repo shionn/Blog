@@ -14,7 +14,7 @@ public class Post {
 	private String content;
 
 	public enum Status {
-		publish
+		publish, draft
 	}
 
 	public enum Type {

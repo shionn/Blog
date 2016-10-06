@@ -8,7 +8,6 @@
 		<setting name="logImpl" value="SLF4J" />
 	</settings>
 	<typeHandlers>
-		<package name="shionn.blog.db.dao.PostAdmDao" />
 	</typeHandlers>
 	<environments default="development">
 		<environment id="development">
@@ -26,5 +25,6 @@
 		</environment>
 	</environments>
 	<mappers>
+		<mapper class="shionn.blog.db.dao.PostAdmDao"/>
 	</mappers>
 </configuration>

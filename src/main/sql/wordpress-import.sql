@@ -16,3 +16,6 @@ post_title as title, post_content AS content
 from wp_posts AS w 
 left join post AS p ON p.id=w.id 
 WHERE p.id is null and w.post_type in ('post','page');
+
+update post set status = 'draft' where status = 'auto-draft';
+update post set status = 'publish' where status = 'private';
