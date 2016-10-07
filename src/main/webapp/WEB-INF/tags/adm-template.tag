@@ -10,8 +10,8 @@
 <body>
 	<div class="menu">
 		<ul>
-			<li><a href="posts">Articles</a></li>
-			<li><a href="comments">Commentaires</a></li>
+			<li><a href="adm/posts">Articles</a></li>
+			<li><a href="adm/comments">Commentaires</a></li>
 		</ul>
 	</div>
 	<div class="page">

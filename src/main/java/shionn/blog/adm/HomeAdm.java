@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller()
 @Scope(value = "request")
-public class AdmHome {
+public class HomeAdm {
 
 	@RequestMapping(value = "/adm", method = RequestMethod.GET)
 	public String home(ModelMap model) {

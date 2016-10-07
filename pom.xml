@@ -106,7 +106,7 @@
 			<id>dev</id>
 			<properties>
 				<skip.test>false</skip.test>
-				<mybatis.driver>com.mysql.jdbc.Driver</mybatis.driver>
+				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
 				<mybatis.url>jdbc:mysql://${mariadb.host}:3306/blog</mybatis.url>
 				<mybatis.username>${mariadb.user}</mybatis.username>
 				<mybatis.password>${mariadb.pass}</mybatis.password>
@@ -118,7 +118,7 @@
 			<id>jenkins</id>
 			<properties>
 				<skip.test>false</skip.test>
-				<mybatis.driver>com.mysql.jdbc.Driver</mybatis.driver>
+				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
 				<mybatis.url>jdbc:mysql://192.168.1.135:3306/blog</mybatis.url>
 				<mybatis.username>blog</mybatis.username>
 				<mybatis.password>blog</mybatis.password>
@@ -133,7 +133,7 @@
 				<tomcat.url>http://192.168.1.135:8080</tomcat.url>
 				<tomcat.server>TomcatLC17</tomcat.server>
 				<tomcat.path>/Blog</tomcat.path>
-				<mybatis.driver>com.mysql.jdbc.Driver</mybatis.driver>
+				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
 				<mybatis.url>jdbc:mysql://192.168.1.135:3306/blog</mybatis.url>
 				<mybatis.username>blog</mybatis.username>
 				<mybatis.password>blog</mybatis.password>

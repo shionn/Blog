@@ -25,14 +25,15 @@ public class Home  {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(ModelMap model) {
+		System.out.println("access :/");
 		model.addAttribute("message", toto);
 		return "home";
 	}
 
-	@RequestMapping(value = "/{name:.+}", method = RequestMethod.GET)
-	public ModelAndView article(@PathVariable("name") String name) {
-		return new ModelAndView("home");
-	}
+//	@RequestMapping(value = "/{name:.+}", method = RequestMethod.GET)
+//	public ModelAndView article(@PathVariable("name") String name) {
+//		return new ModelAndView("home");
+//	}
 
 
 }
