@@ -6,4 +6,4 @@
   <jsp:attribute name="content">
     <h1>Hello World</h1>
   </jsp:attribute>
-</t:adm-template>>
+</t:adm-template>

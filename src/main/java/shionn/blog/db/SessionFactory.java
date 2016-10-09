@@ -1,14 +1,14 @@
 package shionn.blog.db;
 
 
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.RequestScope;
 
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
@@ -38,19 +38,11 @@ public class SessionFactory {
 	private Logger logger;
 
 	@Bean
-	@Scope(value = "request")
-	public SqlSession open() {
-		SqlSession session = factory().openSession();
-		logger.debug("Session " + session.hashCode() + " opened");
-		return session;
+	@RequestScope(proxyMode = ScopedProxyMode.TARGET_CLASS)
+	public org.apache.ibatis.session.SqlSession open() {
+		org.apache.ibatis.session.SqlSession session = factory().openSession();
+		logger.info("Session " + session.hashCode() + " opened");
+		return new SqlSession(session, logger);
 	}
 
-	// public void close(@Disposes SqlSession session) {
-	// logger.debug("Session " + session.hashCode() + " closed");
-	// try {
-	// session.rollback();
-	// } finally {
-	// session.close();
-	// }
-	// }
 }

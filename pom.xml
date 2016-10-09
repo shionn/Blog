@@ -74,6 +74,7 @@
 					<outputDirectory>${project.basedir}/src/main/webapp/css/generated</outputDirectory>
 					<includes>
 						<include>style.less</include>
+						<include>admin.less</include>
 					</includes>
 				</configuration>
 				<executions>
@@ -110,7 +111,7 @@
 			<properties>
 				<skip.test>false</skip.test>
 				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
-				<mybatis.url>jdbc:mysql://${mariadb.host}:3306/blog</mybatis.url>
+				<mybatis.url>jdbc:mysql://${mariadb.host}:3306/blog?serverTimezone=GMT</mybatis.url>
 				<mybatis.username>${mariadb.user}</mybatis.username>
 				<mybatis.password>${mariadb.pass}</mybatis.password>
 			</properties>

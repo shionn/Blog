@@ -10,6 +10,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import shionn.blog.db.SessionFactory;
+import shionn.blog.db.dao.PostAdmDao.SortBy;
+import shionn.blog.db.dbo.Post.Type;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PostAdmDaoItTest {
@@ -23,7 +25,8 @@ public class PostAdmDaoItTest {
 	@Test
 	public void testList() {
 		try (SqlSession session = factory.open()) {
-			assertThat(session.getMapper(PostAdmDao.class).list()).isNotEmpty();
+			assertThat(session.getMapper(PostAdmDao.class).list(Type.post, SortBy.published))
+					.isNotEmpty();
 
 		}
 	}
