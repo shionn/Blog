@@ -25,8 +25,8 @@
 					<th>
 						<form class="pure-form filter" method="get">
 							<select name="status">
-								<option<c:if test="${filters.status == shionn.blog.db.dbo.Post.Status.draft}"> selected="selected"</c:if>>draft</option>
-								<option<c:if test="${filters.status == shionn.blog.db.dbo.Post.Status.publish}"> selected="selected"</c:if>>publish</option>
+								<option<c:if test="${filters.status == \"draft\"}"> selected="selected"</c:if>>draft</option>
+								<option<c:if test="${filters.status == \"publish\"}"> selected="selected"</c:if>>publish</option>
 							</select>
 						</form>
 					</th>
@@ -37,11 +37,11 @@
 			<tbody>
 				<c:forEach items="${posts}" var="post">
 					<tr>
-						<td><c:out value="${post.title}" /></td>
+						<td>${post.title}</td>
 						<td><fmt:formatDate pattern="MM/dd/yyyy" value="${post.published}" /></td>
 						<td><fmt:formatDate pattern="MM/dd/yyyy" value="${post.updated}" /></td>
-						<td><c:out value="${post.type}" /></td>
-						<td><c:out value="${post.status}" /></td>
+						<td>${post.type}</td>
+						<td>${post.status}</td>
 						<td>Edit</td>
 					</tr>
 				</c:forEach>
