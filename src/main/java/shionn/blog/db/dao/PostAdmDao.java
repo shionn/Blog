@@ -26,5 +26,8 @@ public interface PostAdmDao {
 			+ "ORDER BY ${sort} ${order}")
 	List<Post> list(@Param("type") Post.Type type, @Param("status") Post.Status status,
 			@Param("sort") SortBy sort, @Param("order") SortOrder order);
+
+	@Select("SELECT * FROM post where id = #{id}")
+	Post get(int id);
 	
 }

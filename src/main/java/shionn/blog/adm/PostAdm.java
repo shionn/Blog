@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +26,8 @@ public class PostAdm {
 	private PostAdmFilters filters;
 
 	@RequestMapping(value = "/adm/posts", method = RequestMethod.GET)
-	public ModelAndView home(@RequestParam(value = "sortby", required = false) PostAdmDao.SortBy sortby,
+	public ModelAndView home(
+			@RequestParam(value = "sortby", required = false) PostAdmDao.SortBy sortby,
 			@RequestParam(value = "type", required = false) Post.Type type,
 			@RequestParam(value = "status", required = false) Post.Status status) {
 		if (sortby != null) {
@@ -42,10 +44,17 @@ public class PostAdm {
 			filters.setStatus(status);
 		}
 
-		List<Post> posts = session.getMapper(PostAdmDao.class).list(filters.getType(), filters.getStatus(),
-				filters.getSortBy(), filters.getSortOrder());
-		return new ModelAndView("adm/posts").addObject("posts", posts).addObject("activepage", "posts")
-				.addObject("filters", filters);
+		List<Post> posts = session.getMapper(PostAdmDao.class).list(filters.getType(),
+				filters.getStatus(), filters.getSortBy(), filters.getSortOrder());
+		return new ModelAndView("adm/post/list").addObject("posts", posts)
+				.addObject("activepage", "posts").addObject("filters", filters);
+	}
+
+	@RequestMapping(value = "/adm/post/edit/{id:\\d+}", method = RequestMethod.GET)
+	public ModelAndView edit(@PathVariable("id") int id) {
+		Post post = session.getMapper(PostAdmDao.class).get(id);
+		return new ModelAndView("adm/post/edit").addObject("post", post).addObject("activepage",
+				"posts");
 	}
 
 }

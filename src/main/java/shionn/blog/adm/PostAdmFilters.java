@@ -2,7 +2,6 @@ package shionn.blog.adm;
 
 import java.io.Serializable;
 
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -10,7 +9,7 @@ import shionn.blog.db.dao.PostAdmDao;
 import shionn.blog.db.dbo.Post;
 
 @Component
-@SessionScope(proxyMode = ScopedProxyMode.TARGET_CLASS)
+@SessionScope
 public class PostAdmFilters implements Serializable {
 	private static final long serialVersionUID = 6041120222740960067L;
 

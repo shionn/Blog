@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="content pure-g">
-		<div id="menu" class="pure-u-1-12">
+		<div id="menu" class="pure-u-1-6">
 			<div class="pure-menu custom-restricted-width">
 				<a href="<spring:url value="/adm"/>" class="pure-menu-heading">Admin</a>
 				<ul class="pure-menu-list">
@@ -22,13 +22,13 @@
 						<a href="<spring:url value="/adm/posts"/>" class="pure-menu-link">Articles</a>
 					</li>
 					<li class="pure-menu-item<c:if test="${activepage == \"comments\"}"> pure-menu-selected</c:if>">
-						<a href="<spring:url value="/adm/comments"/>" class="pure-menu-link">Commentaires</a>
+						<a href="<spring:url value="/adm"/>" class="pure-menu-link">Commentaires (X)</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 
-		<div id="content" class="pure-u-11-12">
+		<div id="content" class="pure-u-5-6">
 			<jsp:invoke fragment="content" />
 		</div>
 	</div>

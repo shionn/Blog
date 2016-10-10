@@ -17,16 +17,16 @@
 					<th>
 						<form class="pure-form filter" method="get">
 							<select name="type">
-								<option<c:if test="${filters.type == \"post\"}"> selected="selected"</c:if>>post</option>
-								<option<c:if test="${filters.type == \"page\"}"> selected="selected"</c:if>>page</option>
+								<option <c:if test="${filters.type == \"post\"}"> selected="selected"</c:if>>post</option>
+								<option <c:if test="${filters.type == \"page\"}"> selected="selected"</c:if>>page</option>
 							</select>
 						</form>
 					</th>
 					<th>
 						<form class="pure-form filter" method="get">
 							<select name="status">
-								<option<c:if test="${filters.status == \"draft\"}"> selected="selected"</c:if>>draft</option>
-								<option<c:if test="${filters.status == \"publish\"}"> selected="selected"</c:if>>publish</option>
+								<option <c:if test="${filters.status == \"draft\"}"> selected="selected"</c:if>>draft</option>
+								<option <c:if test="${filters.status == \"publish\"}"> selected="selected"</c:if>>publish</option>
 							</select>
 						</form>
 					</th>
@@ -42,7 +42,10 @@
 						<td><fmt:formatDate pattern="MM/dd/yyyy" value="${post.updated}" /></td>
 						<td>${post.type}</td>
 						<td>${post.status}</td>
-						<td>Edit</td>
+						<td>
+							<a href="<spring:url value="/adm/post/edit/${post.id}"/>" class="fa fa-pencil"></a>
+							<a href="<spring:url value="/adm"/>" class="fa fa-eraser"></a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
