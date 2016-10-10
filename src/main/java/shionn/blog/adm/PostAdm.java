@@ -1,19 +1,21 @@
 package shionn.blog.adm;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.servlet.ModelAndView;
 
 import shionn.blog.db.dao.PostAdmDao;
 import shionn.blog.db.dbo.Post;
 
 @Controller
-@SessionScope
+@RequestScope
 public class PostAdm {
 
 	@Autowired
@@ -23,13 +25,15 @@ public class PostAdm {
 	private PostAdmFilters filters;
 
 	@RequestMapping(value = "/adm/posts", method = RequestMethod.GET)
-	public String home(
-			@RequestParam(value = "sortby", required = false, defaultValue = "updated") PostAdmDao.SortBy sortby,
-			@RequestParam(value = "type", required = false, defaultValue = "post") Post.Type type,
-			@RequestParam(value = "status", required = false, defaultValue = "draft") Post.Status status,
-			ModelMap model) {
-		if (sortby !=null) {
-			filters.setSortBy(sortby);
+	public ModelAndView home(@RequestParam(value = "sortby", required = false) PostAdmDao.SortBy sortby,
+			@RequestParam(value = "type", required = false) Post.Type type,
+			@RequestParam(value = "status", required = false) Post.Status status) {
+		if (sortby != null) {
+			if (filters.getSortBy() == sortby) {
+				filters.setSortOrder(filters.getSortOrder().reverse());
+			} else {
+				filters.setSortBy(sortby);
+			}
 		}
 		if (type != null) {
 			filters.setType(type);
@@ -37,12 +41,11 @@ public class PostAdm {
 		if (status != null) {
 			filters.setStatus(status);
 		}
-		
-		model.addAttribute("posts", session.getMapper(PostAdmDao.class).list(filters.getType(),
-				filters.getStatus(), filters.getSortBy()));
-		model.addAttribute("activepage", "posts");
-		model.addAttribute("filters", filters);
-		return "adm/posts";
+
+		List<Post> posts = session.getMapper(PostAdmDao.class).list(filters.getType(), filters.getStatus(),
+				filters.getSortBy(), filters.getSortOrder());
+		return new ModelAndView("adm/posts").addObject("posts", posts).addObject("activepage", "posts")
+				.addObject("filters", filters);
 	}
 
 }

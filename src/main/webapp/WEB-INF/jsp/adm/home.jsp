@@ -4,6 +4,6 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 <t:adm-template>
   <jsp:attribute name="content">
-    <h1>Hello World</h1>
+    <h1>Page d'acceuil, WiP</h1>
   </jsp:attribute>
 </t:adm-template>

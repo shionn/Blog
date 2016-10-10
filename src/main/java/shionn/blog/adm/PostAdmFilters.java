@@ -12,16 +12,12 @@ import shionn.blog.db.dbo.Post;
 @Component
 @SessionScope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class PostAdmFilters implements Serializable {
+	private static final long serialVersionUID = 6041120222740960067L;
 
 	private PostAdmDao.SortBy sortBy = PostAdmDao.SortBy.updated;
-
+	private PostAdmDao.SortOrder sortOrder = PostAdmDao.SortOrder.DESC;
 	private Post.Status status = Post.Status.draft;
-
 	private Post.Type type = Post.Type.post;
-
-	public PostAdmFilters() {
-		System.out.println("new PostAdmFilters");
-	}
 
 	public PostAdmDao.SortBy getSortBy() {
 		return sortBy;
@@ -45,6 +41,14 @@ public class PostAdmFilters implements Serializable {
 
 	public void setType(Post.Type type) {
 		this.type = type;
+	}
+
+	public PostAdmDao.SortOrder getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(PostAdmDao.SortOrder sortOrder) {
+		this.sortOrder = sortOrder;
 	}
 
 }

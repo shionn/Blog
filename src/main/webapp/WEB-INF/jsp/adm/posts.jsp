@@ -1,12 +1,11 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <t:adm-template>
 	<jsp:attribute name="scripts">
-		<spring:url value="/js/" var="js" />
-		<script type="text/javascript" src="${js}adm/posts.js"></script>
+		<script type="text/javascript" src="<spring:url value="/js/adm/posts.js"/>"></script>
 	</jsp:attribute>
 	<jsp:attribute name="content">
 		<table class="pure-table pure-table-horizontal">
