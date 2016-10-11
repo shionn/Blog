@@ -46,16 +46,17 @@ ALTER TABLE `comment`
 
 -- backup
 CREATE TABLE IF NOT EXISTS `backup-post` (
-  `backup` int(11) NOT NULL AUTO_INCREMENT,
+  `backup-id` int(11) NOT NULL AUTO_INCREMENT,
+  `backup-time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id` int(11) NOT NULL,
-  `url` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `status` varchar(32) NOT NULL,
-  `type` varchar(32) NOT NULL,
-  `author` int(11) NOT NULL,
-  `published` datetime NOT NULL,
-  `updated` timestamp NOT NULL,
-  `title` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `content` longtext NOT NULL,
+  `url` varchar(128) CHARACTER SET utf8,
+  `status` varchar(32),
+  `type` varchar(32),
+  `author` int(11),
+  `published` datetime,
+  `updated` timestamp,
+  `title` varchar(128) CHARACTER SET utf8,
+  `content` longtext,
   PRIMARY KEY (`backup`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
