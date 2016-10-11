@@ -2,6 +2,7 @@ package shionn.blog.db.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -30,4 +31,10 @@ public interface PostAdmDao {
 	@Select("SELECT * FROM post where id = #{id}")
 	Post get(int id);
 	
+	@Insert("INSERT INTO backup-post "
+			+ "(id, url, status, type, author, published, updated, title, content) "
+			+ "SELECT id, url, status, type, author, published, updated, title, content "
+			+ "FROM post WHERE id = #{id}")
+	int backup(int id);
+
 }

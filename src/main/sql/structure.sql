@@ -43,3 +43,20 @@ CREATE TABLE IF NOT EXISTS `comment` (
 
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`post`) REFERENCES `post` (`id`);
+
+-- backup
+CREATE TABLE IF NOT EXISTS `backup-post` (
+  `backup` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
+  `url` varchar(128) CHARACTER SET utf8 NOT NULL,
+  `status` varchar(32) NOT NULL,
+  `type` varchar(32) NOT NULL,
+  `author` int(11) NOT NULL,
+  `published` datetime NOT NULL,
+  `updated` timestamp NOT NULL,
+  `title` varchar(128) CHARACTER SET utf8 NOT NULL,
+  `content` longtext NOT NULL,
+  PRIMARY KEY (`backup`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
