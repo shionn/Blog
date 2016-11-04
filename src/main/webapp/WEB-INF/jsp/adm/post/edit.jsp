@@ -10,10 +10,10 @@
 			<fieldset>
 				<legend>Edition de ${post.id}</legend>
 				<label for="title">Titre</label>
-				<input id="title" type="text" class="pure-input-1" placeholder="Title" value="${post.title}">
+				<input id="title" name="title" type="text" class="pure-input-1" placeholder="Title" value="${post.title}">
 				
-				<label for="title">Contenu</label>
-				<textarea class="pure-input-1" placeholder="Contenu" rows="30">${post.content}</textarea>
+				<label for="content">Contenu</label>
+				<textarea class="pure-input-1" placeholder="Contenu" rows="30" name="content">${post.content}</textarea>
 				<button type="submit" class="pure-button pure-button-primary">Sauvegarder</button>
 			</fieldset>
 		</form>

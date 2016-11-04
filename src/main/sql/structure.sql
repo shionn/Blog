@@ -39,15 +39,15 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `content` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `post` (`post`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf-8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`post`) REFERENCES `post` (`id`);
 
 -- backup
-CREATE TABLE IF NOT EXISTS `backup-post` (
-  `backup-id` int(11) NOT NULL AUTO_INCREMENT,
-  `backup-time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE IF NOT EXISTS `backup_post` (
+  `backup_id` int(11) NOT NULL AUTO_INCREMENT,
+  `backup_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id` int(11) NOT NULL,
   `url` varchar(128) CHARACTER SET utf8,
   `status` varchar(32),
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `backup-post` (
   `updated` timestamp,
   `title` varchar(128) CHARACTER SET utf8,
   `content` longtext,
-  PRIMARY KEY (`backup`),
+  PRIMARY KEY (`backup_id`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

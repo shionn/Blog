@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import shionn.blog.db.dao.PostAdmDao;
 import shionn.blog.db.dbo.Post;
 
-@Controller
+@Controller()
 @RequestScope
 public class PostAdm {
 
@@ -55,6 +56,16 @@ public class PostAdm {
 		Post post = session.getMapper(PostAdmDao.class).get(id);
 		return new ModelAndView("adm/post/edit").addObject("post", post).addObject("activepage",
 				"posts");
+	}
+
+	@RequestMapping(value = "/adm/post/edit/{id:\\d+}", method = RequestMethod.POST)
+	public ModelAndView save(@PathVariable("id") int id, @ModelAttribute Post post) {
+		post.setId(id);
+		session.getMapper(PostAdmDao.class).backup(id);
+		session.getMapper(PostAdmDao.class).save(post);
+		session.commit();
+		// Post post = session.getMapper(PostAdmDao.class).get(id);
+		return edit(id);
 	}
 
 }
