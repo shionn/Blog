@@ -9,7 +9,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { SpringConfig.class };
+		return new Class[] { WebMvcConfig.class };
 	}
 
 	@Override
@@ -26,5 +26,5 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	protected Filter[] getServletFilters() {
 		return new Filter[] { new CharacterEncodingFilter("UTF-8") };
 	}
-
+	
 }

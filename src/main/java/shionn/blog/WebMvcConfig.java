@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @Configuration
 @ComponentScan({ "shionn.blog" })
-public class SpringConfig extends WebMvcConfigurerAdapter {
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

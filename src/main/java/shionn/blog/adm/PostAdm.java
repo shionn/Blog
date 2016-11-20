@@ -1,6 +1,7 @@
 package shionn.blog.adm;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,10 @@ public class PostAdm {
 	}
 
 	@RequestMapping(value = "/adm/posts", method = RequestMethod.POST)
-	public ModelAndView create() {
+	public ModelAndView create(@ModelAttribute Post post) {
+		post.setUrl(Pattern.compile("[^a-zA-Z]").matcher(post.getTitle()).replaceAll("-"));
+		session.getMapper(PostAdmDao.class).create(post);
+		session.commit();
 		return list(null, null, Post.Status.draft);
 	}
 
@@ -69,7 +73,6 @@ public class PostAdm {
 		session.getMapper(PostAdmDao.class).backup(id);
 		session.getMapper(PostAdmDao.class).save(post);
 		session.commit();
-		// Post post = session.getMapper(PostAdmDao.class).get(id);
 		return edit(id);
 	}
 
