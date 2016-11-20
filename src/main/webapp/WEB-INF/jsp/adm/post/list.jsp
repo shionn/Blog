@@ -8,6 +8,16 @@
 		<script type="text/javascript" src="<spring:url value="/js/adm/posts.js"/>"></script>
 	</jsp:attribute>
 	<jsp:attribute name="content">
+		<form class="pure-form" method="post">
+			<fieldset>
+				<input type="text" placeholder="Titre" name="title">
+				<select name="type">
+					<option selected="selected">post</option>
+					<option>page</option>
+				</select>
+				<button type="submit" class="pure-button pure-button-primary">Nouveau</button>
+			</fieldset>
+		</form>
 		<table class="pure-table pure-table-horizontal">
 			<thead>
 				<tr>

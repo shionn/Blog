@@ -26,7 +26,7 @@ public class PostAdm {
 	private PostAdmFilters filters;
 
 	@RequestMapping(value = "/adm/posts", method = RequestMethod.GET)
-	public ModelAndView home(
+	public ModelAndView list(
 			@RequestParam(value = "sortby", required = false) PostAdmDao.SortBy sortby,
 			@RequestParam(value = "type", required = false) Post.Type type,
 			@RequestParam(value = "status", required = false) Post.Status status) {
@@ -48,6 +48,11 @@ public class PostAdm {
 				filters.getStatus(), filters.getSortBy(), filters.getSortOrder());
 		return new ModelAndView("adm/post/list").addObject("posts", posts)
 				.addObject("activepage", "posts").addObject("filters", filters);
+	}
+
+	@RequestMapping(value = "/adm/posts", method = RequestMethod.POST)
+	public ModelAndView create() {
+		return list(null, null, Post.Status.draft);
 	}
 
 	@RequestMapping(value = "/adm/post/edit/{id:\\d+}", method = RequestMethod.GET)
