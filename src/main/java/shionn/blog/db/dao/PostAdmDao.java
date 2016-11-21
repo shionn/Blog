@@ -9,6 +9,10 @@ import org.apache.ibatis.annotations.Update;
 
 import shionn.blog.db.dbo.Post;
 
+/**
+ * Dao pour l'edition des articles
+ *
+ */
 public interface PostAdmDao {
 	public static enum SortBy {
 		published, updated

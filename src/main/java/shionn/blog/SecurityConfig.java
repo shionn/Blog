@@ -12,8 +12,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
+	private AuthenticationProvider provider;
+	
+	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("password").roles("ADMIN");
+		auth.authenticationProvider(provider);
 	}
 
 	@Override
