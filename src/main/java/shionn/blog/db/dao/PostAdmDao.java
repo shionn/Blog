@@ -43,7 +43,8 @@ public interface PostAdmDao {
 	int backup(int id);
 
 	@Update("UPDATE post "
-			+ "SET title = #{title}, content = #{content} "
+			+ "SET title = #{title}, content = #{content}, url = #{url}, "
+			+ "type = #{type}, status = #{status}, published = #{published}, updated = NOW() "
 			+ "WHERE id= #{id} ")
 	int save(Post post);
 

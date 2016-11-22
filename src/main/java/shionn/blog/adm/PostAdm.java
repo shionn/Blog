@@ -59,7 +59,7 @@ public class PostAdm {
 		post.setUrl(Pattern.compile("[^a-zA-Z]").matcher(post.getTitle()).replaceAll("-"));
 		post.setAuthor(user.getUser());
 		session.getMapper(PostAdmDao.class).create(post);
-		// session.commit();
+		session.commit();
 		return list(null, null, Post.Status.draft);
 	}
 
@@ -75,7 +75,7 @@ public class PostAdm {
 		post.setId(id);
 		session.getMapper(PostAdmDao.class).backup(id);
 		session.getMapper(PostAdmDao.class).save(post);
-		// session.commit();
+		session.commit();
 		return edit(id);
 	}
 

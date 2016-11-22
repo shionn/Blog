@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `backup_post` (
   `type` varchar(32),
   `author` int(11),
   `published` datetime,
-  `updated` timestamp,
+  `updated` timestamp NULL,
   `title` varchar(128) CHARACTER SET utf8,
   `content` longtext,
   PRIMARY KEY (`backup_id`),
