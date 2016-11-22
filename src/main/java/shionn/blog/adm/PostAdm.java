@@ -75,7 +75,7 @@ public class PostAdm {
 		post.setId(id);
 		session.getMapper(PostAdmDao.class).backup(id);
 		session.getMapper(PostAdmDao.class).save(post);
-		session.commit();
+		// session.commit();
 		return edit(id);
 	}
 

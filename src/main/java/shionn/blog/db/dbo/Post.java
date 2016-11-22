@@ -2,6 +2,8 @@ package shionn.blog.db.dbo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Post {
 
 	private int id;
@@ -9,7 +11,9 @@ public class Post {
 	private Status status;
 	private Type type;
 	private String title;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date published;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date updated;
 	private String content;
 	private User author;
