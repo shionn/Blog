@@ -13,6 +13,7 @@
 		<version.resteasy>3.0.14.Final</version.resteasy>
 		<version.weld>2.3.3.Final</version.weld>
 		<version.spring>4.3.2.RELEASE</version.spring>
+		<version.spring.security>4.2.0.RELEASE</version.spring.security>
 		<version.jstl>1.2</version.jstl>
 	</properties>
 
@@ -155,12 +156,12 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>4.2.0.RELEASE</version>
+			<version>${version.spring.security}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>4.2.0.RELEASE</version>
+			<version>${version.spring.security}</version>
 		</dependency>
 
 		<dependency>

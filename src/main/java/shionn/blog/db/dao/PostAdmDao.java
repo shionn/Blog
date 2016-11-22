@@ -48,7 +48,7 @@ public interface PostAdmDao {
 	int save(Post post);
 
 	@Insert("INSERT INTO post (url, status, type, author, published, updated, title, content) "
-			+ "VALUES ( #{url}, draft, #{type}, #{author.id}, null, NOW(), #{title}, #{content} )")
+			+ "VALUES ( #{url}, 'draft', #{type}, #{author.id}, null, NOW(), #{title}, #{content} )")
 	int create(Post post);
 
 }

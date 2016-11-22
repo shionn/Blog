@@ -19,3 +19,5 @@ WHERE p.id is null and w.post_type in ('post','page');
 
 update post set status = 'draft' where status = 'auto-draft';
 update post set status = 'publish' where status = 'private';
+
+update user set password='7be50c6aae87bc627a523cb502ddcc1ebd92fbbc' where email = 'shionn@gmail.com';

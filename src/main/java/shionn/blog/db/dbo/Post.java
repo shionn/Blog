@@ -12,6 +12,7 @@ public class Post {
 	private Date published;
 	private Date updated;
 	private String content;
+	private User author;
 
 	public enum Status {
 		publish, draft
@@ -83,6 +84,14 @@ public class Post {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
+	public User getAuthor() {
+		return author;
 	}
 
 }

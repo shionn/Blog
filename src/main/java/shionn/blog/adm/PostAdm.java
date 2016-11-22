@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import shionn.blog.db.dao.PostAdmDao;
 import shionn.blog.db.dbo.Post;
+import shionn.blog.security.CurrentUser;
 
 @Controller()
 @RequestScope
@@ -23,9 +24,10 @@ public class PostAdm {
 
 	@Autowired
 	private SqlSession session;
-
 	@Autowired
 	private PostAdmFilters filters;
+	@Autowired
+	private CurrentUser user;
 
 	@RequestMapping(value = "/adm/posts", method = RequestMethod.GET)
 	public ModelAndView list(
@@ -55,8 +57,9 @@ public class PostAdm {
 	@RequestMapping(value = "/adm/posts", method = RequestMethod.POST)
 	public ModelAndView create(@ModelAttribute Post post) {
 		post.setUrl(Pattern.compile("[^a-zA-Z]").matcher(post.getTitle()).replaceAll("-"));
+		post.setAuthor(user.getUser());
 		session.getMapper(PostAdmDao.class).create(post);
-		session.commit();
+		// session.commit();
 		return list(null, null, Post.Status.draft);
 	}
 
