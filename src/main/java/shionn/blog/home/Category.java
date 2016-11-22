@@ -16,13 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 public class Category extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-//	@Inject
-	private Toto toto;
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println(toto.getA());
 		this.getServletContext().getRequestDispatcher("/jsp/home.jsp").forward(req, resp);
 	}
 

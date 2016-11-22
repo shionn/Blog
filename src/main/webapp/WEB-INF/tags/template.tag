@@ -158,6 +158,6 @@
 	</footer>
 	
 	<script src="<spring:url value="/js/lib/jquery-3.1.0.min.js" />"></script>
-	<script src="<spring:url value="/js/menu.js" var="menuJs" />"></script>
+	<script src="<spring:url value="/js/menu.js" />"></script>
 </body>
 </html>

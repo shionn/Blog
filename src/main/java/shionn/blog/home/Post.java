@@ -18,8 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Post extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-//	@Inject
-	private Toto toto;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -27,7 +25,6 @@ public class Post extends HttpServlet {
 		
 		String url = req.getRequestURI();
 		String article = url.substring(url.lastIndexOf('/') + 1);
-		System.out.println(toto.getA());
 		System.out.println(article);
 		this.getServletContext().getRequestDispatcher("/jsp/article.jsp").forward(req, resp);
 	}
