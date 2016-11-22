@@ -7,7 +7,7 @@ import shionn.blog.db.dbo.User;
 
 public interface AuthenticationDao {
 
-	@Select("SELECT email, password, created "
+	@Select("SELECT id, email, password, created "
 			+ "FROM user "
 			+ "WHERE email = #{email}")
 	User readUser(@Param("email") String email);

@@ -49,8 +49,8 @@
 				<c:forEach items="${posts}" var="post">
 					<tr>
 						<td>${post.title}</td>
-						<td><fmt:formatDate pattern="MM/dd/yyyy" value="${post.published}" /></td>
-						<td><fmt:formatDate pattern="MM/dd/yyyy" value="${post.updated}" /></td>
+						<td><fmt:formatDate pattern="dd/MM/yyyy" value="${post.published}" /></td>
+						<td><fmt:formatDate pattern="dd/MM/yyyy" value="${post.updated}" /></td>
 						<td>${post.type}</td>
 						<td>${post.status}</td>
 						<td>
