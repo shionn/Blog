@@ -14,7 +14,7 @@
 				</header>
 				<section>${post.content}</section>
 				<footer>
-					<a href="<spring:url value="/${post.url}#comments"/>">Laisser un commentaire</a>
+					<a href="<spring:url value="/${post.url}#comments"/>">Commentaire(s)</a>
 				</footer>
 			</article>
 		</c:forEach>

@@ -1,5 +1,7 @@
 package shionn.blog.home;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
+import shionn.blog.content.ContentFormater;
 import shionn.blog.db.dao.HomeDao;
+import shionn.blog.db.dbo.Post;
 
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
@@ -22,11 +26,17 @@ public class Home  {
 
 	@Autowired
 	private SqlSession session;
+	@Autowired
+	private ContentFormater contentFormatter;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
 		HomeDao dao = session.getMapper(HomeDao.class);
-		return new ModelAndView("home").addObject("posts", dao.readPosts());
+		List<Post> posts = dao.readPosts();
+		for (Post post : posts) {
+			post.setContent(contentFormatter.format(post.getContent()));
+		}
+		return new ModelAndView("home").addObject("posts", posts);
 	}
 
 }
