@@ -24,6 +24,12 @@
 					<li class="pure-menu-item<c:if test="${activepage == \"comments\"}"> pure-menu-selected</c:if>">
 						<a href="<spring:url value="/adm"/>" class="pure-menu-link">Commentaires (X)</a>
 					</li>
+					<li class="pure-menu-item">
+						<a href="<spring:url value="/"/>" class="pure-menu-link">Blog</a>
+					</li>
+					<li class="pure-menu-item">
+						<a href="<spring:url value="/logout"/>" class="pure-menu-link">Déconnexion</a>
+					</li>
 				</ul>
 			</div>
 		</div>

@@ -108,7 +108,9 @@
 		</div>
 	</footer>
 	
-	<script src="<spring:url value="/js/lib/jquery-3.1.0.min.js" />"></script>
-	<script src="<spring:url value="/js/menu.js" />"></script>
+	<script type="text/javascript" src="<spring:url value="/js/lib/jquery-3.1.0.min.js" />"></script>
+	<script type="text/javascript" src="<spring:url value="/js/lib/highlight-9.8.0-java.min.js"/>"></script>
+	<script type="text/javascript" src="<spring:url value="/js/menu.js" />"></script>
+	<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
