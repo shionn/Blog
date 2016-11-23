@@ -1,6 +1,8 @@
 @import "variables.less";
 @import "normalize-3.0.2.less";
 @import "functions.less";
+@import "fontawesome/font-awesome.less";
+
 * {
 	box-sizing: border-box
 }
@@ -47,8 +49,29 @@ article {
 		color: @theme-color;
 	}
 
-	p {
-		text-align: justify;
+	h1 {
+		line-height: 1.2em;
+	}
+
+	section {
+		font-size : 1.2em;
+		p {
+			text-align: justify;
+		}
+		ul {
+			padding : 0;
+			li {
+				list-style: none;
+				&:before {
+					padding: 0 .5em .2em 2em;
+					content: "\f111";
+					font-family: FontAwesome;
+					font-size: 0.5em;
+					color: @theme-color;
+					vertical-align: bottom;
+				} 
+			}
+		}
 	}
 
 	header img {

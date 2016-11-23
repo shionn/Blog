@@ -73,56 +73,7 @@
 	</header>
 	<div class="container">
 		<div class="main">
-			<article>
-				<header>
-					<img
-						src="http://www.shionn.org/wp-content/uploads/Magic-The-Gathering-Tactics-6151-604x270.jpg" />
-					<h1>Un titre d'article pas fou</h1>
-					<span class="date">25 octobre 2015</span>
-					<a href="#">category</a><a href="#"> tags</a>
-				</header>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eros orci, malesuada quis
-					lorem vel, ultricies tempus felis. Proin eleifend lacus a fringilla condimentum. Fusce nec
-					pellentesque nibh, ut maximus mauris. Maecenas eu orci nulla. Praesent eget magna ac dui
-					condimentum suscipit et sit amet tellus. Nulla pellentesque leo vel ante volutpat, at tincidunt
-					mi elementum. Aenean sit amet tellus aliquam, feugiat tellus ac, lacinia sem. Ut tempus rhoncus
-					pretium. Ut luctus congue velit quis lobortis. Vestibulum luctus tortor ac sollicitudin dictum.
-					Etiam aliquet neque ut mauris porttitor rhoncus. Nullam nec lacus ut nulla suscipit porttitor
-					ut eu sem. Phasellus eget blandit nunc, eu placerat risus. Vestibulum elit ex, posuere sed
-					molestie vel, pretium vitae diam. Proin consequat ac augue et sagittis. Nam lobortis accumsan
-					sagittis. In tincidunt elit vitae tincidunt iaculis. Curabitur ut magna convallis, faucibus
-					ante vel</p>
-				<h2>Un sous titre</h2>
-				<p>congue turpis. Sed gravida metus ut pulvinar feugiat. Donec auctor ipsum sed lectus
-					elementum faucibus. Maecenas ac cursus lectus. Proin mollis nisi ipsum, nec aliquam felis
-					condimentum sodales. Curabitur fermentum condimentum nisi, quis aliquam magna ultrices et.
-					Fusce eget placerat leo. Cras felis nunc, feugiat ut justo vel, luctus sollicitudin magna.
-					Mauris a eros eget odio maximus</p>
-				<p>Ce nombre ${message.a} à été injecté</p>
-				<h3>un sous sous titre</h3>
-				<p>tincidunt vitae auctor lorem. Curabitur eget purus eu lectus laoreet rutrum. Etiam tellus
-					justo, feugiat id congue a, facilisis sit amet sapien. Nulla id tellus consequat, hendrerit
-					elit a, tempus risus. Nam eget lorem quis massa gravida egestas. Quisque ullamcorper sapien sed
-					iaculis commodo. Ut eu tempus nibh, vel interdum sapien. Duis non tortor vel nunc vehicula
-					faucibus in ac risus. Proin id purus sem. Praesent ullamcorper justo vitae elit sollicitudin
-					imperdiet. Sed sagittis, sem non rhoncus faucibus, odio ante egestas sem, vitae dapibus nibh
-					urna ac est. Pellentesque sodales elementum nunc, vitae laoreet enim pulvinar et. Proin lacinia
-					non massa a euismod. Morbi iaculis purus et purus rutrum venenatis. Vivamus ornare, arcu sit
-					amet aliquam porta, leo sapien suscipit ligula, eget ultrices nisl lectus non orci. Nulla non
-					imperdiet odio. Quisque semper nisl at pellentesque faucibus. Donec accumsan magna sed velit
-					eleifend auctor. Donec erat purus, feugiat a ante vel, ultricies placerat ex. Cras in mollis
-					augue. Maecenas tristique, ante vitae euismod aliquam, est mi semper purus, sit amet
-					sollicitudin nunc mi non velit. Nunc viverra cursus erat, et feugiat nulla sollicitudin id.
-					Vivamus congue placerat sem ut sollicitudin. Mauris ut urna porttitor, laoreet turpis a,
-					accumsan velit. Nam mollis, risus rutrum varius accumsan, massa ipsum fringilla ex, sit amet
-					laoreet urna leo ac nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-					odio velit, pulvinar vitae nunc a, feugiat eleifend enim. Quisque efficitur placerat efficitur.
-					Maecenas rutrum turpis a sagittis eleifend. Aenean rhoncus iaculis sagittis. Aliquam odio dui,
-					dapibus placerat neque non, volutpat congue ligula. Nunc at sagittis ligula.</p>
-				<footer>
-					<a>Laisser un commentaire</a>
-				</footer>
-			</article>
+			<jsp:invoke fragment="content" />
 		</div>
 		<div class="side">
 			<div class="lastcomment">
