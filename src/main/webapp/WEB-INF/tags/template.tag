@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ attribute name="content" fragment="true"%>
 <%@ attribute name="scripts" fragment="true"%>
 <!DOCTYPE html>
@@ -21,9 +22,19 @@
 				G- e+++ h+ r++ y+</h2>
 		</div>
 		<nav class="main-menu">
-			<a href="#">Toggle</a>
+			<a href="#">${menu.title}</a>
 			<ul>
-				<li><a href="#">Home</a></li>
+				<c:forEach items="${menu.items}" var="item">
+					<li><a href="<spring:url value="${item.url}"/>">${item.title}</a>
+						<c:if test="${not empty item.items}">
+							<ul>
+								<c:forEach items="${item.items}" var="item">
+									<li><a href="<spring:url value="${item.url}"/>">${item.title}</a></li>
+								</c:forEach>
+							</ul>
+						</c:if>
+					</li>
+				</c:forEach>
 				<li><a href="#s1">Menu 1</a>
 					<ul>
 						<li><a href="#">Header a</a>

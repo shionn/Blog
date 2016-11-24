@@ -1,8 +1,11 @@
 "use strict";
 $(function() {
 	$("nav.main-menu > ul > li > a").on("click", function(e) {
-		$("nav.main-menu .open").removeClass("open");
-		$(e.target).closest("li").addClass("open");
+		if ($(e.target).parent().find("ul").length > 0 ) {
+			e.preventDefault();
+			$("nav.main-menu .open").removeClass("open");
+			$(e.target).closest("li").addClass("open");
+		}
 	});
 	$("nav.main-menu > a").on("click", function(e) {
 		$("nav.main-menu").toggleClass("open");
