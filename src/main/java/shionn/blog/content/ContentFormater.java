@@ -2,9 +2,11 @@ package shionn.blog.content;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.commonmark.node.FencedCodeBlock;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
+import org.commonmark.parser.PostProcessor;
 import org.commonmark.renderer.html.AttributeProvider;
 import org.commonmark.renderer.html.AttributeProviderContext;
 import org.commonmark.renderer.html.AttributeProviderFactory;
@@ -18,9 +20,9 @@ import org.springframework.stereotype.Component;
  *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
  */
 @Component
-public class ContentFormater implements AttributeProviderFactory, AttributeProvider {
+public class ContentFormater implements AttributeProviderFactory, AttributeProvider, PostProcessor {
 
-	private Parser parser = Parser.builder().build();
+	private Parser parser = Parser.builder().postProcessor(this).build();
 	private HtmlRenderer renderer = HtmlRenderer.builder().attributeProviderFactory(this).build();
 
 	public String format(String content) {
@@ -36,8 +38,20 @@ public class ContentFormater implements AttributeProviderFactory, AttributeProvi
 	@Override
 	public void setAttributes(Node node, Map<String, String> attributes) {
 		if (node instanceof FencedCodeBlock) {
-			attributes.put("class", "java");
+			String type = ((FencedCodeBlock) node).getInfo();
+			if (StringUtils.isBlank(type)) {
+				type = "java";
+			}
+			attributes.put("class", type);
 		}
+	}
+
+	@Override
+	public Node process(Node node) {
+		if (node instanceof FencedCodeBlock) {
+			((FencedCodeBlock) node).getLiteral();
+		}
+		return node;
 	}
 
 }
