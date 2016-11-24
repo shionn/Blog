@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `status` (`status`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
--- post
+--- post ---
+
 CREATE TABLE IF NOT EXISTS `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(128) CHARACTER SET utf8 NOT NULL,
@@ -24,25 +25,29 @@ CREATE TABLE IF NOT EXISTS `post` (
   `content` longtext NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `url` (`url`, `type`),
-  KEY `author` (`author`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `author` (`author`),
+  CONSTRAINT `wtrite_by` FOREIGN KEY (`author`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
-ALTER TABLE `post`
-ADD CONSTRAINT `wtrite_by` FOREIGN KEY (`author`) REFERENCES `user` (`id`);
 
+--- COMMENT ---
 
 CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `post` int(11) NOT NULL,
-  `author` varchar(128) NOT NULL,
-  `email` varchar(128) NOT NULL,
+  `author` int(11) DEFAULT NULL,
+  `author_name` varchar(128) NOT NULL,
+  `author_email` varchar(128) DEFAULT NULL,
+  `author_web` varchar(256) DEFAULT NULL,
+  `date` datetime NOT NULL,
   `content` text NOT NULL,
+  `ip` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `post` (`post`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`post`) REFERENCES `post` (`id`);
+  KEY `post` (`post`),
+  KEY `author` (`author`),
+  CONSTRAINT `comment_post` FOREIGN KEY (`post`) REFERENCES `post` (`id`),
+  CONSTRAINT `comment_author` FOREIGN KEY (`author`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 -- backup
 CREATE TABLE IF NOT EXISTS `backup_post` (
