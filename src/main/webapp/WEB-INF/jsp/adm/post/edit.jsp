@@ -19,7 +19,7 @@
 					<input id="url" name="url" type="text" class="pure-input-1-4" placeholder="Url" value="${post.url}">
 					<label for="published">Publication </label>
 					<input id="published" name="published" type="text" class="pure-input-1-4" placeholder="jj/mm/aaaa" 
-						value="<fmt:formatDate pattern="dd/MM/yyyy" value="${post.published}"/>">
+						value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${post.published}"/>">
 				</div>
 				<div class="pure-control-group">
 					<label for="type">Type</label>

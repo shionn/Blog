@@ -35,5 +35,3 @@ WHERE w.comment_approved = '1'
 AND c.id is NULL
 AND p.id is not null; -- certain commentaire sont sur des images. 
 
-select * from wp_terms as t left join wp_term_taxonomy AS tt on t.term_id = tt.term_id
-where tt.taxonomy = 'category';

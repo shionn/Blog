@@ -77,7 +77,7 @@
 		</div>
 		<div class="side">
 			<div class="lastcomment">
-				<h1>Commentaires récents</h1>
+				<h1><span class="fa fa-comments"></span> Commentaires récents</h1>
 				<ul>
 					<li>auteur dans <a href="#">un article pas fou</a></li>
 					<li>le patron dans <a href="#">un article pas fou de truc</a></li>
@@ -88,7 +88,7 @@
 				</ul>
 			</div>
 			<div class="tagclood">
-				<h1>Tags</h1>
+				<h1><span class="fa fa-flag"></span> Tags</h1>
 				<a href="#">Quisque</a> <a href="#">semper</a> <a href="#">nisl</a> <a href="#">at</a> <a
 					href="#">pellentesque</a> <a href="#">faucibus.</a> <a href="#">Donec</a> <a href="#">accumsan</a>
 				<a href="#">magna sed</a> <a href="#">velit</a> <a href="#">eleifend</a> <a href="#">auctor.</a>

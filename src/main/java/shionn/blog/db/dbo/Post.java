@@ -11,12 +11,13 @@ public class Post {
 	private Status status;
 	private Type type;
 	private String title;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date published;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date updated;
 	private String content;
 	private User author;
+	private int commentCount;
 
 	public enum Status {
 		publish, draft
@@ -96,6 +97,14 @@ public class Post {
 
 	public User getAuthor() {
 		return author;
+	}
+
+	public int getCommentCount() {
+		return commentCount;
+	}
+
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
 	}
 
 }

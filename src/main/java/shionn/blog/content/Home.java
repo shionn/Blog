@@ -1,4 +1,4 @@
-package shionn.blog.home;
+package shionn.blog.content;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
-import shionn.blog.content.ContentFormater;
+import shionn.blog.content.formatter.ContentFormater;
 import shionn.blog.db.dao.HomeDao;
 import shionn.blog.db.dbo.Post;
 
@@ -34,7 +34,7 @@ public class Home  {
 		HomeDao dao = session.getMapper(HomeDao.class);
 		List<Post> posts = dao.readPosts();
 		for (Post post : posts) {
-			post.setContent(contentFormatter.format(post.getContent()));
+			post.setContent(contentFormatter.homePost(post.getContent()));
 		}
 		return new ModelAndView("home").addObject("posts", posts);
 	}
