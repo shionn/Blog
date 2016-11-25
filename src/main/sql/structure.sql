@@ -46,6 +46,18 @@ CREATE TABLE IF NOT EXISTS `comment` (
   CONSTRAINT `comment_author` FOREIGN KEY (`author`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+--- menu ---
+CREATE TABLE IF NOT EXISTS menu (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  parent int(11) NOT NULL,
+  position int(11) NOT NULL,
+  title varchar(32) NOT NULL,
+  url varchar(128) NOT NULL,
+  PRIMARY KEY (id),
+  KEY (parent),
+  CONSTRAINT parent_menu FOREIGN KEY (parent) REFERENCES menu (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
 -- backup
 CREATE TABLE IF NOT EXISTS `backup_post` (
   `backup_id` int(11) NOT NULL AUTO_INCREMENT,
