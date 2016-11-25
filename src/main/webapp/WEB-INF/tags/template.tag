@@ -1,6 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags/frag" %>
 <%@ attribute name="content" fragment="true"%>
 <%@ attribute name="scripts" fragment="true"%>
 <!DOCTYPE html>
@@ -23,63 +23,7 @@
 		</div>
 		<nav class="main-menu">
 			<a href="#">${menu.title}</a>
-			<ul>
-				<c:forEach items="${menu.items}" var="item">
-					<li><a href="<spring:url value="${item.url}"/>">${item.title}</a>
-						<c:if test="${not empty item.items}">
-							<ul>
-								<c:forEach items="${item.items}" var="item">
-									<li><a href="<spring:url value="${item.url}"/>">${item.title}</a></li>
-								</c:forEach>
-							</ul>
-						</c:if>
-					</li>
-				</c:forEach>
-				<li><a href="#s1">Menu 1</a>
-					<ul>
-						<li><a href="#">Header a</a>
-							<ul>
-								<li><a href="#">Submenu x</a></li>
-								<li><a href="#">Submenu y</a></li>
-								<li><a href="#">Submenu z</a></li>
-								<li><a href="#">Submenu v</a></li>
-								<li><a href="#">Submenu u</a></li>
-							</ul></li>
-						<li><a href="#">Header b</a>
-							<ul>
-								<li><a href="#">Submenu x</a></li>
-								<li><a href="#">Submenu y</a></li>
-								<li><a href="#">Submenu z</a></li>
-							</ul></li>
-					</ul></li>
-				<li><a href="#s2">Menu 2</a>
-					<ul>
-						<li><a href="#">Header c</a>
-							<ul>
-								<li><a href="#">Submenu x</a></li>
-								<li><a href="#">Submenu y</a></li>
-								<li><a href="#">Submenu z</a></li>
-							</ul></li>
-						<li><a href="#">Header d</a>
-							<ul>
-								<li><a href="#">Submenu x</a></li>
-								<li><a href="#">Submenu y</a></li>
-								<li><a href="#">Submenu z</a></li>
-								<li><a href="#">Submenu c</a></li>
-								<li><a href="#">Submenu d</a></li>
-							</ul></li>
-						<li><a href="#">Header e</a>
-							<ul>
-								<li><a href="#">Submenu x</a></li>
-								<li class="active"><a href="#">Submenu z</a></li>
-								<li><a href="#">Submenu c</a></li>
-								<li><a href="#">Submenu d</a></li>
-							</ul></li>
-					</ul></li>
-				<li><a href="#">Menu 3</a></li>
-				<li class="active"><a href="#">Menu 4</a></li>
-				<li><a href="#">Menu 5</a></li>
-			</ul>
+			<t:menu menu="${menu}"/>
 		</nav>
 	</header>
 	<div class="container">

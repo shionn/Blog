@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<t:adm-template>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags/adm"%>
+<t:template>
 	<jsp:attribute name="scripts"></jsp:attribute>
 	<jsp:attribute name="content">
 		<form:form class="pure-form pure-form-aligned" method="post">
@@ -40,4 +40,4 @@
 		</form:form>
 		TODO : liste des sauvegarde
 	</jsp:attribute>
-</t:adm-template>
+</t:template>

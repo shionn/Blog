@@ -8,7 +8,7 @@ public class Menu {
 	private List<Menu> items;
 	private String title;
 	private String url;
-	private boolean current;
+	private boolean active;
 
 	public void setItems(List<Menu> items) {
 		this.items = items;
@@ -36,21 +36,25 @@ public class Menu {
 
 	public Menu current(String path) {
 		if (path.equals(url)) {
-			this.setCurrent(true);
-		} else {
+			this.setActive(true);
+		}
+		if (items != null) {
 			for (Menu child : items) {
 				child.current(path);
+				if (child.isActive()) {
+					this.setActive(true);
+				}
 			}
 		}
 		return this;
 	}
 
-	public void setCurrent(boolean current) {
-		this.current = current;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
-	public boolean isCurrent() {
-		return current;
+	public boolean isActive() {
+		return active;
 	}
 }
 

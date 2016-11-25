@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<t:adm-template>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags/adm"%>
+<t:template>
 	<jsp:attribute name="scripts">
 		<script type="text/javascript" src="<spring:url value="/js/adm/posts.js"/>"></script>
 	</jsp:attribute>
@@ -62,4 +62,4 @@
 			</tbody>
 		</table>
 	</jsp:attribute>
-</t:adm-template>
+</t:template>
