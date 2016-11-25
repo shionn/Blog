@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --- category ---
 CREATE TABLE IF NOT EXISTS category (
   id int(11) NOT NULL AUTO_INCREMENT,
-  parent int(11) NOT NULL,
+  parent int(11) NULL,
   title varchar(64) NOT NULL,
   url varchar(64) NOT NULL,
   PRIMARY KEY (id),
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS posttags (
 --- menu ---
 CREATE TABLE IF NOT EXISTS menu (
   id int(11) NOT NULL AUTO_INCREMENT,
-  parent int(11) NOT NULL,
+  parent int(11) NULL,
   position int(11) NOT NULL,
   title varchar(32) NOT NULL,
   url varchar(128) NOT NULL,
