@@ -61,6 +61,23 @@ CREATE TABLE IF NOT EXISTS `comment` (
   CONSTRAINT `comment_author` FOREIGN KEY (`author`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+--- tag ---
+CREATE TABLE IF NOT EXISTS tag (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  title varchar(64) NOT NULL,
+  url varchar(64) NOT NULL,
+  PRIMARY KEY (id),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+--- post-tag ---
+CREATE TABLE IF NOT EXISTS posttags (
+  post int(11) NOT NULL,
+  tag int(11) NOT NULL,
+  PRIMARY KEY (post, tag),
+  CONSTRAINT `posttags_tag` FOREIGN KEY (`post`) REFERENCES `post` (`id`),
+  CONSTRAINT `posttags_post` FOREIGN KEY (`tag`) REFERENCES `tag` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
 --- menu ---
 CREATE TABLE IF NOT EXISTS menu (
   id int(11) NOT NULL AUTO_INCREMENT,
