@@ -1,4 +1,5 @@
 
+--- user ---
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(128) CHARACTER SET utf8 NOT NULL,
@@ -11,6 +12,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `status` (`status`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+--- category ---
+CREATE TABLE IF NOT EXISTS category (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  parent int(11) NOT NULL,
+  title varchar(64) NOT NULL,
+  url varchar(64) NOT NULL,
+  PRIMARY KEY (id),
+  KEY (parent),
+  CONSTRAINT parent_category FOREIGN KEY (parent) REFERENCES category (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
 --- post ---
 CREATE TABLE IF NOT EXISTS `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -22,10 +34,13 @@ CREATE TABLE IF NOT EXISTS `post` (
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `title` varchar(128) CHARACTER SET utf8 NOT NULL,
   `content` longtext NOT NULL,
+  category int(11) NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `url` (`url`, `type`),
   KEY `author` (`author`),
+  KEY `category` (`category`),
   CONSTRAINT `wtrite_by` FOREIGN KEY (`author`) REFERENCES `user` (`id`)
+  CONSTRAINT `into_category` FOREIGN KEY (`category`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 --- COMMENT ---
@@ -57,6 +72,7 @@ CREATE TABLE IF NOT EXISTS menu (
   KEY (parent),
   CONSTRAINT parent_menu FOREIGN KEY (parent) REFERENCES menu (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
 
 -- backup
 CREATE TABLE IF NOT EXISTS `backup_post` (
