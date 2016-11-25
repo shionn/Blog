@@ -5,9 +5,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/adm"%>
 <t:template>
-	<jsp:attribute name="scripts"></jsp:attribute>
+	<jsp:attribute name="scripts">
+		<script type="text/javascript">
+			$(function(){
+				$(window).keypress(function(event) {
+					if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
+					event.preventDefault();
+					$("form.post-edit").submit();
+					return false;
+				});
+			})
+		</script>
+	</jsp:attribute>
 	<jsp:attribute name="content">
-		<form:form class="pure-form pure-form-aligned" method="post">
+		<form:form class="pure-form pure-form-aligned post-edit" method="post">
 			<legend>Edition de ${post.id}</legend>
 			<fieldset class="pure-group">
 				<input id="title" name="title" type="text" class="pure-input-1" placeholder="Title" value="${post.title}">
