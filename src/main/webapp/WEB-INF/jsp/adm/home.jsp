@@ -1,8 +1,8 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
-<t:adm-template>
+<%@ taglib tagdir="/WEB-INF/tags/adm" prefix="t"%>
+<t:template>
 	<jsp:attribute name="scripts">
 		<script type="text/javascript" src="<spring:url value="/js/modal.js"/>"></script>
 		<script type="text/javascript">
@@ -42,4 +42,4 @@
 			</div>
 		</div>
 	</jsp:attribute>
-</t:adm-template>
+</t:template>

@@ -22,7 +22,13 @@
 						<a href="<spring:url value="/adm/posts"/>" class="pure-menu-link">Articles</a>
 					</li>
 					<li class="pure-menu-item<c:if test="${activepage == \"comments\"}"> pure-menu-selected</c:if>">
-						<a href="<spring:url value="/adm"/>" class="pure-menu-link">Commentaires (X)</a>
+						<a href="<spring:url value="/adm/comments"/>" class="pure-menu-link">Commentaires (X)</a>
+					</li>
+					<li class="pure-menu-item<c:if test="${activepage == \"categories\"}"> pure-menu-selected</c:if>">
+						<a href="<spring:url value="/adm/categories"/>" class="pure-menu-link">Categories</a>
+					</li>
+					<li class="pure-menu-item<c:if test="${activepage == \"menu\"}"> pure-menu-selected</c:if>">
+						<a href="<spring:url value="/adm/menu"/>" class="pure-menu-link">Menu</a>
 					</li>
 					<li class="pure-menu-item">
 						<a href="<spring:url value="/"/>" class="pure-menu-link">Blog</a>

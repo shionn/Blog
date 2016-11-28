@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags/frag" %>
 <%@ attribute name="content" fragment="true"%>
 <%@ attribute name="scripts" fragment="true"%>
 <!DOCTYPE html>
@@ -21,54 +22,8 @@
 				G- e+++ h+ r++ y+</h2>
 		</div>
 		<nav class="main-menu">
-			<a href="#">Toggle</a>
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#s1">Menu 1</a>
-					<ul>
-						<li><a href="#">Header a</a>
-							<ul>
-								<li><a href="#">Submenu x</a></li>
-								<li><a href="#">Submenu y</a></li>
-								<li><a href="#">Submenu z</a></li>
-								<li><a href="#">Submenu v</a></li>
-								<li><a href="#">Submenu u</a></li>
-							</ul></li>
-						<li><a href="#">Header b</a>
-							<ul>
-								<li><a href="#">Submenu x</a></li>
-								<li><a href="#">Submenu y</a></li>
-								<li><a href="#">Submenu z</a></li>
-							</ul></li>
-					</ul></li>
-				<li><a href="#s2">Menu 2</a>
-					<ul>
-						<li><a href="#">Header c</a>
-							<ul>
-								<li><a href="#">Submenu x</a></li>
-								<li><a href="#">Submenu y</a></li>
-								<li><a href="#">Submenu z</a></li>
-							</ul></li>
-						<li><a href="#">Header d</a>
-							<ul>
-								<li><a href="#">Submenu x</a></li>
-								<li><a href="#">Submenu y</a></li>
-								<li><a href="#">Submenu z</a></li>
-								<li><a href="#">Submenu c</a></li>
-								<li><a href="#">Submenu d</a></li>
-							</ul></li>
-						<li><a href="#">Header e</a>
-							<ul>
-								<li><a href="#">Submenu x</a></li>
-								<li class="active"><a href="#">Submenu z</a></li>
-								<li><a href="#">Submenu c</a></li>
-								<li><a href="#">Submenu d</a></li>
-							</ul></li>
-					</ul></li>
-				<li><a href="#">Menu 3</a></li>
-				<li class="active"><a href="#">Menu 4</a></li>
-				<li><a href="#">Menu 5</a></li>
-			</ul>
+			<a href="#">${menu.title}</a>
+			<t:menu menu="${menu}"/>
 		</nav>
 	</header>
 	<div class="container">
@@ -77,7 +32,7 @@
 		</div>
 		<div class="side">
 			<div class="lastcomment">
-				<h1>Commentaires récents</h1>
+				<h1><span class="fa fa-comments"></span> Commentaires récents</h1>
 				<ul>
 					<li>auteur dans <a href="#">un article pas fou</a></li>
 					<li>le patron dans <a href="#">un article pas fou de truc</a></li>
@@ -88,7 +43,7 @@
 				</ul>
 			</div>
 			<div class="tagclood">
-				<h1>Tags</h1>
+				<h1><span class="fa fa-flag"></span> Tags</h1>
 				<a href="#">Quisque</a> <a href="#">semper</a> <a href="#">nisl</a> <a href="#">at</a> <a
 					href="#">pellentesque</a> <a href="#">faucibus.</a> <a href="#">Donec</a> <a href="#">accumsan</a>
 				<a href="#">magna sed</a> <a href="#">velit</a> <a href="#">eleifend</a> <a href="#">auctor.</a>

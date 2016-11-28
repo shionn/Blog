@@ -3,11 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<t:adm-template>
-	<jsp:attribute name="scripts"></jsp:attribute>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags/adm"%>
+<t:template>
+	<jsp:attribute name="scripts">
+		<script type="text/javascript">
+			$(function(){
+				$(window).keypress(function(event) {
+					if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
+					event.preventDefault();
+					$("form.post-edit").submit();
+					return false;
+				});
+			})
+		</script>
+	</jsp:attribute>
 	<jsp:attribute name="content">
-		<form:form class="pure-form pure-form-aligned" method="post">
+		<form:form class="pure-form pure-form-aligned post-edit" method="post">
 			<legend>Edition de ${post.id}</legend>
 			<fieldset class="pure-group">
 				<input id="title" name="title" type="text" class="pure-input-1" placeholder="Title" value="${post.title}">
@@ -19,7 +30,7 @@
 					<input id="url" name="url" type="text" class="pure-input-1-4" placeholder="Url" value="${post.url}">
 					<label for="published">Publication </label>
 					<input id="published" name="published" type="text" class="pure-input-1-4" placeholder="jj/mm/aaaa" 
-						value="<fmt:formatDate pattern="dd/MM/yyyy" value="${post.published}"/>">
+						value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${post.published}"/>">
 				</div>
 				<div class="pure-control-group">
 					<label for="type">Type</label>
@@ -40,4 +51,4 @@
 		</form:form>
 		TODO : liste des sauvegarde
 	</jsp:attribute>
-</t:adm-template>
+</t:template>
