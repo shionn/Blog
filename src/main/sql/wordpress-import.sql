@@ -42,7 +42,21 @@ LEFT join wp_posts as p on tr.object_id = p.ID
 where taxonomy = 'nav_menu';
 
 -- import des tag
-SELECT * FROM wp_term_taxonomy as tt LEFT JOIN wp_terms as t on tt.term_id = t.term_id LEFT join wp_term_relationships as tr on tr.term_taxonomy_id = tt.term_taxonomy_id LEFT join wp_posts as p on tr.object_id = p.ID where taxonomy = 'post_tag' ORDER BY `taxonomy` DESC 
+INSERT INTO tag (id, title, url) 
+SELECT t.term_id AS id, t.name AS title, t.slug AS url FROM wp_term_taxonomy as tt 
+LEFT JOIN wp_terms as t on tt.term_id = t.term_id 
+WHERE tt.taxonomy = 'post_tag';
+
+-- import des lien tag - post
+INSERT INTO posttags (post, tag)
+SELECT t.term_id AS tag, p.ID AS post 
+FROM wp_term_taxonomy as tt 
+LEFT JOIN wp_terms as t on tt.term_id = t.term_id 
+LEFT join wp_term_relationships as tr on tr.term_taxonomy_id = tt.term_taxonomy_id 
+LEFT join wp_posts as p on tr.object_id = p.ID 
+WHERE taxonomy = 'post_tag'
+AND p.ID is not null
+AND p.post_status = 'publish';
 
 select * from wp_terms as t left join wp_term_taxonomy AS tt on t.term_id = tt.term_id
 where tt.taxonomy = 'category';
