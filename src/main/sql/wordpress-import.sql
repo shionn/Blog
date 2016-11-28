@@ -35,5 +35,14 @@ WHERE w.comment_approved = '1'
 AND c.id is NULL
 AND p.id is not null; -- certain commentaire sont sur des images. 
 
+-- import du menu
+SELECT * FROM `wp_term_taxonomy` as tt
+LEFT join wp_term_relationships as tr on tr.term_taxonomy_id = tt.term_taxonomy_id
+LEFT join wp_posts as p on tr.object_id = p.ID
+where taxonomy = 'nav_menu';
+
+-- import des tag
+SELECT * FROM wp_term_taxonomy as tt LEFT JOIN wp_terms as t on tt.term_id = t.term_id LEFT join wp_term_relationships as tr on tr.term_taxonomy_id = tt.term_taxonomy_id LEFT join wp_posts as p on tr.object_id = p.ID where taxonomy = 'post_tag' ORDER BY `taxonomy` DESC 
+
 select * from wp_terms as t left join wp_term_taxonomy AS tt on t.term_id = tt.term_id
 where tt.taxonomy = 'category';
