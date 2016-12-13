@@ -43,18 +43,16 @@ CREATE TABLE IF NOT EXISTS `post` (
 
 --- COMMENT ---
 CREATE TABLE IF NOT EXISTS `comment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `post` int(11) NOT NULL,
-  `author` int(11) DEFAULT NULL,
-  `author_name` varchar(128) NOT NULL,
-  `author_email` varchar(128) DEFAULT NULL,
-  `author_web` varchar(256) DEFAULT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
+  post int(11) NOT NULL,
+  author int(11) DEFAULT NULL,
+  author_name varchar(128) NOT NULL,
+  author_email varchar(128) DEFAULT NULL,
+  author_web varchar(256) DEFAULT NULL,
   `date` datetime NOT NULL,
-  `content` text NOT NULL,
-  `ip` varchar(32) NOT NULL,
+  content text NOT NULL,
+  ip varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `post` (`post`),
-  KEY `author` (`author`),
   CONSTRAINT `comment_post` FOREIGN KEY (`post`) REFERENCES `post` (`id`),
   CONSTRAINT `comment_author` FOREIGN KEY (`author`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
@@ -65,6 +63,7 @@ CREATE TABLE IF NOT EXISTS tag (
   title varchar(64) NOT NULL,
   url varchar(64) NOT NULL,
   PRIMARY KEY (id),
+  UNIQUE KEY (url),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 --- post-tag ---
@@ -72,8 +71,8 @@ CREATE TABLE IF NOT EXISTS posttags (
   post int(11) NOT NULL,
   tag int(11) NOT NULL,
   PRIMARY KEY (post, tag),
-  CONSTRAINT `posttags_tag` FOREIGN KEY (`post`) REFERENCES `post` (`id`),
-  CONSTRAINT `posttags_post` FOREIGN KEY (`tag`) REFERENCES `tag` (`id`)
+  CONSTRAINT `posttags_post` FOREIGN KEY (`post`) REFERENCES `post` (`id`),
+  CONSTRAINT `posttags_tag` FOREIGN KEY (`tag`) REFERENCES `tag` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 --- menu ---

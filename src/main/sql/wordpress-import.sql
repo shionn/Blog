@@ -11,8 +11,7 @@ WHERE u.id is null and w.user_status=0;
 update user set password='7be50c6aae87bc627a523cb502ddcc1ebd92fbbc' where email = 'shionn@gmail.com';
 
 -- import des category
-insert into category (id, parent, title, url)
-values (0, null, 'root', 'root');
+insert into category (id, parent, title, url) values (0, null, 'root', 'root');
 insert into category (id, parent, title, url)
 select t.term_id as id, parent, name as title, slug as url
 from wp_terms as t 
@@ -48,8 +47,9 @@ WHERE w.comment_approved = '1'
 AND c.id is NULL
 AND p.id is not null; -- certain commentaire sont sur des images. 
 
--- import du menu
+-- import du menu abandonner ? et je le fait à la main ?
 SELECT * FROM wp_term_taxonomy as tt
+LEFT JOIN wp_terms as t on tt.term_id = t.term_id 
 LEFT join wp_term_relationships as tr on tr.term_taxonomy_id = tt.term_taxonomy_id
 LEFT join wp_posts as p on tr.object_id = p.ID
 where taxonomy = 'nav_menu';
