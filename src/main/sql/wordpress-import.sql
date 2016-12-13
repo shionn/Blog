@@ -1,4 +1,6 @@
 
+SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
+
 -- import des utilisateurs -- 
 insert into user (id, email, name, password, status, created)
 select w.id as id, w.user_email as email, w.display_name as name,
@@ -6,19 +8,30 @@ select w.id as id, w.user_email as email, w.display_name as name,
 from wp_users AS w 
 left join user AS u ON u.id=w.id 
 WHERE u.id is null and w.user_status=0;
-
 update user set password='7be50c6aae87bc627a523cb502ddcc1ebd92fbbc' where email = 'shionn@gmail.com';
 
+-- import des category
+insert into category (id, parent, title, url)
+values (0, null, 'root', 'root');
+insert into category (id, parent, title, url)
+select t.term_id as id, parent, name as title, slug as url
+from wp_terms as t 
+left join wp_term_taxonomy AS tt on t.term_id = tt.term_id
+where tt.taxonomy = 'category'
+order by parent;
+
 -- import des posts --
-insert into post (id, url, status, type, author, published, updated, title, content)
+insert into post (id, url, status, type, author, published, updated, title, content, category)
 select w.id as id, 
-  if (w.post_name = '', w.id, w.post_name) as url,
+  if (w.post_name = '', w.id, w.post_name) as `url`,
   post_status as status,
   post_type as type, post_author as author, post_date as published, post_modified AS updated, 
-  post_title as title, post_content AS content
+  post_title as title, post_content AS content, 
+  0 as category -- semble difficile une migration manuel est préférable duplication de post sinon
 from wp_posts AS w 
 left join post AS p ON p.id=w.id 
-WHERE p.id is null and w.post_type in ('post','page');
+WHERE p.id is null 
+and w.post_type in ('post','page');
 
 update post set status = 'draft' where status = 'auto-draft';
 update post set status = 'publish' where status = 'private';
@@ -30,13 +43,13 @@ w.comment_author as author_name, w.comment_author_email as author_email, w.comme
 w.comment_date as date, w.comment_content as content, w.comment_author_IP as ip
 from wp_comments as w
 LEFT JOIN comment as c on c.id = w.comment_ID
-LEFT join post AS p on p.id = w.comment_post_ID
+LEFT JOIN post AS p on p.id = w.comment_post_ID
 WHERE w.comment_approved = '1'
 AND c.id is NULL
 AND p.id is not null; -- certain commentaire sont sur des images. 
 
 -- import du menu
-SELECT * FROM `wp_term_taxonomy` as tt
+SELECT * FROM wp_term_taxonomy as tt
 LEFT join wp_term_relationships as tr on tr.term_taxonomy_id = tt.term_taxonomy_id
 LEFT join wp_posts as p on tr.object_id = p.ID
 where taxonomy = 'nav_menu';
@@ -58,5 +71,3 @@ WHERE taxonomy = 'post_tag'
 AND p.ID is not null
 AND p.post_status = 'publish';
 
-select * from wp_terms as t left join wp_term_taxonomy AS tt on t.term_id = tt.term_id
-where tt.taxonomy = 'category';

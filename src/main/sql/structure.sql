@@ -19,28 +19,26 @@ CREATE TABLE IF NOT EXISTS category (
   title varchar(64) NOT NULL,
   url varchar(64) NOT NULL,
   PRIMARY KEY (id),
-  KEY (parent),
+  UNIQUE KEY (url),
   CONSTRAINT parent_category FOREIGN KEY (parent) REFERENCES category (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 --- post ---
 CREATE TABLE IF NOT EXISTS `post` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `status` varchar(32) NOT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
+  url varchar(128) CHARACTER SET utf8 NOT NULL,
+  status varchar(32) NOT NULL,
   `type` varchar(32) NOT NULL,
-  `author` int(11) NOT NULL,
-  `published` datetime NOT NULL,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `title` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `content` longtext NOT NULL,
+  author int(11) NOT NULL,
+  published datetime NOT NULL,
+  updated timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  title varchar(128) CHARACTER SET utf8 NOT NULL,
+  content longtext NOT NULL,
   category int(11) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `url` (`url`, `type`),
-  KEY `author` (`author`),
-  KEY `category` (`category`),
-  CONSTRAINT `wtrite_by` FOREIGN KEY (`author`) REFERENCES `user` (`id`)
-  CONSTRAINT `into_category` FOREIGN KEY (`category`) REFERENCES `category` (`id`)
+  PRIMARY KEY (id),
+  UNIQUE KEY url (url, `type`),
+  CONSTRAINT wtrite_by FOREIGN KEY (author) REFERENCES `user` (id),
+  CONSTRAINT into_category FOREIGN KEY (category) REFERENCES category (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 --- COMMENT ---
