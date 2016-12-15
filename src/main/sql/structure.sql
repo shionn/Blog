@@ -87,7 +87,6 @@ CREATE TABLE IF NOT EXISTS menu (
   CONSTRAINT parent_menu FOREIGN KEY (parent) REFERENCES menu (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
-
 -- backup
 CREATE TABLE IF NOT EXISTS `backup_post` (
   `backup_id` int(11) NOT NULL AUTO_INCREMENT,
