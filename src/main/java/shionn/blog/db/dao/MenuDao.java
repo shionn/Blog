@@ -14,19 +14,15 @@ import shionn.blog.db.dbo.Menu;
 public interface MenuDao {
 
 	@Select("SELECT id, parent, title, url FROM menu WHERE id=#{id} order by position")
-	@Results({ @Result(column = "id", property = "items", many = @Many(fetchType = FetchType.EAGER, select = "readMenu")) })
-	public Menu readMenu(@Param("id") int menu);
-
-	@Select("SELECT id, parent, title, url FROM menu WHERE id=#{id} order by position")
 	@Results({
 			@Result(column = "id", property = "id"),
-			@Result(column = "id", property = "items", many = @Many(fetchType = FetchType.EAGER, select = "childs")) })
-	public Menu read(@Param("id") int id);
+			@Result(column = "id", property = "items", many = @Many(fetchType = FetchType.EAGER, select = "readChildsMenu")) })
+	public Menu readMenu(@Param("id") int id);
 
 	@Select("SELECT id, parent, title, url FROM menu WHERE parent=#{parent} order by position")
 	@Results({
 			@Result(column = "id", property = "id"),
-			@Result(column = "id", property = "items", many = @Many(fetchType = FetchType.EAGER, select = "childs")) })
-	public List<Menu> childs(@Param("parent") int id);
+			@Result(column = "id", property = "items", many = @Many(fetchType = FetchType.EAGER, select = "readChildsMenu")) })
+	public List<Menu> readChildsMenu(@Param("parent") int id);
 
 }

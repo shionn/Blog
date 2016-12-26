@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import shionn.blog.content.formatter.ContentFormater;
 import shionn.blog.db.dao.HomeDao;
 import shionn.blog.db.dao.MenuDao;
+import shionn.blog.db.dao.TagDao;
 import shionn.blog.db.dbo.Post;
 
 /**
@@ -37,8 +38,9 @@ public class Home {
 		for (Post post : posts) {
 			post.setContent(contentFormatter.homePost(post.getContent()));
 		}
-		return new ModelAndView("home").addObject("posts", posts).addObject("menu",
-				session.getMapper(MenuDao.class).read(0).current("/"));
+		return new ModelAndView("home").addObject("posts", posts)
+				.addObject("menu", session.getMapper(MenuDao.class).readMenu(0).current("/"))
+				.addObject("tags", session.getMapper(TagDao.class).readWidgetTags());
 	}
 
 }

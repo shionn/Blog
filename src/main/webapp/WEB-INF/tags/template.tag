@@ -44,16 +44,9 @@
 			</div>
 			<div class="tagclood">
 				<h1><span class="fa fa-flag"></span> Tags</h1>
-				<a href="#">Quisque</a> <a href="#">semper</a> <a href="#">nisl</a> <a href="#">at</a> <a
-					href="#">pellentesque</a> <a href="#">faucibus.</a> <a href="#">Donec</a> <a href="#">accumsan</a>
-				<a href="#">magna sed</a> <a href="#">velit</a> <a href="#">eleifend</a> <a href="#">auctor.</a>
-				<a href="#">Donec</a> <a href="#">erat</a> <a href="#">purus,</a> <a href="#">feugiat</a> <a
-					href="#">a</a> <a href="#">ante</a> <a href="#">vel, ultricies</a> <a href="#">placerat</a> <a
-					href="#">ex.</a> <a href="#">Cras</a> <a href="#">in</a> <a href="#">mollis</a> <a href="#">augue.</a>
-				<a href="#">Maecenas</a> <a href="#">tristique, ante</a> <a href="#">vitae</a> <a href="#">euismod</a>
-				<a href="#">aliquam,</a> <a href="#">est</a> <a href="#">mi</a> <a href="#">semper</a> <a
-					href="#">purus,</a> <a href="#">sit</a> <a href="#">amet</a> <a href="#">sollicitudin</a> <a
-					href="#">nunc</a> <a href="#">mi</a>
+				<c:forEach items="${tags}" var="tag">
+					<a href="<spring:url value="/tag/${tag.url}"/>">${tag.title}(${tag.postCount})</a>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

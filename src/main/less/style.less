@@ -14,7 +14,7 @@ body {
 
 a {
 	text-decoration: none;
-	color: @theme-color;
+	color: darken(@theme-color, 20%);
 }
 
 @font-face {
@@ -28,6 +28,7 @@ a {
 @import "banner.less";
 @import "menu.less";
 @import "code.less";
+@import "article.less";
 
 .side {
 	& > div {
@@ -44,61 +45,7 @@ a {
 	}
 }
 
-article {
-	margin-top: 3em;
-	h1 , h2 , h3 , h4 , h5 , h6 {
-		font-family: @font-alternate;
-		color: @theme-color;
-	}
 
-	h1 {
-		line-height: 1.2em;
-	}
-
-	section {
-		font-size : 1.2em;
-		p {
-			text-align: justify;
-		}
-		ul {
-			padding : 0;
-			li {
-				list-style: none;
-				&:before {
-					padding: 0 .5em .2em 2em;
-					content: "\f111";
-					font-family: FontAwesome;
-					font-size: 0.5em;
-					color: @theme-color;
-					vertical-align: bottom;
-				} 
-			}
-		}
-		img {
-			margin : 0 auto;
-			max-width : 90%;
-			display : block;
-		}
-	}
-
-	header {
-		img {
-			margin: 0 auto;
-			border: 1px solid black;
-			border-radius: 3px;
-			display: block;
-			max-width: 90%;
-		}
-		.date, .category, .tags {
-			padding : 0 3em;
-			color: @theme-color;
-		}
-	}
-	
-	footer a {
-		padding : 0 3em;
-	}
-}
 
 footer.footer {
 	.container {

@@ -4,6 +4,7 @@ public class Tag {
 	private int id;
 	private String title;
 	private String url;
+	private int postCount;
 
 	public int getId() {
 		return id;
@@ -27,5 +28,13 @@ public class Tag {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public int getPostCount() {
+		return postCount;
+	}
+
+	public void setPostCount(int postCount) {
+		this.postCount = postCount;
 	}
 }
