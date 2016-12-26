@@ -34,17 +34,14 @@
 			<div class="lastcomment">
 				<h1><span class="fa fa-comments"></span> Commentaires récents</h1>
 				<ul>
-					<li>auteur dans <a href="#">un article pas fou</a></li>
-					<li>le patron dans <a href="#">un article pas fou de truc</a></li>
-					<li>auteur dans <a href="#">un qui rox pas</a></li>
-					<li>auteur dans <a href="#">c'etait mieux avant</a></li>
-					<li>le koala <a href="#">un article pas fou</a></li>
-					<li>auteur dans <a href="#">un article pas fou</a></li>
+					<c:forEach items="${lastcomments}" var="comment">
+						<li>${comment.authorName} dans <a href="<spring:url value="${comment.post.url}#comments"/>">${comment.post.title}</a></li>
+					</c:forEach>
 				</ul>
 			</div>
 			<div class="tagclood">
 				<h1><span class="fa fa-flag"></span> Tags</h1>
-				<c:forEach items="${tags}" var="tag">
+				<c:forEach items="${cloodtags}" var="tag">
 					<a href="<spring:url value="/tag/${tag.url}"/>">${tag.title}(${tag.postCount})</a>
 				</c:forEach>
 			</div>

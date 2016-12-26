@@ -11,6 +11,7 @@ import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import shionn.blog.content.formatter.ContentFormater;
+import shionn.blog.db.dao.CommentDao;
 import shionn.blog.db.dao.HomeDao;
 import shionn.blog.db.dao.MenuDao;
 import shionn.blog.db.dao.TagDao;
@@ -40,7 +41,8 @@ public class Home {
 		}
 		return new ModelAndView("home").addObject("posts", posts)
 				.addObject("menu", session.getMapper(MenuDao.class).readMenu(0).current("/"))
-				.addObject("tags", session.getMapper(TagDao.class).readWidgetTags());
+				.addObject("cloodtags", session.getMapper(TagDao.class).readCloodTags())
+				.addObject("lastcomments", session.getMapper(CommentDao.class).readLastComments());
 	}
 
 }
