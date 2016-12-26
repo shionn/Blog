@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Menu {
 
+	private int id;
 	private List<Menu> items;
 	private String title;
 	private String url;
@@ -55,6 +56,14 @@ public class Menu {
 
 	public boolean isActive() {
 		return active;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
 

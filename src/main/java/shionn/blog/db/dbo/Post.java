@@ -1,6 +1,7 @@
 package shionn.blog.db.dbo;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -11,12 +12,14 @@ public class Post {
 	private Status status;
 	private Type type;
 	private String title;
+	private String content;
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date published;
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date updated;
-	private String content;
 	private User author;
+	private Category category;
+	private List<Tag> tags;
 	private int commentCount;
 
 	public enum Status {
@@ -105,6 +108,22 @@ public class Post {
 
 	public void setCommentCount(int commentCount) {
 		this.commentCount = commentCount;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
 	}
 
 }

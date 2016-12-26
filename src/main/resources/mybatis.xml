@@ -27,6 +27,8 @@
 	<mappers>
 		<mapper class="shionn.blog.db.dao.AuthenticationDao"/>
 		<mapper class="shionn.blog.db.dao.HomeDao"/>
+		<mapper class="shionn.blog.db.dao.MenuDao"/>
+
 		<mapper class="shionn.blog.db.dao.PostAdmDao"/>
 	</mappers>
 </configuration>

@@ -11,8 +11,8 @@ import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import shionn.blog.content.formatter.ContentFormater;
-import shionn.blog.content.menu.StaticMenu;
 import shionn.blog.db.dao.HomeDao;
+import shionn.blog.db.dao.MenuDao;
 import shionn.blog.db.dbo.Post;
 
 /**
@@ -38,7 +38,7 @@ public class Home {
 			post.setContent(contentFormatter.homePost(post.getContent()));
 		}
 		return new ModelAndView("home").addObject("posts", posts).addObject("menu",
-				new StaticMenu().build().current("/"));
+				session.getMapper(MenuDao.class).read(0).current("/"));
 	}
 
 }

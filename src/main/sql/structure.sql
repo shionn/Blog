@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS tag (
   title varchar(64) NOT NULL,
   url varchar(64) NOT NULL,
   PRIMARY KEY (id),
-  UNIQUE KEY (url),
+  UNIQUE KEY (url)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 --- post-tag ---
