@@ -25,7 +25,7 @@ import shionn.blog.db.dbo.Post;
  */
 @Controller()
 @RequestScope
-public class Home {
+public class HomeController {
 
 	@Autowired
 	private SqlSession session;

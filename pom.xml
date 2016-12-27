@@ -10,10 +10,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<version.resteasy>3.0.14.Final</version.resteasy>
-		<version.weld>2.3.3.Final</version.weld>
 		<version.spring>4.3.2.RELEASE</version.spring>
 		<version.spring.security>4.2.0.RELEASE</version.spring.security>
+		<version.spring.ws>2.1.4.RELEASE</version.spring.ws>
 		<version.jstl>1.2</version.jstl>
 	</properties>
 
@@ -152,6 +151,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core</artifactId>
+			<version>${version.spring.ws}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>

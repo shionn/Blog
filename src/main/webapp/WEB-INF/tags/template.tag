@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <link rel="stylesheet" href="<spring:url value="/css/generated/style.css"/>" />
+<link rel="alternate" type="application/rss+xml" title="Shionn::blog() - Be a geeK - Flux" href="<spring:url value="/feed"/>">
 </head>
 <body>
 	<header class="container">

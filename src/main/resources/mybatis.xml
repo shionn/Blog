@@ -30,6 +30,7 @@
 		<mapper class="shionn.blog.db.dao.CommentDao"/>
 		<mapper class="shionn.blog.db.dao.HomeDao"/>
 		<mapper class="shionn.blog.db.dao.MenuDao"/>
+		<mapper class="shionn.blog.db.dao.RssDao"/>
 		<mapper class="shionn.blog.db.dao.TagDao"/>
 
 		<mapper class="shionn.blog.db.dao.PostAdmDao"/>
