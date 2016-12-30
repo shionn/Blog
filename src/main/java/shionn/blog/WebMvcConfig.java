@@ -10,6 +10,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+/**
+ * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
+ *
+ * @author <b>Shionn</b>, shionn@gmail.com <i>http://shionn.org</i><br>
+ *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
+ */
 @EnableWebMvc
 @Configuration
 @ComponentScan({ "shionn.blog" })

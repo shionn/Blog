@@ -1,12 +1,13 @@
 package shionn.blog.content;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
@@ -14,17 +15,17 @@ import javax.servlet.http.HttpServletResponse;
  * @author <b>Shionn</b>, shionn@gmail.com <i>http://shionn.org</i><br>
  *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
  */
-@WebServlet(name = "article", urlPatterns = "/post/*")
-public class PostController extends HttpServlet {
+@Controller
+@RequestScope
+public class PostController {
 	private static final long serialVersionUID = 1L;
 
+	@Autowired
+	private SqlSession session;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		String url = req.getRequestURI();
-		String article = url.substring(url.lastIndexOf('/') + 1);
-		this.getServletContext().getRequestDispatcher("/jsp/article.jsp").forward(req, resp);
+	@RequestMapping(value = "/.*", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
+	public ModelAndView get() {
+		return new ModelAndView();
 	}
 
 

@@ -12,6 +12,12 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.filter.RequestContextFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/**
+ * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
+ *
+ * @author <b>Shionn</b>, shionn@gmail.com <i>http://shionn.org</i><br>
+ *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
+ */
 @Configuration("dispatcher")
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
