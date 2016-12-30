@@ -5,6 +5,7 @@ import java.util.TimeZone;
 import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -48,4 +49,9 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 				new DelegatingFilterProxy("springSecurityFilterChain") };
 	}
 	
+	@Override
+	public void customizeRegistration(ServletRegistration.Dynamic registration) {
+		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
+	}
+
 }

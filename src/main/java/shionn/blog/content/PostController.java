@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
+import shionn.blog.content.error.PostNotFoundExcpetion;
+import shionn.blog.content.formatter.ContentFormater;
 import shionn.blog.db.dao.PostDao;
+import shionn.blog.db.dbo.Post;
 
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
@@ -23,12 +26,19 @@ public class PostController {
 
 	@Autowired
 	private SqlSession session;
+	@Autowired
+	private ContentFormater contentFormatter;
 
 	@RequestMapping(value = "/{url}", method = RequestMethod.GET)
 	public ModelAndView get(@PathVariable("url") String url) {
 		PostDao dao = session.getMapper(PostDao.class);
+		Post post = dao.readPost(url);
+		if (post == null) {
+			throw new PostNotFoundExcpetion(url);
+		}
+		post.setContent(contentFormatter.fullPost(post.getContent()));
 		return new ModelAndView("article")
-				.addObject("post",dao.readPost(url))
+				.addObject("post",post)
 				.addObject("menu", dao.readMenu(0).current(url))
 				.addObject("cloodtags", dao.readCloodTags())
 				.addObject("lastcomments", dao.readLastComments());
