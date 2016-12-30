@@ -52,6 +52,9 @@ public class ContentFormater implements AttributeProviderFactory, AttributeProvi
 		}
 	}
 
+	/**
+	 * permet de limiter à 6 paragraph pour la page d'acceuil
+	 */
 	@Override
 	public Node process(Node root) {
 		Node current = root.getFirstChild();

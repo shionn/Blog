@@ -1,8 +1,12 @@
 package shionn.blog.content;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,6 +25,7 @@ import shionn.blog.db.dbo.Post;
 @RequestScope
 public class RssController {
 
+	private static final SimpleDateFormat RFC822_DATE_FORMAT = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
 	@Autowired
 	private SqlSession session;
 
@@ -31,11 +36,15 @@ public class RssController {
 		return rss;
 	}
 
+	@Autowired
+	private BlogConfiguration configuration;
+
 	private Channel buildChannel() {
 		Channel channel = new Channel();
-		channel.setDescription("description");
-		channel.setLink("http://shionn.org");
-		channel.setTitle("GCS/O d- s+:+ a C++ UL P L+++ E--- W++ N K- w--- M- PS PE-- Y- PGP- t+ 5 X R+ !tv b+ D+ G- e+++ h+ r++ y+");
+		channel.setDescription(configuration.getBlogDescription());
+		channel.setLink(configuration.getBlogUrl());
+		channel.setTitle(configuration.getBlogTitle());
+		channel.setLanguage(configuration.getBlogLanguage());
 		channel.setItems(buildItems());
 		return channel;
 	}
@@ -45,9 +54,21 @@ public class RssController {
 		for (Post post : session.getMapper(RssDao.class).readLastPosts()) {
 			Item item = new Item();
 			item.setTitle(post.getTitle());
+			item.setLink(StringUtils.appendIfMissing(configuration.getBlogUrl(), "/")
+					+ post.getUrl());
+			item.setDescription(buildShortContent(post.getContent()));
+			item.setPubDate(formatDate(post.getPublished()));
 			items.add(item);
 		}
 		return items;
+	}
+
+	private synchronized String formatDate(Date date) {
+		return RFC822_DATE_FORMAT.format(date);
+	}
+
+	private String buildShortContent(String content) {
+		return StringUtils.abbreviate(content, 300);
 	}
 
 }

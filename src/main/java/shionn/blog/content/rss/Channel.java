@@ -10,6 +10,9 @@ public class Channel {
 	private String link;
 	private String description;
 	private List<Item> items;
+	private String language;
+	private String updatePeriod = "hourly";
+	private int updateFrequency = 1;
 
 	@XmlElement(name = "title")
 	public String getTitle() {
@@ -45,5 +48,24 @@ public class Channel {
 
 	public void setItems(List<Item> items) {
 		this.items = items;
+	}
+
+	@XmlElement(name = "language")
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	@XmlElement(name = "updatePeriod", namespace = NameSpaces.SY)
+	public String getUpdatePeriod() {
+		return updatePeriod;
+	}
+
+	@XmlElement(name = "updateFrequency", namespace = NameSpaces.SY)
+	public int getUpdateFrequency() {
+		return updateFrequency;
 	}
 }

@@ -14,6 +14,7 @@ public interface RssDao {
 			+ "FROM post AS p "
 			+ "LEFT JOIN user AS u ON p.author = u.id "
 			+ "WHERE p.status = 'publish' "
+			+ "AND p.type = 'post' "
 			+ "ORDER BY p.published DESC "
 			+ "LIMIT 10")
 	@Results({ @Result(column = "u.name", property = "author.name") })
