@@ -1,4 +1,4 @@
-package shionn.blog.db.dao;
+package shionn.blog.db.dao.frag;
 
 import java.util.List;
 

@@ -2,6 +2,7 @@ package shionn.blog.db.dbo;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
@@ -42,7 +43,7 @@ public class Menu {
 	}
 
 	public Menu current(String path) {
-		if (path.equals(url)) {
+		if (StringUtils.prependIfMissing(path, "/").equals(url)) {
 			this.setActive(true);
 		}
 		if (items != null) {
