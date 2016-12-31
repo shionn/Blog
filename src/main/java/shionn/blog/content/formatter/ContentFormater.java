@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.commonmark.node.FencedCodeBlock;
+import org.commonmark.node.Image;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.parser.PostProcessor;
@@ -11,6 +12,8 @@ import org.commonmark.renderer.html.AttributeProvider;
 import org.commonmark.renderer.html.AttributeProviderContext;
 import org.commonmark.renderer.html.AttributeProviderFactory;
 import org.commonmark.renderer.html.HtmlRenderer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -25,6 +28,10 @@ public class ContentFormater implements AttributeProviderFactory, AttributeProvi
 	private Parser fullPostParser = Parser.builder().build();
 	private Parser homeParser = Parser.builder().postProcessor(this).build();
 	private HtmlRenderer renderer = HtmlRenderer.builder().attributeProviderFactory(this).build();
+
+	@Autowired
+	@Value("#{servletContext.contextPath}")
+	private String servletContextPath;
 
 	public String homePost(String content) {
 		Node nodes = homeParser.parse(content);
@@ -49,6 +56,12 @@ public class ContentFormater implements AttributeProviderFactory, AttributeProvi
 				type = "java";
 			}
 			attributes.put("class", type);
+		} else if (node instanceof Image) {
+			String src = ((Image) node).getDestination();
+			if (src.startsWith("/")) {
+				src = servletContextPath + StringUtils.prependIfMissing(src, "/img");
+				attributes.put("src", src);
+			}
 		}
 	}
 

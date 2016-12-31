@@ -78,9 +78,9 @@
 					<td><a href="/uri" title="title">link</a></td>
 				</tr>
 				<tr>
-					<td>![alt](/url "title")</td>
+					<td>![alt](img/foo.png "title")</td>
 					<td></td>
-					<td><img src="/url" alt="alt" title="title"></td>
+					<td><img src="img/foo.png" alt="alt" title="title"></td>
 				</tr>
 				<tr>
 					<td>* List<br>* List<br>* List</td>
