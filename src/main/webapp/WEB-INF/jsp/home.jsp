@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <t:template>
+	<jsp:attribute name="title">Shionn::blog() - Be a geeK</jsp:attribute>
 	<jsp:attribute name="content">
 		<c:forEach items="${posts}" var="post">
 			<article>

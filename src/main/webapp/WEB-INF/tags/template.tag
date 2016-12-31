@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/frag" %>
 <%@ attribute name="content" fragment="true"%>
 <%@ attribute name="scripts" fragment="true"%>
+<%@ attribute name="title" type="java.lang.String" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,6 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <link rel="stylesheet" href="<spring:url value="/css/generated/style.css"/>" />
 <link rel="alternate" type="application/rss+xml" title="Shionn::blog() - Be a geeK - Flux" href="<spring:url value="/feed"/>">
+<title>${title}</title>
 </head>
 <body>
 	<header class="container">
