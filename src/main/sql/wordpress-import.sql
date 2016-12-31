@@ -8,7 +8,7 @@ select w.id as id, w.user_email as email, w.display_name as name,
 from wp_users AS w 
 left join user AS u ON u.id=w.id 
 WHERE u.id is null and w.user_status=0;
-update user set password='ffa6f9edb0adf97517e03719b7a05201037ae0bb' where email = 'shionn@gmail.com';
+update user set password='7b6d72880b2bfc4bff0f889a90a54b46361a6458' where email = 'shionn@gmail.com';
 
 -- import des category
 insert into category (id, parent, title, url) values (0, null, 'root', 'root');

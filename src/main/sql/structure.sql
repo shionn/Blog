@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS menu (
   id int(11) NOT NULL AUTO_INCREMENT,
   parent int(11) NULL,
   position int(11) NOT NULL,
-  title varchar(32) NOT NULL,
+  title varchar(64) NOT NULL,
   url varchar(128) NOT NULL,
   PRIMARY KEY (id),
   KEY (parent),

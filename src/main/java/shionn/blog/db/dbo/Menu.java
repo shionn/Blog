@@ -72,5 +72,11 @@ public class Menu {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Menu [id=" + id + ", title=" + title + "]";
+	}
+
 }
 
