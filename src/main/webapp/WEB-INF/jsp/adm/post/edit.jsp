@@ -50,5 +50,64 @@
 			</fieldset>
 		</form:form>
 		TODO : liste des sauvegarde
+		<table>
+			<tbody>
+				<tr>
+					<td>*Italic*</td>
+					<td>_Italic_</td>
+					<td><em>Italic</em></td>
+				</tr>
+				<tr>
+					<td>**Bold**</td>
+					<td>__Bold__</td>
+					<td><strong>Bold</strong></td>
+				</tr>
+				<tr>
+					<td># Heading 1</td>
+					<td>Heading 1<br>=========</td>
+					<td><h1>Heading 1</h1></td>
+				</tr>
+				<tr>
+					<td>## Heading 2</td>
+					<td>Heading 2<br>---------</td>
+					<td><h2>Heading 2</h2></td>
+				</tr>
+				<tr>
+					<td>[link](/uri "title")</td>
+					<td></td>
+					<td><a href="/uri" title="title">link</a></td>
+				</tr>
+				<tr>
+					<td>![alt](/url "title")</td>
+					<td></td>
+					<td><img src="/url" alt="alt" title="title"></td>
+				</tr>
+				<tr>
+					<td>* List<br>* List<br>* List</td>
+					<td>- List<br>- List<br>- List</td>
+					<td><ul><li>List</li><li>List</li><li>List</li></ul></td>
+				</tr>
+				<tr>
+					<td>1. One<br>2. Two<br>3. Three</td>
+					<td>1) One<br>2) Two<br>3) Three</td>
+					<td><ol><li>One</li><li>Two</li><li>Three</li></ol></td>
+				</tr>
+				<tr>
+					<td>---</td>
+					<td>***</td>
+					<td><hr></td>
+				</tr>
+				<tr>
+					<td>`Inline code` with backticks</td>
+					<td>&nbsp;</td>
+					<td><code>Inline code</code> with backticks</td>
+				</tr>
+				<tr>
+					<td>```<br>Multi-line code block<br>```</td>
+					<td>~~~java<br>Multi-line code block<br>~~~</td>
+					<td><pre><code>Multi-line code block</code></pre></td>
+				</tr>
+			</tbody>
+		</table>
 	</jsp:attribute>
 </t:template>
