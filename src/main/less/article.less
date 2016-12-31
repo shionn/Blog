@@ -68,9 +68,13 @@ section.comments {
 		li {
 			list-style-type: none;
 			display: block;
-			clear: both;
 			border-bottom: 1px dotted @theme-border-color;
 			margin: .5em 0;
+			&:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
 			p {
 				text-align: justify;
 				margin: .5em 0 0 0;
@@ -129,5 +133,23 @@ section.comments {
 			}
 		}
 	}
+	form {
+		background-color : @theme-grey;
+		p {
+			text-align: center;
+			padding: 0;
+			margin: 0;
+			&.title {
+				font-family: @font-alternate;
+			}
+			em {
+				font-size : 0.8em;
+			}
+		}
+		fieldset p {
+			font-size : 0.8em;
+		}
+	}
+	
 }
 

@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <t:template>
 	<jsp:attribute name="title">${post.title}</jsp:attribute>
@@ -48,6 +49,25 @@
 					</li>
 				</c:forEach>
 			</ul>
+			<form:form method="post">
+				<p class="title">Laissez un commentaire</p>
+				<fieldset>
+					<label for="authorName">Nom</label><input name="authorName" type="text" required="required" placeholder="Pseudonyme">
+				</fieldset>
+				<fieldset>
+					<label for="authorEmail">E-Mail</label><input name="authorEmail" type="email" required="required" placeholder="email">
+				</fieldset>
+				<fieldset>
+					<label for="authorWeb">Site web</label><input name="authorWeb" type="text" placeholder="Votre site internet">
+				</fieldset>
+				<fieldset>
+					<label for="content">Commentaire</label>
+					<textarea name="content"></textarea>
+					<p>Vous pouvez utilisez du <a href="">markdown</a> pour la mise en forme<br>
+				</fieldset>
+				<p><em>Votre adresse de messagerie ne sera pas publiée.</em></p>
+				<input type="submit" value="Valider">
+			</form:form>
 		</section>
 		
 	</jsp:attribute>
