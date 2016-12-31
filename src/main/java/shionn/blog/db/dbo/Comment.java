@@ -1,5 +1,7 @@
 package shionn.blog.db.dbo;
 
+import java.util.Date;
+
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
  *
@@ -9,7 +11,12 @@ package shionn.blog.db.dbo;
 public class Comment {
 
 	private String authorName;
+	private String authorEmail;
+	private String authorWeb;
+	private String content;
+	private Date date;
 	private Post post;
+	private String gravatar;
 
 	public String getAuthorName() {
 		return authorName;
@@ -25,6 +32,46 @@ public class Comment {
 
 	public void setPost(Post post) {
 		this.post = post;
+	}
+
+	public String getAuthorEmail() {
+		return authorEmail;
+	}
+
+	public void setAuthorEmail(String authorEmail) {
+		this.authorEmail = authorEmail;
+	}
+
+	public String getAuthorWeb() {
+		return authorWeb;
+	}
+
+	public void setAuthorWeb(String authorWeb) {
+		this.authorWeb = authorWeb;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public void setGravatar(String gravatar) {
+		this.gravatar = gravatar;
+	}
+
+	public String getGravatar() {
+		return gravatar;
 	}
 
 }

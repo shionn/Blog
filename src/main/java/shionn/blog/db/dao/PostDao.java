@@ -12,6 +12,7 @@ import org.apache.ibatis.mapping.FetchType;
 import shionn.blog.db.dao.frag.LastCommentDao;
 import shionn.blog.db.dao.frag.MenuDao;
 import shionn.blog.db.dao.frag.TagCloodDao;
+import shionn.blog.db.dbo.Comment;
 import shionn.blog.db.dbo.Post;
 import shionn.blog.db.dbo.Tag;
 
@@ -23,19 +24,22 @@ import shionn.blog.db.dbo.Tag;
  */
 public interface PostDao extends LastCommentDao, MenuDao, TagCloodDao {
 
-	@Select("SELECT p.id, p.url, p.title, p.published, p.content, "
-			+ "u.name, "
+	@Select("SELECT p.id, p.url, p.title, p.published, p.updated, p.content, "
+			+ "u.name as author_name, count(c.id) AS comment_count, "
 			+ "cat.url AS cat_url, cat.title AS cat_title "
 			+ "FROM post AS p "
 			+ "LEFT JOIN user AS u ON p.author = u.id "
 			+ "LEFT JOIN category AS cat ON cat.id = p.category "
-			+ "WHERE p.url = #{url}")
+			+ "LEFT JOIN comment AS c ON c.post = p.id "
+			+ "WHERE p.url = #{url} "
+			+ "GROUP BY p.id ")
 	@Results({
 			@Result(column = "id", property = "id"),
-			@Result(column = "u.name", property = "author.name"),
+			@Result(column = "author_name", property = "author.name"),
 			@Result(column = "cat_title", property = "category.title"),
 			@Result(column = "cat_url", property = "category.url"),
-			@Result(column = "id", property = "tags", many = @Many(select = "readTags", fetchType = FetchType.EAGER)) })
+			@Result(column = "id", property = "tags", many = @Many(select = "readTags", fetchType = FetchType.EAGER)),
+			@Result(column = "id", property = "comments", many = @Many(select = "readComments", fetchType = FetchType.EAGER)), })
 	Post readPost(String url);
 
 	@Select("SELECT t.title, t.url "
@@ -43,6 +47,13 @@ public interface PostDao extends LastCommentDao, MenuDao, TagCloodDao {
 			+ "LEFT JOIN tag AS t ON p.tag = t.id "
 			+ "WHERE p.post = #{post} "
 			+ "ORDER BY t.title")
-	public List<Tag> readTags( @Param("post") int post);
+	List<Tag> readTags(@Param("post") int post);
+	
+	@Select("SELECT IFNULL(u.name, c.author_name) AS author_name, "
+			+ "c.author_email, c.author_web, c.date, c.content "
+			+ "FROM comment AS c "
+			+ "LEFT JOIN user AS u ON c.author = u.id "
+			+ "WHERE c.post = #{post}")
+	List<Comment> readComments(@Param("post") int post);
 
 }

@@ -43,6 +43,11 @@ public class ContentFormater implements AttributeProviderFactory, AttributeProvi
 		return renderer.render(nodes);
 	}
 
+	public String comment(String content) {
+		Node nodes = fullPostParser.parse(content);
+		return renderer.render(nodes);
+	}
+
 	@Override
 	public AttributeProvider create(AttributeProviderContext context) {
 		return this;
@@ -81,5 +86,6 @@ public class ContentFormater implements AttributeProviderFactory, AttributeProvi
 		}
 		return root;
 	}
+
 
 }

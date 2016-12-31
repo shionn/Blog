@@ -21,7 +21,34 @@
 			</header>
 			<section>${post.content}</section>
 			<footer>
+				<em class="author">par ${post.author.name}, dernière modification le <fmt:formatDate pattern="dd MMMM yyyy HH:mm" value="${post.updated}" /></em>
+				<hr>
 			</footer>
 		</article>
+		<section class="comments">
+			${post.commentCount} réflexions au sujet de « ${post.title} »
+			<ul>
+				<c:forEach items="${post.comments}" var="comment">
+					<li>
+						<div class="author">
+							<img src="https://www.gravatar.com/avatar/${comment.gravatar}?d=retro&s=74&r=g"></img>
+							<span>
+								<c:if test="${not empty comment.authorWeb}">
+									<a href="${comment.authorWeb}" target="_blank">${comment.authorName}</a>
+								</c:if>
+								<c:if test="${empty comment.authorWeb}">
+									${comment.authorName}
+								</c:if>
+							</span>
+						</div>
+						<div class="content">
+							<span class="date">le <fmt:formatDate pattern="dd MMMM yyyy HH:mm" value="${comment.date}" /></span>
+							<p>${comment.content}</p>
+						</div>
+					</li>
+				</c:forEach>
+			</ul>
+		</section>
+		
 	</jsp:attribute>
 </t:template>

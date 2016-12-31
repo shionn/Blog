@@ -27,6 +27,7 @@ public class Post {
 	private Category category;
 	private List<Tag> tags;
 	private int commentCount;
+	private List<Comment> comments;
 
 	public enum Status {
 		publish, draft
@@ -130,6 +131,14 @@ public class Post {
 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 }

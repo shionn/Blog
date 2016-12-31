@@ -1,5 +1,6 @@
 package shionn.blog.content;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import shionn.blog.content.error.PostNotFoundExcpetion;
 import shionn.blog.content.formatter.ContentFormater;
 import shionn.blog.db.dao.PostDao;
+import shionn.blog.db.dbo.Comment;
 import shionn.blog.db.dbo.Post;
 
 /**
@@ -37,11 +39,19 @@ public class PostController {
 			throw new PostNotFoundExcpetion(url);
 		}
 		post.setContent(contentFormatter.fullPost(post.getContent()));
+		for (Comment comment : post.getComments()) {
+			comment.setGravatar(gravatar(comment));
+			comment.setContent(contentFormatter.comment(comment.getContent()));
+		}
 		return new ModelAndView("article")
 				.addObject("post",post)
 				.addObject("menu", dao.readMenu(0).current(url))
 				.addObject("cloodtags", dao.readCloodTags())
 				.addObject("lastcomments", dao.readLastComments());
+	}
+
+	private String gravatar(Comment comment) {
+		return DigestUtils.md5Hex(comment.getAuthorEmail());
 	}
 
 }
