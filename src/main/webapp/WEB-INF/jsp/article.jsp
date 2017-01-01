@@ -27,10 +27,12 @@
 			</footer>
 		</article>
 		<section class="comments">
+			<a name="comments"></a>
 			${post.commentCount} réflexions au sujet de « ${post.title} »
 			<ul>
-				<c:forEach items="${post.comments}" var="comment">
+				<c:forEach items="${post.comments}" var="comment" varStatus="loop">
 					<li>
+						<c:if test="${loop.last}"><a name="lastcomment"></a></c:if>
 						<div class="author">
 							<img src="https://www.gravatar.com/avatar/${comment.gravatar}?d=retro&s=74&r=g"></img>
 							<span>
@@ -41,15 +43,16 @@
 									${comment.authorName}
 								</c:if>
 							</span>
+							<span class="date"><fmt:formatDate pattern="dd MMMM yyyy HH:mm" value="${comment.date}" /></span>
 						</div>
 						<div class="content">
-							<span class="date">le <fmt:formatDate pattern="dd MMMM yyyy HH:mm" value="${comment.date}" /></span>
 							<p>${comment.content}</p>
 						</div>
 					</li>
 				</c:forEach>
 			</ul>
-			<form:form method="post">
+			<spring:url value="/${post.url}" var="posturl"/>
+			<form:form method="post" action="${posturl}#lastcomment" >
 				<p class="title">Laissez un commentaire</p>
 				<fieldset>
 					<label for="authorName">Nom</label><input name="authorName" type="text" required="required" placeholder="Pseudonyme">
@@ -69,6 +72,5 @@
 				<input type="submit" value="Valider">
 			</form:form>
 		</section>
-		
 	</jsp:attribute>
 </t:template>

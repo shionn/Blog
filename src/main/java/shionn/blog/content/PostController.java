@@ -4,6 +4,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,4 +55,10 @@ public class PostController {
 		return DigestUtils.md5Hex(comment.getAuthorEmail());
 	}
 
+	@RequestMapping(value = "/{url}/comment", method = RequestMethod.POST)
+	public ModelAndView postComment(@PathVariable("url") String url, @ModelAttribute Comment comment) {
+		PostDao dao = session.getMapper(PostDao.class);
+		dao.saveComment(comment, url);
+		return get(url);
+	}
 }

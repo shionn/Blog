@@ -2,6 +2,7 @@ package shionn.blog.db.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
@@ -55,5 +56,9 @@ public interface PostDao extends LastCommentDao, MenuDao, TagCloodDao {
 			+ "LEFT JOIN user AS u ON c.author = u.id "
 			+ "WHERE c.post = #{post}")
 	List<Comment> readComments(@Param("post") int post);
+
+	@Insert("INSERT into comment(post, author, author_name, author_email, author_web, date, content, ip) "
+			+ "VALUES (SELECT id from post w)")
+	void saveComment(Comment comment, String url);
 
 }
