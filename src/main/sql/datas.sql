@@ -1,5 +1,5 @@
 -- menu
-
+SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
 insert into menu (id, parent, position, title, url)
 values 
 (0, NULL, 0, "Menu", "/"),

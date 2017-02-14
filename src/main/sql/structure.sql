@@ -1,5 +1,5 @@
 
---- user ---
+-- user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(128) CHARACTER SET utf8 NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `status` (`status`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
---- category ---
+-- category
 CREATE TABLE IF NOT EXISTS category (
   id int(11) NOT NULL AUTO_INCREMENT,
   parent int(11) NULL,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS category (
   CONSTRAINT parent_category FOREIGN KEY (parent) REFERENCES category (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
---- post ---
+-- post
 CREATE TABLE IF NOT EXISTS `post` (
   id int(11) NOT NULL AUTO_INCREMENT,
   url varchar(128) CHARACTER SET utf8 NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   CONSTRAINT into_category FOREIGN KEY (category) REFERENCES category (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
---- COMMENT ---
+-- COMMENT
 CREATE TABLE IF NOT EXISTS `comment` (
   id int(11) NOT NULL AUTO_INCREMENT,
   post int(11) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   CONSTRAINT `comment_author` FOREIGN KEY (`author`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
---- tag ---
+-- tag
 CREATE TABLE IF NOT EXISTS tag (
   id int(11) NOT NULL AUTO_INCREMENT,
   title varchar(64) NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS tag (
   UNIQUE KEY (url)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
---- post-tag ---
+-- post-tag 
 CREATE TABLE IF NOT EXISTS posttags (
   post int(11) NOT NULL,
   tag int(11) NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS posttags (
   CONSTRAINT `posttags_tag` FOREIGN KEY (`tag`) REFERENCES `tag` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
---- menu ---
+-- menu
 CREATE TABLE IF NOT EXISTS menu (
   id int(11) NOT NULL AUTO_INCREMENT,
   parent int(11) NULL,

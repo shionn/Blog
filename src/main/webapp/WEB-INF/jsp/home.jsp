@@ -9,7 +9,7 @@
 		<c:forEach items="${posts}" var="post">
 			<article>
 				<header>
-					<img src="http://www.shionn.org/wp-content/uploads/Magic-The-Gathering-Tactics-6151-604x270.jpg" />
+					<img src="<spring:url value="/img/${post.url}.jpg"/>" />
 					<h1><a href="<spring:url value="/${post.url}"/>">${post.title}</a></h1>
 					<span class="date"><fmt:formatDate pattern="dd MMMM yyyy HH:mm" value="${post.published}" /></span>
 					<a class="category" href="<spring:url value="/category/${post.category.url}"/>"><span class="fa fa-folder-open"></span> ${post.category.title}</a>

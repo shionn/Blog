@@ -1,7 +1,7 @@
 
-SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
 
 -- import des utilisateurs -- 
+SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
 insert into user (id, email, name, password, status, created)
 select w.id as id, w.user_email as email, w.display_name as name,
 'TODO' as password, 'active' as status, w.user_registered as created
@@ -11,6 +11,7 @@ WHERE u.id is null and w.user_status=0;
 update user set password='7b6d72880b2bfc4bff0f889a90a54b46361a6458' where email = 'shionn@gmail.com';
 
 -- import des category
+SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
 insert into category (id, parent, title, url) values (0, null, 'root', 'root');
 insert into category (id, parent, title, url)
 select t.term_id as id, parent, name as title, slug as url
@@ -20,6 +21,7 @@ where tt.taxonomy = 'category'
 order by parent;
 
 -- import des posts --
+SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
 insert into post (id, url, status, type, author, published, updated, title, content, category)
 select w.id as id, 
   if (w.post_name = '', w.id, w.post_name) as `url`,
@@ -36,6 +38,7 @@ update post set status = 'draft' where status = 'auto-draft';
 update post set status = 'publish' where status = 'private';
 
 -- import des commentaires --
+SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
 insert into comment (id, post, author, author_name, author_email, author_web, `date`, content, ip)
 select w.comment_ID as id, w.comment_post_ID as post, if(w.user_id = 0, NULL, w.user_id) AS author,
 w.comment_author as author_name, w.comment_author_email as author_email, w.comment_author_url AS author_web, 
@@ -47,21 +50,15 @@ WHERE w.comment_approved = '1'
 AND c.id is NULL
 AND p.id is not null; -- certain commentaire sont sur des images. 
 
--- import du menu abandonner ? et je le fait à la main ?
-SELECT * FROM wp_term_taxonomy as tt
-LEFT JOIN wp_terms as t on tt.term_id = t.term_id 
-LEFT join wp_term_relationships as tr on tr.term_taxonomy_id = tt.term_taxonomy_id
-LEFT join wp_posts as p on tr.object_id = p.ID
-where taxonomy = 'nav_menu';
-
 -- import des tag
+SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
 INSERT INTO tag (id, title, url) 
 SELECT t.term_id AS id, t.name AS title, t.slug AS url FROM wp_term_taxonomy as tt 
 LEFT JOIN wp_terms as t on tt.term_id = t.term_id 
 WHERE tt.taxonomy = 'post_tag';
 
 -- import des lien tag - post
---, p.title, t.title
+SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
 INSERT INTO posttags (tag, post)
 SELECT tt.term_id AS tag, p.ID AS post
 FROM wp_term_relationships AS tr

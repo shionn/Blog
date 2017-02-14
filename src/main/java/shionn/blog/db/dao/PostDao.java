@@ -54,7 +54,8 @@ public interface PostDao extends LastCommentDao, MenuDao, TagCloodDao {
 			+ "c.author_email, c.author_web, c.date, c.content "
 			+ "FROM comment AS c "
 			+ "LEFT JOIN user AS u ON c.author = u.id "
-			+ "WHERE c.post = #{post}")
+			+ "WHERE c.post = #{post} "
+			+ "ORDER BY c.date ASC")
 	List<Comment> readComments(@Param("post") int post);
 
 	@Insert("INSERT into comment(post, author, author_name, author_email, author_web, date, content, ip) "

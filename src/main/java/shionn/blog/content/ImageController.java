@@ -29,9 +29,12 @@ public class ImageController {
 		}
 	}
 
+	@ResponseBody
 	@RequestMapping(path = { "wp-content/uploads/{img:.*}.jpg", "img/{img:.*}.jpg" }, method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-	public Object jpeg(@PathVariable("img") String imgName) {
-		return null;
+	public byte[] jpeg(@PathVariable("img") String imgName) throws IOException {
+		try (FileInputStream is = new FileInputStream(new File(imgSourceFolder + imgName + ".jpg"))) {
+			return IOUtils.toByteArray(is);
+		}
 	}
 
 }

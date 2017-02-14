@@ -9,7 +9,7 @@
 	<jsp:attribute name="content">
 		<article>
 			<header>
-				<img src="<spring:url value="/img/${post.url}"/>" />
+				<img src="<spring:url value="/img/${post.url}.jpg"/>" />
 				<h1><a href="<spring:url value="/${post.url}"/>">${post.title}</a></h1>
 				<span class="date"><fmt:formatDate pattern="dd MMMM yyyy HH:mm" value="${post.published}" /></span>
 				<a class="category" href="<spring:url value="/category/${post.category.url}"/>"><span class="fa fa-folder-open"></span> ${post.category.title}</a>
@@ -51,7 +51,7 @@
 					</li>
 				</c:forEach>
 			</ul>
-			<spring:url value="/${post.url}" var="posturl"/>
+			<spring:url value="/${post.url}/comment" var="posturl"/>
 			<form:form method="post" action="${posturl}#lastcomment" >
 				<p class="title">Laissez un commentaire</p>
 				<fieldset>
