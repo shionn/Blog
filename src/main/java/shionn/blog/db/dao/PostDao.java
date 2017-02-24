@@ -59,7 +59,14 @@ public interface PostDao extends LastCommentDao, MenuDao, TagCloodDao {
 	List<Comment> readComments(@Param("post") int post);
 
 	@Insert("INSERT into comment(post, author, author_name, author_email, author_web, date, content, ip) "
-			+ "VALUES (SELECT id from post w)")
-	void saveComment(Comment comment, String url);
+			+ "VALUES ( (SELECT id from post where url= #{url}), "
+			+ "NULL, "
+			+ "#{comment.authorName},"
+			+ "#{comment.authorEmail}, "
+			+ "#{comment.authorWeb},"
+			+ "NOW(),"
+			+ "#{comment.content},"
+			+ "'azerty' )")
+	void saveComment(@Param("comment") Comment comment, @Param("url") String url);
 
 }

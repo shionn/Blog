@@ -16,6 +16,7 @@ import shionn.blog.content.formatter.ContentFormater;
 import shionn.blog.db.dao.PostDao;
 import shionn.blog.db.dbo.Comment;
 import shionn.blog.db.dbo.Post;
+import shionn.blog.security.CurrentUser;
 
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
@@ -31,6 +32,8 @@ public class PostController {
 	private SqlSession session;
 	@Autowired
 	private ContentFormater contentFormatter;
+	@Autowired
+	private CurrentUser currentUser;
 
 	@RequestMapping(value = "/{url}", method = RequestMethod.GET)
 	public ModelAndView get(@PathVariable("url") String url) {
@@ -44,10 +47,12 @@ public class PostController {
 			comment.setGravatar(gravatar(comment));
 			comment.setContent(contentFormatter.comment(comment.getContent()));
 		}
+		System.out.println(currentUser.getUser());
 		return new ModelAndView("article")
 				.addObject("post",post)
 				.addObject("menu", dao.readMenu(0).current(url))
 				.addObject("cloodtags", dao.readCloodTags())
+				.addObject("fooo", currentUser)
 				.addObject("lastcomments", dao.readLastComments());
 	}
 

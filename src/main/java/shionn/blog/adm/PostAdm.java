@@ -54,6 +54,8 @@ public class PostAdm {
 			filters.setStatus(status);
 		}
 
+		System.out.println(user.getUser());
+
 		List<Post> posts = session.getMapper(PostAdmDao.class).list(filters.getType(),
 				filters.getStatus(), filters.getSortBy(), filters.getSortOrder());
 		return new ModelAndView("adm/post/list").addObject("posts", posts)

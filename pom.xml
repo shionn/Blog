@@ -114,7 +114,7 @@
 				<mybatis.url>jdbc:mysql://${mariadb.host}:3306/blog?serverTimezone=GMT</mybatis.url>
 				<mybatis.username>${mariadb.user}</mybatis.username>
 				<mybatis.password>${mariadb.pass}</mybatis.password>
-				<img.source>/home/shionn/download/blog/uploads/</img.source>
+				<img.source>/home/shionn/projects/uploads/</img.source>
 			</properties>
 		</profile>
 

@@ -34,7 +34,7 @@ public class ImageController {
 	public byte[] jpeg(@PathVariable("img") String imgName) throws IOException {
 		try (FileInputStream is = new FileInputStream(new File(imgSourceFolder + imgName + ".jpg"))) {
 			return IOUtils.toByteArray(is);
-		}
+		} 
 	}
 
 }

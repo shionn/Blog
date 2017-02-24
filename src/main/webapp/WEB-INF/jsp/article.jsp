@@ -58,7 +58,7 @@
 					<label for="authorName">Nom</label><input name="authorName" type="text" required="required" placeholder="Pseudonyme">
 				</fieldset>
 				<fieldset>
-					<label for="authorEmail">E-Mail</label><input name="authorEmail" type="email" required="required" placeholder="email">
+					<label for="authorEmail">E-Mail</label><input name="authorEmail" type="email" required="required" placeholder="email" value="${fooo.email}">
 				</fieldset>
 				<fieldset>
 					<label for="authorWeb">Site web</label><input name="authorWeb" type="text" placeholder="Votre site internet">

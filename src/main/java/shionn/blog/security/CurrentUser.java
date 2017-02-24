@@ -18,6 +18,8 @@ public class CurrentUser {
 
 	private User user;
 
+	private String email = "toto";
+
 	public User getUser() {
 		return user;
 	}
@@ -26,4 +28,7 @@ public class CurrentUser {
 		this.user = user;
 	}
 
+	public String getEmail() {
+		return user == null ? email : user.getEmail();
+	}
 }
