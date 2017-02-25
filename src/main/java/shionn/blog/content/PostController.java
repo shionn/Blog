@@ -62,7 +62,8 @@ public class PostController {
 	@RequestMapping(value = "/{url}/comment", method = RequestMethod.POST)
 	public ModelAndView postComment(@PathVariable("url") String url, @ModelAttribute Comment comment) {
 		PostDao dao = session.getMapper(PostDao.class);
-		dao.saveComment(comment, url);
+		dao.saveComment(comment, url, user);
+		session.commit();
 		return get(url);
 	}
 }
