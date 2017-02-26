@@ -61,7 +61,7 @@ public interface PostDao extends LastCommentDao, MenuDao, TagCloodDao {
 
 	@Insert("<script>INSERT into comment(post, author, author_name, author_email, author_web, date, content, ip) "
 			+ "VALUES ( (SELECT id from post where url= #{url}), "
-			+ "<choose><when test='user == null'>NULL</when><otherwise>#{user.id}</otherwise></choose>, "
+			+ "<choose><when test='user.id == 0'>NULL</when><otherwise>#{user.id}</otherwise></choose>, "
 			+ "#{comment.authorName},"
 			+ "#{comment.authorEmail}, "
 			+ "#{comment.authorWeb},"
