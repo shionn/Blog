@@ -16,6 +16,7 @@ import shionn.blog.db.dao.frag.TagCloodDao;
 import shionn.blog.db.dbo.Comment;
 import shionn.blog.db.dbo.Post;
 import shionn.blog.db.dbo.Tag;
+import shionn.blog.db.dbo.User;
 
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
@@ -58,15 +59,16 @@ public interface PostDao extends LastCommentDao, MenuDao, TagCloodDao {
 			+ "ORDER BY c.date ASC")
 	List<Comment> readComments(@Param("post") int post);
 
-	@Insert("INSERT into comment(post, author, author_name, author_email, author_web, date, content, ip) "
+	@Insert("<script>INSERT into comment(post, author, author_name, author_email, author_web, date, content, ip) "
 			+ "VALUES ( (SELECT id from post where url= #{url}), "
-			+ "NULL, "
+			+ "<choose><when test='user.id == 0'>NULL</when><otherwise>#{user.id}</otherwise></choose>, "
 			+ "#{comment.authorName},"
 			+ "#{comment.authorEmail}, "
 			+ "#{comment.authorWeb},"
 			+ "NOW(),"
 			+ "#{comment.content},"
-			+ "'azerty' )")
-	void saveComment(@Param("comment") Comment comment, @Param("url") String url);
+			+ "'azerty' )</script>")
+	void saveComment(@Param("comment") Comment comment, @Param("url") String url,
+			@Param("user") User user);
 
 }

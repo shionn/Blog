@@ -16,7 +16,7 @@ import shionn.blog.content.formatter.ContentFormater;
 import shionn.blog.db.dao.PostDao;
 import shionn.blog.db.dbo.Comment;
 import shionn.blog.db.dbo.Post;
-import shionn.blog.security.CurrentUser;
+import shionn.blog.db.dbo.User;
 
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
@@ -33,7 +33,7 @@ public class PostController {
 	@Autowired
 	private ContentFormater contentFormatter;
 	@Autowired
-	private CurrentUser currentUser;
+	private User user;
 
 	@RequestMapping(value = "/{url}", method = RequestMethod.GET)
 	public ModelAndView get(@PathVariable("url") String url) {
@@ -47,12 +47,11 @@ public class PostController {
 			comment.setGravatar(gravatar(comment));
 			comment.setContent(contentFormatter.comment(comment.getContent()));
 		}
-		System.out.println(currentUser.getUser());
 		return new ModelAndView("article")
 				.addObject("post",post)
+				.addObject("user", user)
 				.addObject("menu", dao.readMenu(0).current(url))
 				.addObject("cloodtags", dao.readCloodTags())
-				.addObject("fooo", currentUser)
 				.addObject("lastcomments", dao.readLastComments());
 	}
 
@@ -63,7 +62,8 @@ public class PostController {
 	@RequestMapping(value = "/{url}/comment", method = RequestMethod.POST)
 	public ModelAndView postComment(@PathVariable("url") String url, @ModelAttribute Comment comment) {
 		PostDao dao = session.getMapper(PostDao.class);
-		dao.saveComment(comment, url);
+		dao.saveComment(comment, url, user);
+		session.commit();
 		return get(url);
 	}
 }

@@ -15,6 +15,7 @@ public class User {
 	private String password;
 	private String email;
 	private String name;
+	private String web;
 
 	public void setCreated(Date created) {
 		this.created = created;
@@ -54,6 +55,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getWeb() {
+		return web;
+	}
+
+	public void setWeb(String web) {
+		this.web = web;
 	}
 
 }

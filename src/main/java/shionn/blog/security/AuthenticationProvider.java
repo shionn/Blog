@@ -27,8 +27,6 @@ public class AuthenticationProvider implements org.springframework.security.auth
 	@Autowired
 	private SqlSession session;
 
-	@Autowired
-	private CurrentUser currentUser;
 
 	private String salt = "salt";
 
@@ -44,7 +42,6 @@ public class AuthenticationProvider implements org.springframework.security.auth
 			authentication = new UsernamePasswordAuthenticationToken(authentication.getPrincipal(),
 					authentication.getCredentials(),
 					AuthorityUtils.createAuthorityList("ROLE_ADMIN"));
-			currentUser.setUser(user);
 		} else {
 			throw new BadCredentialsException("msg");
 		}

@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import shionn.blog.db.dao.PostAdmDao;
 import shionn.blog.db.dbo.Post;
-import shionn.blog.security.CurrentUser;
+import shionn.blog.db.dbo.User;
 
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
@@ -33,7 +33,7 @@ public class PostAdm {
 	@Autowired
 	private PostAdmFilters filters;
 	@Autowired
-	private CurrentUser user;
+	private User user;
 
 	@RequestMapping(value = "/adm/posts", method = RequestMethod.GET)
 	public ModelAndView list(
@@ -53,9 +53,6 @@ public class PostAdm {
 		if (status != null) {
 			filters.setStatus(status);
 		}
-
-		System.out.println(user.getUser());
-
 		List<Post> posts = session.getMapper(PostAdmDao.class).list(filters.getType(),
 				filters.getStatus(), filters.getSortBy(), filters.getSortOrder());
 		return new ModelAndView("adm/post/list").addObject("posts", posts)
@@ -65,7 +62,7 @@ public class PostAdm {
 	@RequestMapping(value = "/adm/posts", method = RequestMethod.POST)
 	public ModelAndView create(@ModelAttribute Post post) {
 		post.setUrl(Pattern.compile("[^a-zA-Z]").matcher(post.getTitle()).replaceAll("-"));
-		post.setAuthor(user.getUser());
+		post.setAuthor(user);
 		session.getMapper(PostAdmDao.class).create(post);
 		session.commit();
 		return list(null, null, Post.Status.draft);
