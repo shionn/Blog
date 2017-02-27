@@ -28,13 +28,21 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
-					<url>${tomcat.url}/manager/text</url>
+					<url>${tomcat.url}</url>
 					<server>${tomcat.server}</server>
 					<path>${tomcat.path}</path>
-					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<skipTests>${skip.test}</skipTests>
 				</configuration>
 			</plugin>
 
@@ -144,6 +152,20 @@
 				<mybatis.password>blog</mybatis.password>
 			</properties>
 		</profile>
+
+		<profile>
+			<!-- Integration continu -->
+			<id>dedibox</id>
+			<properties>
+				<skip.test>true</skip.test>
+				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
+				<tomcat.path>/</tomcat.path>
+				<mybatis.url>jdbc:mysql://localhost:3306/blog</mybatis.url>
+				<mybatis.username>foo</mybatis.username>
+				<mybatis.password>bar</mybatis.password>
+			</properties>
+		</profile>
+
 	</profiles>
 
 	<dependencies>
