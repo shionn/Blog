@@ -127,7 +127,7 @@
 		</profile>
 
 		<profile>
-			<!-- Integration continu -->
+			<!-- Integration continu KO -->
 			<id>jenkins</id>
 			<properties>
 				<skip.test>false</skip.test>
@@ -139,7 +139,7 @@
 		</profile>
 
 		<profile>
-			<!-- Serveur de test -->
+			<!-- Serveur de test KO-->
 			<id>lc17</id>
 			<properties>
 				<skiptest>true</skiptest>
@@ -154,15 +154,16 @@
 		</profile>
 
 		<profile>
-			<!-- Integration continu -->
+			<!-- Serveur de prod, la configuration est dans mon settings.xml -->
 			<id>dedibox</id>
 			<properties>
 				<skip.test>true</skip.test>
-				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
 				<tomcat.path>/</tomcat.path>
-				<mybatis.url>jdbc:mysql://localhost:3306/blog</mybatis.url>
-				<mybatis.username>foo</mybatis.username>
-				<mybatis.password>bar</mybatis.password>
+				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
+				<mybatis.url>jdbc:mysql://${blog.mysql.host}:${blog.mysql.port}/${blog.mysql.db}</mybatis.url>
+				<mybatis.username>${blog.mysql.user}</mybatis.username>
+				<mybatis.password>${blog.mysql.pass}</mybatis.password>
+				<auth.salt>${blog.authsaltkey}</auth.salt>
 			</properties>
 		</profile>
 

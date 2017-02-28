@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,8 +29,12 @@ public class AuthenticationProvider implements org.springframework.security.auth
 	@Autowired
 	private SqlSession session;
 
-
+	@Autowired
+	@Value("${auth.salt}")
 	private String salt = "salt";
+
+	@Autowired
+	private Logger logger;
 
 	@Override
 	public boolean supports(Class<?> type) {
@@ -40,10 +46,9 @@ public class AuthenticationProvider implements org.springframework.security.auth
 		User user = session.getMapper(AuthenticationDao.class).readUser((String) authentication.getPrincipal());
 		if (user != null && checkPassword((UsernamePasswordAuthenticationToken) authentication, user)) {
 			authentication = new UsernamePasswordAuthenticationToken(authentication.getPrincipal(),
-					authentication.getCredentials(),
-					AuthorityUtils.createAuthorityList("ROLE_ADMIN"));
+					authentication.getCredentials(), AuthorityUtils.createAuthorityList("ROLE_ADMIN"));
 		} else {
-			throw new BadCredentialsException("msg");
+			throw new BadCredentialsException("TODO msg");
 		}
 		return authentication;
 	}
@@ -53,9 +58,9 @@ public class AuthenticationProvider implements org.springframework.security.auth
 	}
 
 	private String encodePassword(UsernamePasswordAuthenticationToken token, User user) {
-		String encoded = DigestUtils
-				.sha1Hex(new SimpleDateFormat("yyyyMMdd").format(user.getCreated()) + token.getCredentials() + salt);
-		System.out.println(encoded);
+		String passphrase = new SimpleDateFormat("yyyyMMdd").format(user.getCreated()) + token.getCredentials() + salt;
+		String encoded = DigestUtils.sha512Hex(passphrase);
+		logger.debug(encoded);
 		return encoded;
 	}
 }
