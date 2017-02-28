@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(128) CHARACTER SET utf8 NOT NULL,
   `password` varchar(256) CHARACTER SET utf8 NOT NULL,
   `name` varchar(128) CHARACTER SET utf8 NOT NULL,
+  `web` varchar(128) CHARACTER SET utf8,
   `status` varchar(32) CHARACTER SET utf8 NOT NULL,
   `created` date NOT NULL,
   PRIMARY KEY (`id`),

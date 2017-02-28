@@ -139,7 +139,7 @@
 		</profile>
 
 		<profile>
-			<!-- Serveur de test KO-->
+			<!-- Serveur de test KO -->
 			<id>lc17</id>
 			<properties>
 				<skiptest>true</skiptest>
@@ -158,11 +158,12 @@
 			<id>dedibox</id>
 			<properties>
 				<skip.test>true</skip.test>
-				<tomcat.path>/</tomcat.path>
+				<tomcat.path>/Blog</tomcat.path>
 				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
 				<mybatis.url>jdbc:mysql://${blog.mysql.host}:${blog.mysql.port}/${blog.mysql.db}</mybatis.url>
 				<mybatis.username>${blog.mysql.user}</mybatis.username>
 				<mybatis.password>${blog.mysql.pass}</mybatis.password>
+				<img.source>/foo/</img.source>
 				<auth.salt>${blog.authsaltkey}</auth.salt>
 			</properties>
 		</profile>

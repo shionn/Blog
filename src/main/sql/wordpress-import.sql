@@ -2,9 +2,10 @@
 
 -- import des utilisateurs -- 
 SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
-insert into user (id, email, name, password, status, created)
+insert into user (id, email, name, password, status, created, web)
 select w.id as id, w.user_email as email, w.display_name as name,
-'TODO' as password, 'active' as status, w.user_registered as created
+'TODO' as password, 'active' as status, w.user_registered as created, 
+user_url as web
 from wp_users AS w 
 left join user AS u ON u.id=w.id 
 WHERE u.id is null and w.user_status=0;
@@ -48,7 +49,8 @@ LEFT JOIN comment as c on c.id = w.comment_ID
 LEFT JOIN post AS p on p.id = w.comment_post_ID
 WHERE w.comment_approved = '1'
 AND c.id is NULL
-AND p.id is not null; -- certain commentaire sont sur des images. 
+AND p.id is not null; 
+-- certain commentaire sont sur des images. 
 
 -- import des tag
 SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
