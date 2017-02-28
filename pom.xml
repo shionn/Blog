@@ -158,12 +158,12 @@
 			<id>dedibox</id>
 			<properties>
 				<skip.test>true</skip.test>
-				<tomcat.path>/Blog</tomcat.path>
+				<tomcat.path>/</tomcat.path>
 				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
 				<mybatis.url>jdbc:mysql://${blog.mysql.host}:${blog.mysql.port}/${blog.mysql.db}</mybatis.url>
 				<mybatis.username>${blog.mysql.user}</mybatis.username>
 				<mybatis.password>${blog.mysql.pass}</mybatis.password>
-				<img.source>/foo/</img.source>
+				<img.source>${blog.img.folder}</img.source>
 				<auth.salt>${blog.authsaltkey}</auth.salt>
 			</properties>
 		</profile>
