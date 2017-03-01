@@ -123,6 +123,7 @@
 				<mybatis.username>${mariadb.user}</mybatis.username>
 				<mybatis.password>${mariadb.pass}</mybatis.password>
 				<img.source>/home/shionn/projects/uploads/</img.source>
+				<auth.salt>foobar</auth.salt>
 			</properties>
 		</profile>
 

@@ -24,7 +24,6 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		System.out.println("onStartup");
 		TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
 		super.onStartup(servletContext);
 	}

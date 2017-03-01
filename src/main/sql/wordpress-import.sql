@@ -9,7 +9,8 @@ user_url as web
 from wp_users AS w 
 left join user AS u ON u.id=w.id 
 WHERE u.id is null and w.user_status=0;
-update user set password='7b6d72880b2bfc4bff0f889a90a54b46361a6458' where email = 'shionn@gmail.com';
+-- azerty
+update user set password='ad16678292e6d9d19a05b74946b5a5643e3191e6436023f8bc10d5499bbc65444e87484334131d539e17b12738623cd65e378f8303f63314e8774ba71425f070' where email = 'shionn@gmail.com';
 
 -- import des category
 SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
