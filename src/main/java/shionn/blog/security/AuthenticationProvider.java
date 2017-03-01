@@ -44,7 +44,7 @@ public class AuthenticationProvider implements org.springframework.security.auth
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		User user = session.getMapper(AuthenticationDao.class).readUser((String) authentication.getPrincipal());
-		if (user != null) {
+		if (user == null) {
 			throw new BadCredentialsException("TODO msg");
 		} else if (checkPassword((UsernamePasswordAuthenticationToken) authentication, user)) {
 			authentication = new UsernamePasswordAuthenticationToken(authentication.getPrincipal(),
@@ -62,7 +62,7 @@ public class AuthenticationProvider implements org.springframework.security.auth
 	private String encodePassword(UsernamePasswordAuthenticationToken token, User user) {
 		String passphrase = new SimpleDateFormat("yyyyMMdd").format(user.getCreated()) + token.getCredentials() + salt;
 		String encoded = DigestUtils.sha512Hex(passphrase);
-		logger.info(encoded);
+		logger.debug(encoded);
 		return encoded;
 	}
 }
