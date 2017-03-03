@@ -28,6 +28,7 @@ import shionn.blog.db.dbo.User;
 @RequestScope
 public class PostAdm {
 
+	private static final String PAGE = "posts";
 	@Autowired
 	private SqlSession session;
 	@Autowired
@@ -36,8 +37,7 @@ public class PostAdm {
 	private User user;
 
 	@RequestMapping(value = "/adm/posts", method = RequestMethod.GET)
-	public ModelAndView list(
-			@RequestParam(value = "sortby", required = false) PostAdmDao.SortBy sortby,
+	public ModelAndView list(@RequestParam(value = "sortby", required = false) PostAdmDao.SortBy sortby,
 			@RequestParam(value = "type", required = false) Post.Type type,
 			@RequestParam(value = "status", required = false) Post.Status status) {
 		if (sortby != null) {
@@ -53,10 +53,10 @@ public class PostAdm {
 		if (status != null) {
 			filters.setStatus(status);
 		}
-		List<Post> posts = session.getMapper(PostAdmDao.class).list(filters.getType(),
-				filters.getStatus(), filters.getSortBy(), filters.getSortOrder());
-		return new ModelAndView("adm/post/list").addObject("posts", posts)
-				.addObject("activepage", "posts").addObject("filters", filters);
+		List<Post> posts = session.getMapper(PostAdmDao.class).list(filters.getType(), filters.getStatus(),
+				filters.getSortBy(), filters.getSortOrder());
+		return new ModelAndView("adm/post/list").addObject("posts", posts).addObject("activepage", PAGE)
+				.addObject("filters", filters);
 	}
 
 	@RequestMapping(value = "/adm/posts", method = RequestMethod.POST)
@@ -71,8 +71,7 @@ public class PostAdm {
 	@RequestMapping(value = "/adm/post/edit/{id:\\d+}", method = RequestMethod.GET)
 	public ModelAndView edit(@PathVariable("id") int id) {
 		Post post = session.getMapper(PostAdmDao.class).get(id);
-		return new ModelAndView("adm/post/edit").addObject("post", post).addObject("activepage",
-				"posts");
+		return new ModelAndView("adm/post/edit").addObject("post", post).addObject("activepage", PAGE);
 	}
 
 	@RequestMapping(value = "/adm/post/edit/{id:\\d+}", method = RequestMethod.POST)

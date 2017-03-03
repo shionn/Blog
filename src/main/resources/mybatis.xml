@@ -32,5 +32,6 @@
 		<mapper class="shionn.blog.db.dao.RssDao"/>
 
 		<mapper class="shionn.blog.db.dao.PostAdmDao"/>
+		<mapper class="shionn.blog.db.dao.CategoryAdmDao"/>
 	</mappers>
 </configuration>

@@ -12,6 +12,7 @@
 			<thead>
 				<tr>
 					<th>Id</th>
+					<th>Parent</th>
 					<th>Titre</th>
 					<th>Url</th>
 					<th>#</th>
@@ -22,6 +23,7 @@
 				<c:forEach items="${categories}" var="category">
 					<tr>
 						<td>${category.id}</td>
+						<td>${category.parent.id}</td>
 						<td>${category.title}</td>
 						<td>${category.url}</td>
 						<td>

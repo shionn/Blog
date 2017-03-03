@@ -101,6 +101,7 @@ CREATE TABLE IF NOT EXISTS `backup_post` (
   `updated` timestamp NULL,
   `title` varchar(128) CHARACTER SET utf8,
   `content` longtext,
+  category int(11) NULL,
   PRIMARY KEY (`backup_id`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

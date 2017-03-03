@@ -1,6 +1,5 @@
 package shionn.blog.db.dbo;
 
-
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
  *
@@ -10,6 +9,7 @@ package shionn.blog.db.dbo;
 public class Category {
 
 	private int id;
+	private Category parent;
 	private String title;
 	private String url;
 
@@ -36,4 +36,13 @@ public class Category {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	public Category getParent() {
+		return parent;
+	}
+
+	public void setParent(Category parent) {
+		this.parent = parent;
+	}
+
 }

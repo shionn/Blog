@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -38,17 +40,19 @@ public interface PostAdmDao {
 			@Param("sort") SortBy sort, @Param("order") SortOrder order);
 
 	@Select("SELECT * FROM post where id = #{id}")
+	@Results({ @Result(column = "category", property = "category.id") })
 	Post get(int id);
 	
 	@Insert("INSERT INTO backup_post "
-			+ "(id, url, status, type, author, published, updated, title, content) "
-			+ "SELECT id, url, status, type, author, published, updated, title, content "
+			+ "(id, url, status, type, author, published, updated, title, content, category) "
+			+ "SELECT id, url, status, type, author, published, updated, title, content, category "
 			+ "FROM post WHERE id = #{id}")
 	int backup(int id);
 
 	@Update("UPDATE post "
 			+ "SET title = #{title}, content = #{content}, url = #{url}, "
-			+ "type = #{type}, status = #{status}, published = #{published}, updated = NOW() "
+			+ "type = #{type}, status = #{status}, published = #{published}, updated = NOW(), "
+			+ "category = #{category.id} "
 			+ "WHERE id= #{id} ")
 	int save(Post post);
 

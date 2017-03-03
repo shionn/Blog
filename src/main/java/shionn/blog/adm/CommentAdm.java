@@ -12,10 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
  *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
  */
 @Controller()
-public class MenuAdm {
+public class CommentAdm {
 
-	@RequestMapping(value = "/adm/menu", method = RequestMethod.GET)
+	@RequestMapping(value = "/adm/comments", method = RequestMethod.GET)
 	public ModelAndView list() {
-		return new ModelAndView("adm/todo").addObject("activepage", "menu");
+		return new ModelAndView("adm/todo").addObject("activepage", "comments");
 	}
 }
