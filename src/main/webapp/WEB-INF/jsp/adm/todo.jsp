@@ -6,6 +6,6 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/adm"%>
 <t:template>
 	<jsp:attribute name="content">
-		<img src="<spring:url value="/img/under_construction.svg"/>" style="display: block;margin: 0 auto;">
+		<img src="<spring:url value="/static/img/under_construction.svg"/>" style="display: block;margin: 0 auto;">
 	</jsp:attribute>
 </t:template>

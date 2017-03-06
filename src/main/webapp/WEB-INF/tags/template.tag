@@ -25,7 +25,7 @@
 				G- e+++ h+ r++ y+</h2>
 		</div>
 		<nav class="main-menu">
-			<a href="#">${menu.title}</a>
+			<a href="#">Shionn::Blog()<span class="fa fa-2 fa-bars"></span></a>
 			<t:menu menu="${menu}"/>
 		</nav>
 	</header>
@@ -52,7 +52,16 @@
 	</div>
 	<footer class="footer">
 		<div class="container">
-			<span>Moteur de bog</span>
+			<span>Blog propulsé par un moteur maison en java.</span>
+			<span>
+				<a href="mailto:shionn@gmail.com" title="Contact"><i class="fa fa-envelope" aria-hidden="true"></i></a> |
+				<a href="https://github.com/shionn/Blog" target="_blank" title="Github"><i class="fa fa-github"></i></a> |
+				<a href="http://fontawesome.io/" target="_blank" title="FontAwesome"><i class="fa fa-font-awesome"></i></a> | 
+				<a href="https://spring.io/" target="_blank" title="Spring"><i class="fa fa-leaf"></i></a> | 
+				<a href="http://blog.mybatis.org/" target="_blank" title="MyBatis"><i class="fa fa-twitter"></i></a> | 
+				<a href="https://purecss.io/" target="_blank" title="PureIoCss">P<sub>css</sub></a> | 
+				<a href="http://lesscss.org/" target="_blank" title="Less">{<small>less</small>}</a>
+			</span>
 		</div>
 	</footer>
 	

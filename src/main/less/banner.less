@@ -1,11 +1,12 @@
 header .banner {
+	display: none;
 	text-align: center;
+	@media (min-width: @min-sm) {
+		display: inherit;
+	}
 	h1 {
 		font-family: @font-alternate;
-		font-size: 1.4em;
-		@media (min-width: @min-sm) {
-			font-size: 2em;
-		}
+		font-size: 2em;
 		padding:15px 0 8px;
 		a {
 			color : @text-color;
