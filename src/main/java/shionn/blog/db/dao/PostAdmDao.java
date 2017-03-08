@@ -39,8 +39,11 @@ public interface PostAdmDao {
 	List<Post> list(@Param("type") Post.Type type, @Param("status") Post.Status status,
 			@Param("sort") SortBy sort, @Param("order") SortOrder order);
 
-	@Select("SELECT * FROM post where id = #{id}")
-	@Results({ @Result(column = "category", property = "category.id") })
+	@Select("SELECT p.*, c.title AS cat_title FROM post AS p "
+			+ "LEFT JOIN category AS c ON p.category = c.id "
+			+ "WHERE p.id = #{id}")
+	@Results({ @Result(column = "category", property = "category.id"), 
+			@Result(column = "cat_title", property = "category.title") })
 	Post get(int id);
 	
 	@Insert("INSERT INTO backup_post "

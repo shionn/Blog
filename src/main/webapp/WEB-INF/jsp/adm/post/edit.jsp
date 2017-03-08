@@ -47,6 +47,7 @@
 				<div class="pure-control-group">
 					<label for="category.id">Category</label>
 					<input id="category.id" name="category.id" type="text" class="pure-input-1-4" placeholder="Category" value="${post.category.id}">
+					<span class="pure-form-message-inline">${post.category.title}</span>
 				</div>
 				<div class="pure-controls">
 					<button type="submit" class="pure-button pure-button-primary">Sauvegarder</button>

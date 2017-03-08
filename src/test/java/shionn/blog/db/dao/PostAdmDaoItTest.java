@@ -12,6 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import shionn.blog.db.SessionFactory;
 import shionn.blog.db.dao.PostAdmDao.SortBy;
 import shionn.blog.db.dao.PostAdmDao.SortOrder;
+import shionn.blog.db.dbo.Post;
 import shionn.blog.db.dbo.Post.Status;
 import shionn.blog.db.dbo.Post.Type;
 
@@ -36,6 +37,16 @@ public class PostAdmDaoItTest {
 			assertThat(session.getMapper(PostAdmDao.class).list(Type.post, Status.publish,
 					SortBy.published, SortOrder.ASC)).isNotEmpty();
 
+		}
+	}
+
+	@Test
+	public void testGet() {
+		try (SqlSession session = factory.open()) {
+			PostAdmDao dao = session.getMapper(PostAdmDao.class);
+			Post post = dao.get(2584);
+			assertThat(post).isNotNull();
+			assertThat(post.getCategory().getTitle()).isNotEmpty();
 		}
 	}
 
