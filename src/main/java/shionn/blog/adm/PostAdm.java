@@ -1,16 +1,19 @@
 package shionn.blog.adm;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -81,6 +84,12 @@ public class PostAdm {
 		session.getMapper(PostAdmDao.class).save(post);
 		session.commit();
 		return edit(id);
+	}
+
+	@RequestMapping(value = "/adm/post/cat", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<String> categoryAutoComplete(@RequestParam("term") String term) {
+		return Arrays.asList("tutu", "titi");
 	}
 
 }

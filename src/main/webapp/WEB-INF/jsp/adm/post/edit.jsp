@@ -6,6 +6,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/adm"%>
 <t:template>
 	<jsp:attribute name="scripts">
+		<script type="text/javascript" src="<spring:url value="/js/lib/jquery-ui-autocomplete-1.12.1.min.js"/>"></script>
 		<script type="text/javascript">
 			$(function(){
 				$(window).keypress(function(event) {
@@ -13,6 +14,11 @@
 					event.preventDefault();
 					$("form.post-edit").submit();
 					return false;
+				});
+				$("#categorytitle").autocomplete({
+					source: "<spring:url value="/adm/post/cat"/>",
+					dataType: "json",
+					minLength: 2
 				});
 			})
 		</script>
@@ -45,9 +51,19 @@
 					</select>
 				</div>
 				<div class="pure-control-group">
-					<label for="category.id">Category</label>
-					<input id="category.id" name="category.id" type="text" class="pure-input-1-4" placeholder="Category" value="${post.category.id}">
+					<label for="category.title">Categorie</label>
+					<input id="categorytitle" name="category.title" type="text" class="pure-input-1-4" placeholder="Category" value="${post.category.title}">
+					<input type="hidden" id="category.id" name="category.id" value="${post.category.id}">
 					<span class="pure-form-message-inline">${post.category.title}</span>
+				</div>
+				<div class="pure-control-group">
+					<label>Tags</label>
+					<a href="todo">
+						<c:forEach items="${post.tags}" var="tag" >${tag.title} </c:forEach>
+					</a>
+					<c:forEach items="${post.tags}" var="tag" >
+						<input id="post.tags.id" value="${tag.id}">
+					</c:forEach>
 				</div>
 				<div class="pure-controls">
 					<button type="submit" class="pure-button pure-button-primary">Sauvegarder</button>
