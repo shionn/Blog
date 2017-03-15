@@ -6,6 +6,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/adm"%>
 <t:template>
 	<jsp:attribute name="scripts">
+		<script type="text/javascript" src="<spring:url value="/js/modal.js"/>"></script>
 		<script type="text/javascript">
 			$(function(){
 				$(window).keypress(function(event) {
@@ -13,6 +14,9 @@
 					event.preventDefault();
 					$("form.post-edit").submit();
 					return false;
+				});
+				$("#edit-tag-button").on("click", function() {
+					$("#edit-tag-modal").modal();
 				});
 			})
 		</script>
@@ -50,6 +54,7 @@
 					<span class="pure-form-message-inline">${post.category.title}</span>
 				</div>
 				<div class="pure-controls">
+					<button id="edit-tag-button" type="button" class="pure-button pure-button-secondary">Editer les tags</button>
 					<button type="submit" class="pure-button pure-button-primary">Sauvegarder</button>
 				</div>
 			</fieldset>
@@ -114,5 +119,22 @@
 				</tr>
 			</tbody>
 		</table>
+		<div id="edit-tag-modal" class="modal" tabindex="-1" role="dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Edition des tags : ${post.title} 
+				</div>
+				<div class="modal-body">
+					<p>One fine body&hellip;</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="pure-button close">Fermer</button>
+					<button type="button" class="pure-button pure-button-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
 	</jsp:attribute>
 </t:template>

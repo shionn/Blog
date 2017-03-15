@@ -13,7 +13,9 @@ $(function() {
 			$(this).on("click", function(e) {
 				if (e.target == this) $(e.target).__modalClose();
 			});
-			
+			$(this).on("click", ".close", function(e) {
+				$(e.target).parents(".modal").__modalClose();
+			});
 			$(this).__modalOpen();
 		}
 	});
