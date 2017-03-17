@@ -50,18 +50,8 @@
 				</div>
 				<div class="pure-control-group">
 					<label for="category.title">Categorie</label>
-					<input id="categorytitle" name="category.title" type="text" class="pure-input-1-4" placeholder="Category" value="${post.category.title}">
-					<input type="hidden" id="category.id" name="category.id" value="${post.category.id}">
+					<input type="text" id="category.id" name="category.id" value="${post.category.id}">
 					<span class="pure-form-message-inline">${post.category.title}</span>
-				</div>
-				<div class="pure-control-group">
-					<label>Tags</label>
-					<a href="todo">
-						<c:forEach items="${post.tags}" var="tag" >${tag.title} </c:forEach>
-					</a>
-					<c:forEach items="${post.tags}" var="tag" >
-						<input id="post.tags.id" value="${tag.id}">
-					</c:forEach>
 				</div>
 				<div class="pure-controls">
 					<button id="edit-tag-button" type="button" class="pure-button pure-button-secondary">Editer les tags</button>
@@ -138,7 +128,19 @@
 					Edition des tags : ${post.title} 
 				</div>
 				<div class="modal-body">
-					<p>One fine body&hellip;</p>
+					<form action="" class="pure-form pure-form-stacked">
+						<fieldset>
+							<div class="pure-g">
+								<c:forEach items="${post.tags}" var="tag" >
+									<div class="pure-u-1-3">
+										<label for="type" class="pure-checkbox">
+											<input id="${tag.id}" type="checkbox">${tag.title}
+										</label>
+									</div>
+								</c:forEach>
+							</div>
+						</fieldset>
+					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="pure-button close">Fermer</button>

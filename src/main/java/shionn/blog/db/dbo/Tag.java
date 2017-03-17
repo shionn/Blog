@@ -43,4 +43,5 @@ public class Tag {
 	public void setPostCount(int postCount) {
 		this.postCount = postCount;
 	}
+
 }

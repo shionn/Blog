@@ -51,12 +51,12 @@ public interface PostAdmDao {
 			@Result(column = "id", property = "tags", many = @Many(select = "readTags", fetchType = FetchType.EAGER)) })
 	Post get(int id);
 	
-	@Select("SELECT t.id, t.title, t.url "
-			+ "FROM posttags AS p "
-			+ "LEFT JOIN tag AS t ON p.tag = t.id "
-			+ "WHERE p.post = #{post} "
+	@Select("SELECT t.id, t.title, t.url, (CASE WHEN p.post IS NULL THEN 0 ELSE 1 END) as postcount "
+			+ "FROM tag AS t "
+			+ "LEFT JOIN posttags AS p ON p.tag = t.id "
+			+ "AND (p.post = #{post} OR p.post IS NULL) "
 			+ "ORDER BY t.title")
-	List<Tag> readTags( @Param("post") int post);
+	List<Tag> readTags(@Param("post") int post);
 
 	
 	@Insert("INSERT INTO backup_post "
