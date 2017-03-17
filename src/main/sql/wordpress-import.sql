@@ -1,4 +1,5 @@
-
+-- gestion des contraintes
+SET FOREIGN_KEY_CHECKS=0;
 
 -- import des utilisateurs -- 
 SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';

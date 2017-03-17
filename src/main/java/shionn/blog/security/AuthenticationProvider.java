@@ -62,7 +62,7 @@ public class AuthenticationProvider implements org.springframework.security.auth
 	private String encodePassword(UsernamePasswordAuthenticationToken token, User user) {
 		String passphrase = new SimpleDateFormat("yyyyMMdd").format(user.getCreated()) + token.getCredentials() + salt;
 		String encoded = DigestUtils.sha512Hex(passphrase);
-		logger.debug(encoded);
+		logger.info(encoded);
 		return encoded;
 	}
 }
