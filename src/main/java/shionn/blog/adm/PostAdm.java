@@ -2,8 +2,13 @@ package shionn.blog.adm;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -84,6 +89,15 @@ public class PostAdm {
 		session.getMapper(PostAdmDao.class).save(post);
 		session.commit();
 		return edit(id);
+	}
+
+	@RequestMapping(value = "/adm/post/edit/tag/{id:\\d+}", method = RequestMethod.POST)
+	public String saveTags(@PathVariable("id") int id, HttpServletRequest request) {
+		Map<String, String[]> params = request.getParameterMap();
+		for (Entry<String, String[]> e : params.entrySet()) {
+			System.out.println(e.getKey() + "," + StringUtils.join(e.getValue(), ','));
+		}
+		return "redirect:/adm/post/edit/" + id;
 	}
 
 	@RequestMapping(value = "/adm/post/cat", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
