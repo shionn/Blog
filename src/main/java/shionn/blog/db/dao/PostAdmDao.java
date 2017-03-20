@@ -2,6 +2,7 @@ package shionn.blog.db.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Param;
@@ -51,14 +52,6 @@ public interface PostAdmDao {
 			@Result(column = "id", property = "tags", many = @Many(select = "readTags", fetchType = FetchType.EAGER)) })
 	Post get(int id);
 	
-	@Select("SELECT t.id, t.title, t.url, (CASE WHEN p.post IS NULL THEN 0 ELSE 1 END) as postcount "
-			+ "FROM tag AS t "
-			+ "LEFT JOIN posttags AS p ON p.tag = t.id "
-			+ "AND (p.post = #{post} OR p.post IS NULL) "
-			+ "ORDER BY t.title")
-	List<Tag> readTags(@Param("post") int post);
-
-	
 	@Insert("INSERT INTO backup_post "
 			+ "(id, url, status, type, author, published, updated, title, content, category) "
 			+ "SELECT id, url, status, type, author, published, updated, title, content, category "
@@ -75,5 +68,16 @@ public interface PostAdmDao {
 	@Insert("INSERT INTO post (url, status, type, author, published, updated, title, content) "
 			+ "VALUES ( #{url}, 'draft', #{type}, #{author.id}, null, NOW(), #{title}, #{content} )")
 	int create(Post post);
+
+	@Select("SELECT t.id, t.title, t.url, (CASE WHEN p.post IS NULL THEN 0 ELSE 1 END) as postcount " + "FROM tag AS t "
+			+ "LEFT JOIN posttags AS p ON p.tag = t.id " + "AND (p.post = #{post} OR p.post IS NULL) "
+			+ "ORDER BY t.title")
+	List<Tag> readTags(@Param("post") int post);
+
+	@Delete("DELETE FROM posttags WHERE post = #{post}")
+	int deleteTags(int post);
+
+	@Insert("INSERT INTO posttags (post, tag) VALUES (#{post}, #{tag})")
+	int addTag(@Param("post") int post, @Param("tag") int tag);
 
 }

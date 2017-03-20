@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -91,12 +90,19 @@ public class PostAdm {
 		return edit(id);
 	}
 
+	/**
+	 * Je cherche toujours une méthode plus élégante.
+	 */
 	@RequestMapping(value = "/adm/post/edit/tag/{id:\\d+}", method = RequestMethod.POST)
 	public String saveTags(@PathVariable("id") int id, HttpServletRequest request) {
+		session.getMapper(PostAdmDao.class).deleteTags(id);
 		Map<String, String[]> params = request.getParameterMap();
 		for (Entry<String, String[]> e : params.entrySet()) {
-			System.out.println(e.getKey() + "," + StringUtils.join(e.getValue(), ','));
+			if ("on".equalsIgnoreCase(e.getValue()[0])) {
+				session.getMapper(PostAdmDao.class).addTag(id, Integer.parseInt(e.getKey()));
+			}
 		}
+		session.commit();
 		return "redirect:/adm/post/edit/" + id;
 	}
 
