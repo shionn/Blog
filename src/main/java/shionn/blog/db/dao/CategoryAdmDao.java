@@ -24,4 +24,7 @@ public interface CategoryAdmDao {
 			+ "WHERE id = #{id}")
 	int save(Category category);
 
+	@Select("select * from category where title like #{title}")
+	List<Category> find(String title);
+
 }

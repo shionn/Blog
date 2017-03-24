@@ -7,6 +7,7 @@
 <t:template>
 	<jsp:attribute name="scripts">
 		<script type="text/javascript" src="<spring:url value="/js/modal.js"/>"></script>
+		<script type="text/javascript" src="<spring:url value="/js/lib/jquery-ui-autocomplete-1.12.1.min.js"/>"></script>
 		<script type="text/javascript">
 			$(function(){
 				$(window).keypress(function(event) {
@@ -17,6 +18,28 @@
 				});
 				$("#edit-tag-button").on("click", function() {
 					$("#edit-tag-modal").modal();
+				});
+				$( "input[name='category.title']" ).autocomplete({
+					source: function (request, response) {
+						$.ajax({
+							url : "<spring:url value='/adm/autocomplete/cat/'/>",
+							dataType : 'json',
+							data : {term: request.term},
+							contentType : 'application/json',
+							success : function(data) {
+								var link = new Array();
+								$.each(data, function() {
+									link.push({value : this.id, label : this.title});
+								});
+								response(link);
+							}
+						});
+					},
+					select : function(e, ui){
+						$("input[name='category.id']").val(ui.item.value);
+						$("input[name='category.title']").val(ui.item.label);
+						return false;
+					}
 				});
 			})
 		</script>
@@ -50,8 +73,8 @@
 				</div>
 				<div class="pure-control-group">
 					<label for="category.title">Categorie</label>
-					<input type="text" id="category.id" name="category.id" value="${post.category.id}">
-					<span class="pure-form-message-inline">${post.category.title}</span>
+					<input type="hidden" name="category.id" value="${post.category.id}">
+					<input type="text" name="category.title" value="${post.category.title}">
 				</div>
 				<div class="pure-controls">
 					<button id="edit-tag-button" type="button" class="pure-button pure-button-secondary">Editer les tags</button>

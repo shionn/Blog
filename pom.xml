@@ -14,6 +14,7 @@
 		<version.spring.security>4.2.0.RELEASE</version.spring.security>
 		<version.spring.ws>2.1.4.RELEASE</version.spring.ws>
 		<version.jstl>1.2</version.jstl>
+		<jackson.version>2.6.3</jackson.version>
 	</properties>
 
 	<build>
@@ -198,6 +199,18 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${version.jstl}</version>
+		</dependency>
+
+		<!-- Need this for json to/from object -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<!-- Persistence / MyBatis -->

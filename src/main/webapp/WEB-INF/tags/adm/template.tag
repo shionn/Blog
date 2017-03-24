@@ -10,7 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="<spring:url value="/css/pure/pure-min.css"/>" /> 
+<link rel="stylesheet" href="<spring:url value="/css/jquery-ui.structure.min.css"/>" />
 <link rel="stylesheet" href="<spring:url value="/css/generated/admin.css"/>" />
+
 </head>
 <body>
 	<div class="content pure-g">

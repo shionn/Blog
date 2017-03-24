@@ -5,9 +5,10 @@
 
 #menu {
 	background-color: #222;
-	.pure-menu-heading:hover, .pure-menu-heading:focus, a {
+	.pure-menu-heading:hover , .pure-menu-heading:focus , a {
 		color: #999;
 	}
+
 	.pure-menu-selected {
 		background: #28d;
 		a {
@@ -17,10 +18,10 @@
 }
 
 #content {
-	padding:15px;
+	padding: 15px;
 	table a {
-		text-decoration : inherit;
-		color : inherit;
+		text-decoration: inherit;
+		color: inherit;
 	}
 }
 
@@ -30,8 +31,11 @@
 	}
 }
 
-//@import "bootstrap/modals.less";
+.ui-menu.ui-autocomplete {
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
 @import "modal.less";
-
 @import "fontawesome/font-awesome.less";
-
