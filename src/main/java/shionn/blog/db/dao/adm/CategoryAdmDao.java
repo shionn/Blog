@@ -1,4 +1,4 @@
-package shionn.blog.db.dao;
+package shionn.blog.db.dao.adm;
 
 import java.util.List;
 

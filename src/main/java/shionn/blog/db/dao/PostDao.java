@@ -10,12 +10,9 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.FetchType;
 
-import shionn.blog.db.dao.frag.LastCommentDao;
-import shionn.blog.db.dao.frag.MenuDao;
-import shionn.blog.db.dao.frag.TagCloodDao;
+import shionn.blog.db.dao.frag.ContentDao;
 import shionn.blog.db.dbo.Comment;
 import shionn.blog.db.dbo.Post;
-import shionn.blog.db.dbo.Tag;
 import shionn.blog.db.dbo.User;
 
 /**
@@ -24,7 +21,7 @@ import shionn.blog.db.dbo.User;
  * @author <b>Shionn</b>, shionn@gmail.com <i>http://shionn.org</i><br>
  *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
  */
-public interface PostDao extends LastCommentDao, MenuDao, TagCloodDao {
+public interface PostDao extends ContentDao {
 
 	@Select("SELECT p.id, p.url, p.title, p.published, p.updated, p.content, "
 			+ "u.name as author_name, count(c.id) AS comment_count, "
@@ -44,13 +41,6 @@ public interface PostDao extends LastCommentDao, MenuDao, TagCloodDao {
 			@Result(column = "id", property = "comments", many = @Many(select = "readComments", fetchType = FetchType.EAGER)), })
 	Post readPost(String url);
 
-	@Select("SELECT t.title, t.url "
-			+ "FROM posttags AS p "
-			+ "LEFT JOIN tag AS t ON p.tag = t.id "
-			+ "WHERE p.post = #{post} "
-			+ "ORDER BY t.title")
-	List<Tag> readTags(@Param("post") int post);
-	
 	@Select("SELECT IFNULL(u.name, c.author_name) AS author_name, "
 			+ "c.author_email, c.author_web, c.date, c.content "
 			+ "FROM comment AS c "

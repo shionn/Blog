@@ -5,13 +5,15 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import shionn.blog.content.formatter.ContentFormater;
-import shionn.blog.db.dao.HomeDao;
+import shionn.blog.db.dao.CategoryDao;
+import shionn.blog.db.dbo.Category;
 import shionn.blog.db.dbo.Post;
 
 /**
@@ -22,24 +24,37 @@ import shionn.blog.db.dbo.Post;
  */
 @Controller()
 @RequestScope
-public class HomeController {
+public class CategoryController {
 
 	@Autowired
 	private SqlSession session;
 	@Autowired
 	private ContentFormater contentFormatter;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home() {
-		HomeDao dao = session.getMapper(HomeDao.class);
-		List<Post> posts = dao.readPosts();
+	@RequestMapping(value = "/category/{url:.*}", method = RequestMethod.GET)
+	public ModelAndView category(@PathVariable("url") String url) {
+		CategoryDao dao = session.getMapper(CategoryDao.class);
+		Category category = dao.readCategory(url);
+		if (category.getId() == 0) {
+			return new ModelAndView("redirect:/");
+		}
+		List<Post> posts = dao.readPosts(url);
 		for (Post post : posts) {
 			post.setContent(contentFormatter.shortPost(post.getContent()));
 		}
-		return new ModelAndView("home").addObject("posts", posts)
-				.addObject("menu", dao.readMenu(0).current("/"))
+		return new ModelAndView("category").addObject("posts", posts)
+				.addObject("menu", dao.readMenu(0).current("/category/" + url))
+				.addObject("category", category)
 				.addObject("cloodtags", dao.readCloodTags())
 				.addObject("lastcomments", dao.readLastComments());
 	}
 
+	/**
+	 * Redirection des anciennes url de wordpress
+	 */
+	@RequestMapping(value = { "/category/{p1}/{url}", "/category/{p1}/{p2}/{url}",
+			"/category/{p1}/{p2}/{p3}/{url}" }, method = RequestMethod.GET)
+	public String old(@PathVariable("url") String url) {
+		return "redirect:/category/" + url;
+	}
 }

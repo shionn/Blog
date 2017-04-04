@@ -10,8 +10,9 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import shionn.blog.db.SessionFactory;
-import shionn.blog.db.dao.PostAdmDao.SortBy;
-import shionn.blog.db.dao.PostAdmDao.SortOrder;
+import shionn.blog.db.dao.adm.PostAdmDao;
+import shionn.blog.db.dao.adm.PostAdmDao.SortBy;
+import shionn.blog.db.dao.adm.PostAdmDao.SortOrder;
 import shionn.blog.db.dbo.Post;
 import shionn.blog.db.dbo.Post.Status;
 import shionn.blog.db.dbo.Post.Type;

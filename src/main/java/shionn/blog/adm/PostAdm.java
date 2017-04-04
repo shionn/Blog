@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
-import shionn.blog.db.dao.PostAdmDao;
+import shionn.blog.db.dao.adm.PostAdmDao;
 import shionn.blog.db.dbo.Post;
 import shionn.blog.db.dbo.User;
 

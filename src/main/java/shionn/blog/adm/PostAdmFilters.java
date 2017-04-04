@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-import shionn.blog.db.dao.PostAdmDao;
+import shionn.blog.db.dao.adm.PostAdmDao;
 import shionn.blog.db.dbo.Post;
 
 /**

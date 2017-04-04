@@ -5,8 +5,9 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <%@ taglib tagdir="/WEB-INF/tags/frag" prefix="f"%>
 <t:template>
-	<jsp:attribute name="title">Shionn::blog() - Be a geeK</jsp:attribute>
+	<jsp:attribute name="title">${category.title}</jsp:attribute>
 	<jsp:attribute name="content">
+		<article class="category"><h1>${category.title}</h1></article>
 		<c:forEach items="${posts}" var="post">
 			<f:articleshort post="${post}"/>
 		</c:forEach>

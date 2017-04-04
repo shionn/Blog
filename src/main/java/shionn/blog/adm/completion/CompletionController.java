@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.RequestScope;
 
-import shionn.blog.db.dao.CategoryAdmDao;
+import shionn.blog.db.dao.adm.CategoryAdmDao;
 import shionn.blog.db.dbo.Category;
 
 @RestController

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
-import shionn.blog.db.dao.CategoryAdmDao;
+import shionn.blog.db.dao.adm.CategoryAdmDao;
 import shionn.blog.db.dbo.Category;
 
 @Controller()

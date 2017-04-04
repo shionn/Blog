@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.FetchType;
 
 import shionn.blog.db.dao.frag.ContentDao;
+import shionn.blog.db.dbo.Category;
 import shionn.blog.db.dbo.Post;
 
 /**
@@ -17,7 +18,7 @@ import shionn.blog.db.dbo.Post;
  * @author <b>Shionn</b>, shionn@gmail.com <i>http://shionn.org</i><br>
  *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
  */
-public interface HomeDao extends ContentDao {
+public interface CategoryDao extends ContentDao {
 
 	@Select("SELECT p.id, p.url, p.title, p.published, p.content, "
 			+ "u.name, count(c.id) AS comment_count, "
@@ -29,6 +30,7 @@ public interface HomeDao extends ContentDao {
 			+ "WHERE p.type = 'post' "
 			+ "AND p.status = 'publish' "
 			+ "AND p.published < NOW() "
+			+ "AND cat.url = #{url} "
 			+ "GROUP BY p.id "
 			+ "ORDER BY p.published DESC "
 			+ "LIMIT 5")
@@ -38,6 +40,9 @@ public interface HomeDao extends ContentDao {
 			@Result(column = "cat_title", property = "category.title"),
 			@Result(column = "cat_url", property = "category.url"),
 			@Result(column = "id", property = "tags", many = @Many(select = "readTags", fetchType = FetchType.EAGER)) })
-	public List<Post> readPosts();
+	public List<Post> readPosts(String url);
+
+	@Select("SELECT * FROM category WHERE url = #{url} ")
+	public Category readCategory(String url);
 	
 }

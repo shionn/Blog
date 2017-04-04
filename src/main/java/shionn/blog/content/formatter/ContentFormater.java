@@ -33,7 +33,7 @@ public class ContentFormater implements AttributeProviderFactory, AttributeProvi
 	@Value("#{servletContext.contextPath}")
 	private String servletContextPath;
 
-	public String homePost(String content) {
+	public String shortPost(String content) {
 		Node nodes = homeParser.parse(content);
 		return renderer.render(nodes);
 	}

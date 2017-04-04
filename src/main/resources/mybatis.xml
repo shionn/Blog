@@ -27,11 +27,12 @@
 	<mappers>
 		<mapper class="shionn.blog.db.dao.AuthenticationDao"/>
 
+		<mapper class="shionn.blog.db.dao.CategoryDao"/>
 		<mapper class="shionn.blog.db.dao.HomeDao"/>
 		<mapper class="shionn.blog.db.dao.PostDao"/>
 		<mapper class="shionn.blog.db.dao.RssDao"/>
 
-		<mapper class="shionn.blog.db.dao.PostAdmDao"/>
-		<mapper class="shionn.blog.db.dao.CategoryAdmDao"/>
+		<mapper class="shionn.blog.db.dao.adm.PostAdmDao"/>
+		<mapper class="shionn.blog.db.dao.adm.CategoryAdmDao"/>
 	</mappers>
 </configuration>
