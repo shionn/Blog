@@ -36,11 +36,14 @@ CREATE TABLE IF NOT EXISTS `post` (
   title varchar(128) CHARACTER SET utf8 NOT NULL,
   content longtext NOT NULL,
   category int(11) NULL,
+  logo varchar(64) CHARACTER SET utf8 NULL,
   PRIMARY KEY (id),
   UNIQUE KEY url (url, `type`),
   CONSTRAINT wtrite_by FOREIGN KEY (author) REFERENCES `user` (id),
   CONSTRAINT into_category FOREIGN KEY (category) REFERENCES category (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+ALTER TABLE `post` ADD `logo` VARCHAR(64) NULL ;
 
 -- COMMENT
 CREATE TABLE IF NOT EXISTS `comment` (
@@ -102,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `backup_post` (
   `title` varchar(128) CHARACTER SET utf8,
   `content` longtext,
   category int(11) NULL,
+  logo varchar(64) CHARACTER SET utf8 NULL,
   PRIMARY KEY (`backup_id`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

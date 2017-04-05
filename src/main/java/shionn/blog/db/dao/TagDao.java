@@ -20,7 +20,7 @@ import shionn.blog.db.dbo.Tag;
  */
 public interface TagDao extends ContentDao {
 
-	@Select("SELECT p.id, p.url, p.title, p.published, p.content, "
+	@Select("SELECT p.id, p.url, p.title, p.published, p.content, p.logo, "
 			+ "u.name, count(c.id) AS comment_count, "
 			+ "cat.url AS cat_url, cat.title AS cat_title "
 			+ "FROM post AS p "

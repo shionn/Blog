@@ -28,6 +28,7 @@ public class Post {
 	private List<Tag> tags;
 	private int commentCount;
 	private List<Comment> comments;
+	private String logo;
 
 	public enum Status {
 		publish, draft
@@ -139,6 +140,14 @@ public class Post {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
 }

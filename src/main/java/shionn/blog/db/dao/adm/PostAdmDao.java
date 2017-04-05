@@ -53,15 +53,15 @@ public interface PostAdmDao {
 	Post get(int id);
 	
 	@Insert("INSERT INTO backup_post "
-			+ "(id, url, status, type, author, published, updated, title, content, category) "
-			+ "SELECT id, url, status, type, author, published, updated, title, content, category "
+			+ "(id, url, status, type, author, published, updated, title, content, category, logo) "
+			+ "SELECT id, url, status, type, author, published, updated, title, content, category, logo "
 			+ "FROM post WHERE id = #{id}")
 	int backup(int id);
 
 	@Update("UPDATE post "
 			+ "SET title = #{title}, content = #{content}, url = #{url}, "
 			+ "type = #{type}, status = #{status}, published = #{published}, updated = NOW(), "
-			+ "category = #{category.id} "
+			+ "category = #{category.id}, logo = #{logo} "
 			+ "WHERE id= #{id} ")
 	int save(Post post);
 

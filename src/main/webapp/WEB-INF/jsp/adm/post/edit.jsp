@@ -41,6 +41,22 @@
 						return false;
 					}
 				});
+				$( "input[name='logo']" ).autocomplete({
+					source: function (request, response) {
+						$.ajax({
+							url : "<spring:url value='/adm/autocomplete/img/'/>",
+							dataType : 'json',
+							data : {term: request.term},
+							contentType : 'application/json',
+							success : response
+						});
+					},
+					select : function(e, ui){
+						$("input[name='logo']").val(ui.item.value);
+						$("img[name='logo']").attr("src", '<spring:url value="/img/"/>' + ui.item.value);
+						return false;
+					}
+				});
 			})
 		</script>
 	</jsp:attribute>
@@ -75,6 +91,11 @@
 					<label for="category.title">Categorie</label>
 					<input type="hidden" name="category.id" value="${post.category.id}">
 					<input type="text" name="category.title" value="${post.category.title}">
+				</div>
+				<div class="pure-control-group">
+					<label for="logo">Image titre</label>
+					<input type="text" name="logo" value="${post.logo}">
+					<img name="logo" src='<spring:url value="/img/${logo}"/>'>
 				</div>
 				<div class="pure-controls">
 					<button id="edit-tag-button" type="button" class="pure-button pure-button-secondary">Editer les tags</button>
