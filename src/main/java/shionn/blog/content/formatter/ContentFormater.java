@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.commonmark.node.FencedCodeBlock;
 import org.commonmark.node.Image;
+import org.commonmark.node.Link;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.parser.PostProcessor;
@@ -66,6 +67,11 @@ public class ContentFormater implements AttributeProviderFactory, AttributeProvi
 			if (src.startsWith("/")) {
 				src = servletContextPath + StringUtils.prependIfMissing(src, "/img");
 				attributes.put("src", src);
+			}
+		} else if (node instanceof Link) {
+			String src = ((Link) node).getDestination();
+			if (src.startsWith("http")) {
+				attributes.put("target", "_blank");
 			}
 		}
 	}

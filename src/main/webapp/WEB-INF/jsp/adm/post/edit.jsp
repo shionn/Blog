@@ -57,12 +57,17 @@
 						return false;
 					}
 				});
+				$("button[name=help]").on("click", function(){
+					$("form.post-edit").toggleClass("pure-u-4-5");
+					$("div.help").toggle();
+					return false;
+				});
 			})
 		</script>
 	</jsp:attribute>
 	<jsp:attribute name="content">
 		<form:form class="pure-form pure-form-aligned post-edit" method="post">
-			<legend>Edition de ${post.id}</legend>
+			<legend>Edition de ${post.id} <button name="help" class="pure-button pure-button-secondary">Aide</button></legend>
 			<fieldset class="pure-group">
 				<input id="title" name="title" type="text" class="pure-input-1" placeholder="Title" value="${post.title}">
 				<textarea class="pure-input-1" placeholder="Contenu" rows="30" name="content">${post.content}</textarea>
@@ -95,7 +100,7 @@
 				<div class="pure-control-group">
 					<label for="logo">Image titre</label>
 					<input type="text" name="logo" value="${post.logo}">
-					<img name="logo" src='<spring:url value="/img/${logo}"/>'>
+					<img name="logo" class="pure-u-1-2" src='<spring:url value="/img/${post.logo}"/>'>
 				</div>
 				<div class="pure-controls">
 					<button id="edit-tag-button" type="button" class="pure-button pure-button-secondary">Editer les tags</button>
@@ -103,66 +108,25 @@
 				</div>
 			</fieldset>
 		</form:form>
-		TODO : liste des sauvegarde
-		<table>
-			<tbody>
-				<tr>
-					<td>*Italic*</td>
-					<td>_Italic_</td>
-					<td><em>Italic</em></td>
-				</tr>
-				<tr>
-					<td>**Bold**</td>
-					<td>__Bold__</td>
-					<td><strong>Bold</strong></td>
-				</tr>
-				<tr>
-					<td># Heading 1</td>
-					<td>Heading 1<br>=========</td>
-					<td><h1>Heading 1</h1></td>
-				</tr>
-				<tr>
-					<td>## Heading 2</td>
-					<td>Heading 2<br>---------</td>
-					<td><h2>Heading 2</h2></td>
-				</tr>
-				<tr>
-					<td>[link](/uri "title")</td>
-					<td></td>
-					<td><a href="/uri" title="title">link</a></td>
-				</tr>
-				<tr>
-					<td>![alt](img/foo.png "title")</td>
-					<td></td>
-					<td><img src="img/foo.png" alt="alt" title="title"></td>
-				</tr>
-				<tr>
-					<td>* List<br>* List<br>* List</td>
-					<td>- List<br>- List<br>- List</td>
-					<td><ul><li>List</li><li>List</li><li>List</li></ul></td>
-				</tr>
-				<tr>
-					<td>1. One<br>2. Two<br>3. Three</td>
-					<td>1) One<br>2) Two<br>3) Three</td>
-					<td><ol><li>One</li><li>Two</li><li>Three</li></ol></td>
-				</tr>
-				<tr>
-					<td>---</td>
-					<td>***</td>
-					<td><hr></td>
-				</tr>
-				<tr>
-					<td>`Inline code` with backticks</td>
-					<td>&nbsp;</td>
-					<td><code>Inline code</code> with backticks</td>
-				</tr>
-				<tr>
-					<td>```<br>Multi-line code block<br>```</td>
-					<td>~~~java<br>Multi-line code block<br>~~~</td>
-					<td><pre><code>Multi-line code block</code></pre></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="pure-u-1-5 help pure-menu">
+			<ul class="pure-menu-list">
+				<li class="pure-menu-item"><a class="pure-menu-link">*Italic*</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">_Italic_</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">**Bold**</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">__Bold__</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link"># Heading 1</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">## Heading 2</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">[link](/uri "title")</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">![alt](img/foo.png "title")</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">* List</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">- List</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">1. List</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">1) List</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">--- (hr)</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">`Inline code`</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link">~~~java</a></li>
+			</ul>
+		</div>
 		<div id="edit-tag-modal" class="modal" tabindex="-1" role="dialog">
 			<spring:url value="/adm/post/edit/tag/${post.id}" var="edittagurl"/>
 			<form:form action="${edittagurl}" class="pure-form pure-form-stacked" method="post" >
