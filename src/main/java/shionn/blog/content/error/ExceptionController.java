@@ -1,6 +1,7 @@
 package shionn.blog.content.error;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,11 +20,15 @@ import shionn.blog.db.dao.HomeDao;
 public class ExceptionController {
 
 	@Autowired
+	private Logger logger;
+
+	@Autowired
 	private SqlSession session;
 
 	@ExceptionHandler({ NoHandlerFoundException.class, PostNotFoundExcpetion.class })
 	public ModelAndView handleNoHandlerFoundException(Exception e) {
 		HomeDao dao = session.getMapper(HomeDao.class);
+		logger.warn("Redirect to 404", e);
 		return new ModelAndView("404")
 				.addObject("menu", dao.readMenu(0))
 				.addObject("cloodtags", dao.readCloodTags())

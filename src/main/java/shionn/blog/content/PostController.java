@@ -66,4 +66,10 @@ public class PostController {
 		session.commit();
 		return get(url);
 	}
+
+	@RequestMapping(value = "/page/{url}", method = RequestMethod.GET)
+	public String redirectOldPage(@PathVariable("url") String url) {
+		return "redirect:/" + url;
+	}
+
 }

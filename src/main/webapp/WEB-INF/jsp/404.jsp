@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <t:template>
-	<jsp:attribute name="title">Shionn::blog() - Be a geeK -- 404</jsp:attribute>
+	<jsp:attribute name="title">Shionn::blog() - Be a geeK - 404</jsp:attribute>
 	<jsp:attribute name="content">
 		<div class="e404">
 			<p><em>Mince alors !</em> Cette page n'existe pas (ou plus).</p>
