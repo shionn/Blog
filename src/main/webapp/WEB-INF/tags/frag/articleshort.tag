@@ -5,7 +5,7 @@
 <%@ attribute name="post" type="shionn.blog.db.dbo.Post" %>
 <article>
 	<header>
-		<c:if test="${post.logo != null}">
+		<c:if test="${not empty post.logo}">
 			<img src="<spring:url value="/img/${post.logo}"/>" />
 		</c:if>
 		<h1><a href="<spring:url value="/${post.url}"/>">${post.title}</a></h1>

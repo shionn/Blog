@@ -67,6 +67,7 @@ public class PostAdm {
 	public ModelAndView create(@ModelAttribute Post post) {
 		post.setUrl(Pattern.compile("[^a-zA-Z]").matcher(post.getTitle()).replaceAll("-"));
 		post.setAuthor(user);
+		post.setContent("");
 		session.getMapper(PostAdmDao.class).create(post);
 		session.commit();
 		return list(null, null, Post.Status.draft);

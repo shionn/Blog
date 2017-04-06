@@ -4,7 +4,7 @@
 
 	<groupId>shionn</groupId>
 	<artifactId>Blog</artifactId>
-	<version>0.3</version>
+	<version>0.4</version>
 	<name>Blog</name>
 	<packaging>war</packaging>
 
@@ -120,7 +120,7 @@
 			<properties>
 				<skip.test>false</skip.test>
 				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
-				<mybatis.url>jdbc:mysql://${mariadb.host}:3306/blog?serverTimezone=GMT</mybatis.url>
+				<mybatis.url>jdbc:mysql://${mariadb.host}:3306/blog?serverTimezone=Europe/Paris</mybatis.url>
 				<mybatis.username>${mariadb.user}</mybatis.username>
 				<mybatis.password>${mariadb.pass}</mybatis.password>
 				<img.source>/home/shionn/projects/uploads/</img.source>
@@ -147,7 +147,7 @@
 				<skip.test>true</skip.test>
 				<tomcat.path>/</tomcat.path>
 				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
-				<mybatis.url>jdbc:mysql://${blog.mysql.host}:${blog.mysql.port}/${blog.mysql.db}</mybatis.url>
+				<mybatis.url>jdbc:mysql://${blog.mysql.host}:${blog.mysql.port}/${blog.mysql.db}?serverTimezone=Europe/Paris</mybatis.url>
 				<mybatis.username>${blog.mysql.user}</mybatis.username>
 				<mybatis.password>${blog.mysql.pass}</mybatis.password>
 				<img.source>${blog.img.folder}</img.source>
