@@ -1,8 +1,11 @@
 package shionn.blog.content;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +37,9 @@ public class PostController {
 	private ContentFormater contentFormatter;
 	@Autowired
 	private User user;
+	@Autowired
+	@Value("${comment.forbidden.ips}")
+	private String forbiddenIps;
 
 	@RequestMapping(value = "/{url}", method = RequestMethod.GET)
 	public ModelAndView get(@PathVariable("url") String url) {
@@ -60,11 +66,19 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/{url}/comment", method = RequestMethod.POST)
-	public ModelAndView postComment(@PathVariable("url") String url, @ModelAttribute Comment comment) {
+	public String postComment(@PathVariable("url") String url, @ModelAttribute Comment comment,
+			HttpServletRequest request) {
+		comment.setIp(request.getRemoteAddr());
 		PostDao dao = session.getMapper(PostDao.class);
 		dao.saveComment(comment, url, user);
-		session.commit();
-		return get(url);
+		if (!isForbidden(comment.getIp())) {
+			session.commit();
+		}
+		return "redirect:/" + url + "#lastcomment";
+	}
+
+	private boolean isForbidden(String ip) {
+		return forbiddenIps.contains(ip);
 	}
 
 	@RequestMapping(value = "/page/{url}", method = RequestMethod.GET)

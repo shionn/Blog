@@ -2,6 +2,8 @@ package shionn.blog.db.dbo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
  *
@@ -10,13 +12,16 @@ import java.util.Date;
  */
 public class Comment {
 
+	private int id;
 	private String authorName;
 	private String authorEmail;
 	private String authorWeb;
 	private String content;
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date date;
 	private Post post;
 	private String gravatar;
+	private String ip;
 
 	public String getAuthorName() {
 		return authorName;
@@ -72,6 +77,22 @@ public class Comment {
 
 	public String getGravatar() {
 		return gravatar;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

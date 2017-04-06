@@ -57,7 +57,7 @@ public interface PostDao extends ContentDao {
 			+ "#{comment.authorWeb},"
 			+ "NOW(),"
 			+ "#{comment.content},"
-			+ "'azerty' )</script>")
+			+ "#{comment.ip} )</script>")
 	void saveComment(@Param("comment") Comment comment, @Param("url") String url,
 			@Param("user") User user);
 

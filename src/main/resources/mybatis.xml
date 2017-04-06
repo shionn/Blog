@@ -34,6 +34,7 @@
 		<mapper class="shionn.blog.db.dao.TagDao"/>
 
 		<mapper class="shionn.blog.db.dao.adm.CategoryAdmDao"/>
+		<mapper class="shionn.blog.db.dao.adm.CommentAdmDao"/>
 		<mapper class="shionn.blog.db.dao.adm.PostAdmDao"/>
 	</mappers>
 </configuration>
