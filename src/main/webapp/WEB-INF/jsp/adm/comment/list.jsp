@@ -40,8 +40,7 @@
 					</tr>
 					<tr>
 						<td colspan="3">
-							<a href="<spring:url value="/adm/comment/edit/${comment.id}"/>" 
-									title="${comment.content}">
+							<a href="<spring:url value="/adm/comment/edit/${comment.id}"/>">
 								${fn:substring(comment.content, 0, 150)}</a>
 						</td>
 					</tr>
