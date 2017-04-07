@@ -84,7 +84,22 @@ article {
 			padding: 0 3em;
 		}
 	}
+	
+	&.short {
+		footer:after {
+			content: '';
+			width: 90%;
+			position: relative;
+			bottom: -.8em;
+			left: 5%;
+			border-color: @theme-dark;
+			border-bottom-style: dashed;
+			border-bottom-width: 1px;
+			display: block;
+		}
+	}
 }
+
 
 section.comments {
 	ul {

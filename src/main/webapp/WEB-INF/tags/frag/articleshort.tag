@@ -3,7 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/frag" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ attribute name="post" type="shionn.blog.db.dbo.Post" %>
-<article>
+<article class="short">
 	<header>
 		<c:if test="${not empty post.logo}">
 			<img src="<spring:url value="/img/${post.logo}"/>" />
