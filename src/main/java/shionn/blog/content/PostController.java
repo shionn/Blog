@@ -73,7 +73,7 @@ public class PostController {
 		comment.setIp(request.getRemoteAddr());
 		PostDao dao = session.getMapper(PostDao.class);
 		dao.saveComment(comment, url, user);
-		if (!isForbidden(comment.getIp()) || comment.getContent().contains("http://")) {
+		if (!isForbidden(comment)) {
 			session.commit();
 		}
 		return "redirect:/" + url + "#lastcomment";
@@ -85,8 +85,8 @@ public class PostController {
 		return contentFormatter.comment(comment);
 	}
 
-	private boolean isForbidden(String ip) {
-		return forbiddenIps.contains(ip);
+	private boolean isForbidden(Comment comment) {
+		return forbiddenIps.contains(comment.getIp()) || comment.getContent().contains("http://");
 	}
 
 	@RequestMapping(value = "/page/{url}", method = RequestMethod.GET)
