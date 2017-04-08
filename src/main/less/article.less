@@ -1,3 +1,5 @@
+@import "variables.less";
+
 article {
 	margin-top: 3em;
 	&.category, &.tag {
@@ -176,9 +178,11 @@ section.comments {
 	form {
 		background-color : @theme-grey;
 		p {
-			text-align: center;
 			padding: 0;
 			margin: 0;
+			&.legend {
+				text-align: center;
+			}
 			&.title {
 				font-family: @font-alternate;
 			}
@@ -188,6 +192,12 @@ section.comments {
 		}
 		fieldset p {
 			font-size : 0.8em;
+		}
+		div.preview > div {
+			border: @theme-dark 1px solid;
+			border-radius: 3px;
+			margin: 8px 0;
+			padding: 5px;	
 		}
 	}
 	

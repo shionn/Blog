@@ -68,11 +68,42 @@
 				<fieldset>
 					<label for="content">Commentaire</label>
 					<textarea name="content"></textarea>
-					<p>Vous pouvez utilisez du <a href="">markdown</a> pour la mise en forme<br>
+					<p class="legend">Vous pouvez utilisez du <a href="http://http://commonmark.org" target="_blank">markdown</a> pour la mise en forme<br>
 				</fieldset>
-				<p><em>Votre adresse de messagerie ne sera pas publiée.</em></p>
-				<input type="submit" value="Valider">
+				<p class="legend"><em>Votre adresse de messagerie ne sera pas publiée.</em></p>
+				<input type="button" value="Prévisualisation" name="preview"> 
+				<div class="preview hidden">
+					<div></div>
+					<input type="submit" value="Valider">
+				</div>
 			</form:form>
 		</section>
+	</jsp:attribute>
+	<jsp:attribute name="scripts">
+		<script type="text/javascript">
+		$(function() {
+			$("body").on("click", "form input[name=preview]", function(e){
+				e.preventDefault();
+				$.ajax({
+					url : "<spring:url value="/${post.url}/preview"/>",
+					type : 'get',
+					dataType : 'html', 
+					headers : {
+						"${_csrf.headerName}" : "${_csrf.token}",
+						"content" : $(e.target).closest("form").find("textarea").val()
+					},
+					success : function(html){
+						$(e.target).closest("form").find("div.preview div").html(html);
+						$(e.target).closest("form").find("div.preview").removeClass("hidden");
+					
+					}
+				});
+				return false;
+			});
+			$("body").on("keyup", "form textarea", function(e){
+				$(e.target).closest("form").find("div.preview").addClass("hidden");
+			});
+		})
+		</script>
 	</jsp:attribute>
 </t:template>
