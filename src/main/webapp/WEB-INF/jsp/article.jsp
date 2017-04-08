@@ -71,6 +71,7 @@
 					<p class="legend">Vous pouvez utilisez du <a href="http://http://commonmark.org" target="_blank">markdown</a> pour la mise en forme<br>
 				</fieldset>
 				<p class="legend"><em>Votre adresse de messagerie ne sera pas publiée.</em></p>
+				<p class="legend"><em>Temporairement, pour lutter contre les bots, il n'est pas permis de mettre <strong>http://</strong> dans le commentaire.</em></p>
 				<input type="button" value="Prévisualisation" name="preview"> 
 				<div class="preview hidden">
 					<div></div>

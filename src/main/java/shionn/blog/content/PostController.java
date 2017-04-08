@@ -73,7 +73,7 @@ public class PostController {
 		comment.setIp(request.getRemoteAddr());
 		PostDao dao = session.getMapper(PostDao.class);
 		dao.saveComment(comment, url, user);
-		if (!isForbidden(comment.getIp())) {
+		if (!isForbidden(comment.getIp()) || comment.getContent().contains("http://")) {
 			session.commit();
 		}
 		return "redirect:/" + url + "#lastcomment";
