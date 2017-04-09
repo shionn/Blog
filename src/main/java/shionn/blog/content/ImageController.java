@@ -37,4 +37,13 @@ public class ImageController {
 		} 
 	}
 
+	@ResponseBody
+	@RequestMapping(path = { "wp-content/uploads/{img:.*}.bmp", "img/{img:.*}.bmp" }, method = RequestMethod.GET, produces = "image/bmp")
+	public byte[] bmp(@PathVariable("img") String imgName) throws IOException {
+		try (FileInputStream is = new FileInputStream(new File(imgSourceFolder + imgName + ".bmp"))) {
+			return IOUtils.toByteArray(is);
+		} 
+	}
+
+
 }
