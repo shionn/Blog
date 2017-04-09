@@ -86,7 +86,8 @@ public class PostController {
 	}
 
 	private boolean isForbidden(Comment comment) {
-		return forbiddenIps.contains(comment.getIp()) || comment.getContent().contains("http://");
+		return forbiddenIps.contains(comment.getIp()) || comment.getContent().contains("http://")
+				|| comment.getContent().contains("https://");
 	}
 
 	@RequestMapping(value = "/page/{url}", method = RequestMethod.GET)
