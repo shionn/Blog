@@ -74,16 +74,24 @@ article {
 		.date , .category , .tags {
 			padding: 0 3em;
 			color: @theme-color;
+			@media (max-width: @max-xs){
+				display: block;
+			}
 		}
 	}
 
 	footer {
 		.author {
-			padding-left: 3em;
+			@media (min-width: @min-sm){
+				padding-left: 3em;
+			}
 		}
 
 		a {
 			padding: 0 3em;
+			@media (max-width: @max-xs){
+				display: block;
+			}
 		}
 	}
 	
