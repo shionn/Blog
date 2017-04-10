@@ -24,7 +24,7 @@
 			<h2>GCS/O d- s+:+ a C++ UL P L+++ E--- W++ N K- w--- M- PS PE-- Y- PGP- t+ 5 X R+ !tv b+ D+
 				G- e+++ h+ r++ y+</h2>
 		</div>
-		<nav class="main-menu">
+		<nav class="main-menu" role="navigation">
 			<a href="#">Shionn::Blog()<span class="fa fa-2 fa-bars"></span></a>
 			<t:menu menu="${menu}"/>
 		</nav>
@@ -35,7 +35,7 @@
 		</div>
 		<div class="side">
 			<div class="lastcomment">
-				<h1><span class="fa fa-comments"></span> Commentaires récents</h1>
+				<h1><span class="fa fa-comments"></span> Commentaires rÃ©cents</h1>
 				<ul>
 					<c:forEach items="${lastcomments}" var="comment">
 						<li>${comment.authorName} dans <a href="<spring:url value="${comment.post.url}#comments"/>">${comment.post.title}</a></li>
@@ -52,7 +52,7 @@
 	</div>
 	<footer class="footer">
 		<div class="container">
-			<span>Blog propulsé par un moteur maison en java.</span>
+			<span>Blog propulsÃ© par un moteur maison en java.</span>
 			<span>
 				<a href="mailto:shionn@gmail.com" title="Contact"><i class="fa fa-envelope" aria-hidden="true"></i></a> |
 				<a href="https://github.com/shionn/Blog" target="_blank" title="Github"><i class="fa fa-github"></i></a> |
