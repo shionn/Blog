@@ -1,3 +1,4 @@
+<%@ tag pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ attribute name="content" fragment="true"%>
@@ -36,7 +37,7 @@
 						<a href="<spring:url value="/"/>" class="pure-menu-link">Blog</a>
 					</li>
 					<li class="pure-menu-item">
-						<a href="<spring:url value="/logout"/>" class="pure-menu-link">Déconnexion</a>
+						<a href="<spring:url value="/logout"/>" class="pure-menu-link">DÃ©connexion</a>
 					</li>
 				</ul>
 			</div>

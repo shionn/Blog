@@ -10,6 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<version.spring>4.3.2.RELEASE</version.spring>
 		<version.spring.security>4.2.0.RELEASE</version.spring.security>
 		<version.spring.ws>2.1.4.RELEASE</version.spring.ws>
