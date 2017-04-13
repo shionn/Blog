@@ -87,16 +87,21 @@
 				e.preventDefault();
 				$.ajax({
 					url : "<spring:url value="/${post.url}/preview"/>",
-					type : 'get',
+					type : 'post',
 					dataType : 'html', 
 					headers : {
-						"${_csrf.headerName}" : "${_csrf.token}",
+						"${_csrf.headerName}" : "${_csrf.token}"
+					},
+					data : {
 						"content" : $(e.target).closest("form").find("textarea").val()
 					},
 					success : function(html){
 						$(e.target).closest("form").find("div.preview div").html(html);
 						$(e.target).closest("form").find("div.preview").removeClass("hidden");
 					
+					}, 
+					error : function(data) {
+						alert(data);
 					}
 				});
 				return false;
