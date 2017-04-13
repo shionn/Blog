@@ -27,8 +27,8 @@ public class ContentFormaterTest {
 	@Test
 	public void testGallery() {
 		assertThat(new ContentFormater()
-				.fullPost("[gallery]\n" + "![trigger sortie](/tuto-slick2d-051-trigger-sortie.png)\n"
-						+ "![trigger sortie](/tuto-slick2d-052-trigger-sortie.png)\n" + "[/gallery]"));
+				.fullPost("[gallery]\n" + "/tuto-slick2d-051-trigger-sortie.png\n"
+						+ "/tuto-slick2d-052-trigger-sortie.png\n" + "[/gallery]")).contains("<div class=\"gallery\">");
 	}
 
 }

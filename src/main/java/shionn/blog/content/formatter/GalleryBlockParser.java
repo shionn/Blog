@@ -11,17 +11,22 @@ import org.commonmark.parser.block.ParserState;
 
 public class GalleryBlockParser implements BlockParser {
 
+	private static final String TAG = "[gallery]";
+
 	public static class Factory implements BlockParserFactory {
+
 
 		@Override
 		public BlockStart tryStart(ParserState state, MatchedBlockParser matchedBlockParser) {
-			if ("[gallery]".equals(state.getLine().toString())) {
-				return BlockStart.of(new GalleryBlockParser()).atIndex(state.getIndex());
+			if (TAG.equals(state.getLine().toString())) {
+				return BlockStart.of(new GalleryBlockParser()).atIndex(state.getIndent());
 			}
 			return BlockStart.none();
 		}
 
 	}
+
+	private GalleryBlock block = new GalleryBlock();
 
 	@Override
 	public boolean isContainer() {
@@ -30,12 +35,12 @@ public class GalleryBlockParser implements BlockParser {
 
 	@Override
 	public boolean canContain(Block block) {
-		return !(block instanceof GalleryBlock);
+		return false;
 	}
 
 	@Override
 	public Block getBlock() {
-		return new GalleryBlock();
+		return block;
 	}
 
 	@Override
@@ -48,7 +53,9 @@ public class GalleryBlockParser implements BlockParser {
 
 	@Override
 	public void addLine(CharSequence line) {
-		System.out.println("addLine : " + line);
+		if (!line.toString().contains(TAG)) {
+			block.addImage(line.toString());
+		}
 	}
 
 	@Override

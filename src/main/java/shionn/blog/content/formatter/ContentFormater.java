@@ -30,9 +30,7 @@ import org.springframework.stereotype.Component;
 public class ContentFormater implements AttributeProviderFactory, AttributeProvider, PostProcessor {
 
 	private List<? extends Extension> extensions = Arrays.asList(new GalleryExtension());
-	private Parser fullPostParser = Parser.builder()
-			// .extensions(extensions)
-			.build();
+	private Parser fullPostParser = Parser.builder().extensions(extensions).build();
 	private Parser homeParser = Parser.builder().postProcessor(this).build();
 	private HtmlRenderer renderer = HtmlRenderer.builder().attributeProviderFactory(this).build();
 
@@ -98,6 +96,5 @@ public class ContentFormater implements AttributeProviderFactory, AttributeProvi
 		}
 		return root;
 	}
-
 
 }
