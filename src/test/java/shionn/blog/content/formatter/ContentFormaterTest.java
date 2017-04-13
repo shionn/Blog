@@ -13,15 +13,22 @@ import org.junit.Test;
 public class ContentFormaterTest {
 
 	@Test
-		public void testFullPostJava() throws Exception {
-			assertThat(new ContentFormater().fullPost("~~~\ntutu\n~~~"))
-					.isEqualTo("<pre><code class=\"java\">tutu\n</code></pre>\n");
-		}
+	public void testFullPostJava() throws Exception {
+		assertThat(new ContentFormater().fullPost("~~~\ntutu\n~~~"))
+				.isEqualTo("<pre><code class=\"java\">tutu\n</code></pre>\n");
+	}
 
 	@Test
-		public void testFullPostXml() throws Exception {
-			assertThat(new ContentFormater().fullPost("~~~xml\ntutu\n~~~"))
-					.isEqualTo("<pre><code class=\"xml\">tutu\n</code></pre>\n");
-		}
+	public void testFullPostXml() throws Exception {
+		assertThat(new ContentFormater().fullPost("~~~xml\ntutu\n~~~"))
+				.isEqualTo("<pre><code class=\"xml\">tutu\n</code></pre>\n");
+	}
+
+	@Test
+	public void testGallery() {
+		assertThat(new ContentFormater()
+				.fullPost("[gallery]\n" + "![trigger sortie](/tuto-slick2d-051-trigger-sortie.png)\n"
+						+ "![trigger sortie](/tuto-slick2d-052-trigger-sortie.png)\n" + "[/gallery]"));
+	}
 
 }
