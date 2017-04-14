@@ -1,10 +1,8 @@
 # Blog
-Moteur de blog en java, developpé pour remplacer mon wordresse. Plus d'info sur [shionn.org](http://shionn.org)
+Moteur de blog en java, developpé initialement pour remplacé mon wordpress. Plus d'info sur [shionn.org](http://shionn.org)
 
 # Technique
-* Bdd Mysql
-* Css en Less
-* basé sur Spring Web Mvc
-
-# Regex suppression balise
-`</?[a-z]+( class="[a-z]+")?[^ >]*>`
+* Basé sur Spring Web Mvc en servlet 3
+* Bdd Mysql, via MyBatis
+* Css construite en Less
+* Peu de javascript, mais basé sur jquery. 
