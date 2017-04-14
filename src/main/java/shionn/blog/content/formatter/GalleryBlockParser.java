@@ -16,7 +16,7 @@ public class GalleryBlockParser implements BlockParser {
 	public static class Factory implements BlockParserFactory {
 		@Override
 		public BlockStart tryStart(ParserState state, MatchedBlockParser matchedBlockParser) {
-			if (TAG.equals(state.getLine().toString())) {
+			if (TAG.equalsIgnoreCase(state.getLine().toString())) {
 				return BlockStart.of(new GalleryBlockParser()).atIndex(state.getIndent());
 			}
 			return BlockStart.none();
