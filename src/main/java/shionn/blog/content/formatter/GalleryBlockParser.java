@@ -14,8 +14,6 @@ public class GalleryBlockParser implements BlockParser {
 	private static final String TAG = "[gallery]";
 
 	public static class Factory implements BlockParserFactory {
-
-
 		@Override
 		public BlockStart tryStart(ParserState state, MatchedBlockParser matchedBlockParser) {
 			if (TAG.equals(state.getLine().toString())) {
@@ -23,7 +21,6 @@ public class GalleryBlockParser implements BlockParser {
 			}
 			return BlockStart.none();
 		}
-
 	}
 
 	private GalleryBlock block = new GalleryBlock();
@@ -58,16 +55,11 @@ public class GalleryBlockParser implements BlockParser {
 		}
 	}
 
-	@Override
 	public void closeBlock() {
-		System.out.println("closeBlock");
-
 	}
 
 	@Override
 	public void parseInlines(InlineParser inlineParser) {
-		System.out.println(inlineParser);
-
 	}
 
 }

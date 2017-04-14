@@ -19,4 +19,8 @@ public class GalleryBlock extends Block {
 		this.imgs.add(img);
 	}
 
+	public List<String> getImgs() {
+		return imgs;
+	}
+
 }

@@ -1,11 +1,9 @@
 package shionn.blog.content.formatter;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Collections;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.commonmark.Extension;
 import org.commonmark.node.FencedCodeBlock;
 import org.commonmark.node.Image;
 import org.commonmark.node.Link;
@@ -29,10 +27,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ContentFormater implements AttributeProviderFactory, AttributeProvider, PostProcessor {
 
-	private List<? extends Extension> extensions = Arrays.asList(new GalleryExtension());
-	private Parser fullPostParser = Parser.builder().extensions(extensions).build();
-	private Parser homeParser = Parser.builder().postProcessor(this).build();
-	private HtmlRenderer renderer = HtmlRenderer.builder().attributeProviderFactory(this).build();
+	@Autowired
+	private GalleryExtension gallery;
+	private Parser fullPostParser = Parser.builder().extensions(Collections.singletonList(gallery)).build();
+	private Parser homeParser = Parser.builder().extensions(Collections.singletonList(gallery)).postProcessor(this)
+			.build();
+	private HtmlRenderer renderer = HtmlRenderer.builder().extensions(Collections.singletonList(gallery))
+			.attributeProviderFactory(this).build();
 
 	@Autowired
 	@Value("#{servletContext.contextPath}")

@@ -12,6 +12,8 @@ import org.junit.Test;
  */
 public class ContentFormaterTest {
 
+	private static final String IMG_1 = "/image.png";
+
 	@Test
 	public void testFullPostJava() throws Exception {
 		assertThat(new ContentFormater().fullPost("~~~\ntutu\n~~~"))
@@ -27,8 +29,9 @@ public class ContentFormaterTest {
 	@Test
 	public void testGallery() {
 		assertThat(new ContentFormater()
-				.fullPost("[gallery]\n" + "/tuto-slick2d-051-trigger-sortie.png\n"
-						+ "/tuto-slick2d-052-trigger-sortie.png\n" + "[/gallery]")).contains("<div class=\"gallery\">");
+				.fullPost("[gallery]\n" + IMG_1 + "\n" + "/tuto-slick2d-052-trigger-sortie.png" + "\n" + "[/gallery]"))
+						.contains("<div class=\"gallery\">").contains("<a href=\"" + IMG_1 + "\">")
+						.contains("<img src=\"" + IMG_1 + "\">");
 	}
 
 }

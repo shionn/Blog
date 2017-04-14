@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -23,7 +24,8 @@ public class ImageController {
 
 	@ResponseBody
 	@RequestMapping(path = { "wp-content/uploads/{img:.*}.png", "img/{img:.*}.png" }, method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
-	public byte[] png(@PathVariable("img") String imgName) throws IOException {
+	public byte[] png(@PathVariable("img") String imgName, @RequestParam(name = "w", defaultValue = "0") int w,
+			@RequestParam(name = "h", defaultValue = "0") int h) throws IOException {
 		try (FileInputStream is = new FileInputStream(new File(imgSourceFolder + imgName + ".png"))) {
 			return IOUtils.toByteArray(is);
 		}
@@ -38,12 +40,12 @@ public class ImageController {
 	}
 
 	@ResponseBody
-	@RequestMapping(path = { "wp-content/uploads/{img:.*}.bmp", "img/{img:.*}.bmp" }, method = RequestMethod.GET, produces = "image/bmp")
+	@RequestMapping(path = { "wp-content/uploads/{img:.*}.bmp",
+			"img/{img:.*}.bmp" }, method = RequestMethod.GET, produces = "image/bmp")
 	public byte[] bmp(@PathVariable("img") String imgName) throws IOException {
 		try (FileInputStream is = new FileInputStream(new File(imgSourceFolder + imgName + ".bmp"))) {
 			return IOUtils.toByteArray(is);
-		} 
+		}
 	}
-
 
 }
