@@ -1,4 +1,7 @@
 
+# TODO :
+- supprimer les fichier js non min
+
 # Regex suppression balise
 `</?[a-z]+( class="[a-z]+")?[^ >]*>`
 
