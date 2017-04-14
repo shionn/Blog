@@ -1,7 +1,7 @@
 # Blog
 Moteur de blog en java, developpé initialement pour remplacé mon wordpress. Ce moteur propose : 
 * Deux type de contenu **Article** et **Page**, les articles apparaissant sur la page d'acceuil et les pages non. 
-* L'écriture des contenus et (dont les commentaires) en [CommonMark](http://commonmark.org/)
+* L'écriture des contenus et les commentaires en [CommonMark](http://commonmark.org/)
 * Chaque article et page sont dans une seule categorie, mais peuvent pavoir plusieurs tags.  
 * Coloration syntaxique des codes java (d'autre à venir)
 
