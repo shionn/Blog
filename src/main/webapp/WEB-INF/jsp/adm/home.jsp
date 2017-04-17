@@ -25,17 +25,17 @@
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget ultricies libero, ut cursus sapien. Nulla non orci pulvinar magna finibus rutrum. Quisque interdum nibh sit amet elit sagittis, sit amet maximus nisi finibus. Quisque sed egestas sapien, vitae venenatis ex. Vivamus sit amet placerat massa. Cras ligula orci, efficitur ac molestie vel, malesuada sit amet massa. Proin id ipsum tellus. Nullam rhoncus ipsum laoreet vestibulum sodales. Vestibulum in nunc ligula</p>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget ultricies libero, ut cursus sapien. Nulla non orci pulvinar magna finibus rutrum. Quisque interdum nibh sit amet elit sagittis, sit amet maximus nisi finibus. Quisque sed egestas sapien, vitae venenatis ex. Vivamus sit amet placerat massa. Cras ligula orci, efficitur ac molestie vel, malesuada sit amet massa. Proin id ipsum tellus. Nullam rhoncus ipsum laoreet vestibulum sodales. Vestibulum in nunc ligula</p>
 		<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-			<div class="modal-content">
-				<div class="modal-header">
+			<div class="content">
+				<div class="header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">Modal title</h4>
+					<h4 class="title">Modal title</h4>
 				</div>
-				<div class="modal-body">
+				<div class="body">
 					<p>One fine body&hellip;</p>
 				</div>
-				<div class="modal-footer">
+				<div class="footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary">Save changes</button>
 				</div>

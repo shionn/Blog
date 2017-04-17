@@ -39,7 +39,7 @@
 				<h1><span class="fa fa-comments"></span> Commentaires récents</h1>
 				<ul>
 					<c:forEach items="${lastcomments}" var="comment">
-						<li>${comment.authorName} dans <a href="<spring:url value="${comment.post.url}#comments"/>">${comment.post.title}</a></li>
+						<li>${comment.authorName} dans <a href="<spring:url value="/${comment.post.url}#comments"/>">${comment.post.title}</a></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -65,9 +65,14 @@
 			</span>
 		</div>
 	</footer>
+	<div class="gallery-preview" tabindex="-1" role="dialog">
+		<img src="#" class="content">
+	</div>
 	<script type="text/javascript" src="<spring:url value="/js/lib/jquery-3.1.0.min.js" />"></script>
 	<script type="text/javascript" src="<spring:url value="/js/lib/highlight-9.8.0-java.min.js"/>"></script>
 	<script type="text/javascript" src="<spring:url value="/js/menu.js" />"></script>
+	<script type="text/javascript" src="<spring:url value="/js/modal.js" />"></script>
+	<script type="text/javascript" src="<spring:url value="/js/gallery.js" />"></script>
 	<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 	<jsp:invoke fragment="scripts" />
 </body>

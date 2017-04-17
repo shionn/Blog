@@ -10,6 +10,7 @@ $(function() {
 			$(this).addClass("fade");
 		}, 
 		modal : function() {
+			$(this).off("click");
 			$(this).on("click", function(e) {
 				if (e.target == this) $(e.target).__modalClose();
 			});

@@ -130,14 +130,14 @@
 		<div id="edit-tag-modal" class="modal" tabindex="-1" role="dialog">
 			<spring:url value="/adm/post/edit/tag/${post.id}" var="edittagurl"/>
 			<form:form action="${edittagurl}" class="pure-form pure-form-stacked" method="post" >
-				<div class="modal-content">
-					<div class="modal-header">
+				<div class="content">
+					<div class="header">
 						<button type="button" class="close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 						Edition des tags : ${post.title} 
 					</div>
-					<div class="modal-body">
+					<div class="body">
 						<fieldset>
 							<div class="pure-g">
 								<c:forEach items="${post.tags}" var="tag" >
@@ -150,7 +150,7 @@
 							</div>
 						</fieldset>
 					</div>
-					<div class="modal-footer">
+					<div class="footer">
 						<button type="button" class="pure-button close">Fermer</button>
 						<button type="submit" class="pure-button pure-button-primary">Save changes</button>
 					</div>

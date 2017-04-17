@@ -61,35 +61,5 @@
 				<li class="pure-menu-item"><a class="pure-menu-link">~~~java</a></li>
 			</ul>
 		</div>
-		<div id="edit-tag-modal" class="modal" tabindex="-1" role="dialog">
-			<spring:url value="/adm/post/edit/tag/${post.id}" var="edittagurl"/>
-			<form:form action="${edittagurl}" class="pure-form pure-form-stacked" method="post" >
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						Edition des tags : ${post.title} 
-					</div>
-					<div class="modal-body">
-						<fieldset>
-							<div class="pure-g">
-								<c:forEach items="${post.tags}" var="tag" >
-									<div class="pure-u-1-5">
-										<label for="type" class="pure-checkbox">
-											<input name="${tag.id}"<c:if test="${tag.postCount>0}"> checked="checked"</c:if> type="checkbox">${tag.title}
-										</label>
-									</div>
-								</c:forEach>
-							</div>
-						</fieldset>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="pure-button close">Fermer</button>
-						<button type="submit" class="pure-button pure-button-primary">Save changes</button>
-					</div>
-				</div>
-			</form:form>
-		</div>
 	</jsp:attribute>
 </t:template>
