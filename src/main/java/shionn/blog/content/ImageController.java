@@ -22,6 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ImageController {
 
+	public enum Mode {
+		none, crop
+	}
+
 	@Autowired
 	@Value("${img.source}")
 	private String imgSourceFolder;
@@ -31,9 +35,9 @@ public class ImageController {
 			"img/{img:.*}.png" }, method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
 	public byte[] png(@PathVariable("img") String imgName, @RequestParam(name = "w", defaultValue = "0") int w,
 			@RequestParam(name = "h", defaultValue = "0") int h,
-			@RequestParam(name = "crop", defaultValue = "false") boolean crop)
+			@RequestParam(name = "mode", defaultValue = "none") Mode mode)
 			throws IOException, IM4JavaException, InterruptedException {
-		return read(imgName, w, h, crop, ".png");
+		return read(imgName, w, h, mode, ".png");
 	}
 
 	@ResponseBody
@@ -41,9 +45,9 @@ public class ImageController {
 			"img/{img:.*}.jpg" }, method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
 	public byte[] jpeg(@PathVariable("img") String imgName, @RequestParam(name = "w", defaultValue = "0") int w,
 			@RequestParam(name = "h", defaultValue = "0") int h,
-			@RequestParam(name = "crop", defaultValue = "false") boolean crop)
+			@RequestParam(name = "mode", defaultValue = "none") Mode mode)
 			throws IOException, InterruptedException, IM4JavaException {
-		return read(imgName, w, h, crop, ".jpg");
+		return read(imgName, w, h, mode, ".jpg");
 	}
 
 	@ResponseBody
@@ -51,20 +55,20 @@ public class ImageController {
 			"img/{img:.*}.bmp" }, method = RequestMethod.GET, produces = "image/bmp")
 	public byte[] bmp(@PathVariable("img") String imgName, @RequestParam(name = "w", defaultValue = "0") int w,
 			@RequestParam(name = "h", defaultValue = "0") int h,
-			@RequestParam(name = "crop", defaultValue = "false") boolean crop)
+			@RequestParam(name = "mode", defaultValue = "none") Mode mode)
 			throws IOException, InterruptedException, IM4JavaException {
-		return read(imgName, w, h, crop, ".bmp");
+		return read(imgName, w, h, mode, ".bmp");
 	}
 
-	private byte[] read(String imgName, int w, int h, boolean crop, String ext)
+	private byte[] read(String imgName, int w, int h, Mode mode, String ext)
 			throws IOException, InterruptedException, IM4JavaException, FileNotFoundException {
 		String wanted = imgSourceFolder + imgName + ext;
 		if (w > 0 && h > 0) {
-			wanted = imgSourceFolder + imgName + "-" + w + "-" + h + (crop ? "-crop" : "") + ext;
+			wanted = imgSourceFolder + imgName + "-" + w + "-" + h + mode + ext;
 			if (!new File(wanted).exists()) {
 				IMOperation op = new IMOperation();
 				op.addImage(imgSourceFolder + imgName + ext);
-				if (crop) {
+				if (mode == Mode.crop) {
 					op.resize(w, h, "^").gravity("center").extent(w, h);
 				} else {
 					op.resize(w, h);
