@@ -64,7 +64,7 @@ public class ImageController {
 			throws IOException, InterruptedException, IM4JavaException, FileNotFoundException {
 		String wanted = imgSourceFolder + imgName + ext;
 		if (w > 0 && h > 0) {
-			wanted = imgSourceFolder + imgName + "-" + w + "-" + h + mode + ext;
+			wanted = imgSourceFolder + imgName + "-" + w + "-" + h + "-" + mode + ext;
 			if (!new File(wanted).exists()) {
 				IMOperation op = new IMOperation();
 				op.addImage(imgSourceFolder + imgName + ext);
