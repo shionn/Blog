@@ -20,3 +20,8 @@ Plus d'info sur [shionn.org](http://shionn.org).
 * fontawesome : 4.6.3
 *	jquery : 3.1.0
 * highlight-9.8.0
+
+# todo
+* Flux rss commentaires
+* Supprimer le /gallery
+* Traiter les refus de commentaire proprement
