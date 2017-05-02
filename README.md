@@ -25,3 +25,4 @@ Plus d'info sur [shionn.org](http://shionn.org).
 * Flux rss commentaires
 * Supprimer le /gallery
 * Traiter les refus de commentaire proprement
+* Statistiques
