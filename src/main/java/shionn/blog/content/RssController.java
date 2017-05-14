@@ -37,14 +37,14 @@ public class RssController {
 	@Autowired
 	private BlogConfiguration configuration;
 
-	@RequestMapping(value = "/feed", method = RequestMethod.GET, produces = "application/rss+xml")
+	@RequestMapping(value = "/feed", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
 	public Rss posts() {
 		Rss rss = new Rss();
 		rss.setChannel(buildChannel(buildPosts()));
 		return rss;
 	}
 
-	@RequestMapping(value = "/comment/feed", method = RequestMethod.GET, produces = "application/rss+xml")
+	@RequestMapping(value = "/comment/feed", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
 	public Rss comments() {
 		Rss rss = new Rss();
 		rss.setChannel(buildChannel(buildComments()));
