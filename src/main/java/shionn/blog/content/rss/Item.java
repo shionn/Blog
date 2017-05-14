@@ -16,6 +16,7 @@ public class Item {
 	private String description;
 	private String pubDate;
 	private String creator;
+	private String author;
 
 	@XmlElement(name = "title")
 	public String getTitle() {
@@ -60,6 +61,15 @@ public class Item {
 
 	public void setCreator(String creator) {
 		this.creator = creator;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	@XmlElement(name = "author")
+	public String getAuthor() {
+		return author;
 	}
 
 }

@@ -17,14 +17,15 @@ import shionn.blog.db.dbo.Post;
  */
 public interface RssDao {
 
-	@Select("SELECT p.url, p.title, p.published, p.content, u.name "
+	@Select("SELECT p.url, p.title, p.published, p.content, u.name, u.email "
 			+ "FROM post AS p "
 			+ "LEFT JOIN user AS u ON p.author = u.id "
 			+ "WHERE p.status = 'publish' "
 			+ "AND p.type = 'post' "
 			+ "ORDER BY p.published DESC "
 			+ "LIMIT 10")
-	@Results({ @Result(column = "u.name", property = "author.name") })
+	@Results({ @Result(column = "u.name", property = "author.name"),
+			@Result(column = "u.email", property = "author.email") })
 	List<Post> readLastPosts();
 
 	@Select("SELECT c.author_name, c.author_email, c.date, c.content,  p.title, p.url "
