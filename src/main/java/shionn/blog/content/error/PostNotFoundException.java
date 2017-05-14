@@ -6,10 +6,10 @@ package shionn.blog.content.error;
  * @author <b>Shionn</b>, shionn@gmail.com <i>http://shionn.org</i><br>
  *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
  */
-public class PostNotFoundExcpetion extends RuntimeException {
+public class PostNotFoundException extends RuntimeException {
 	private static final long serialVersionUID = -4523168153258721129L;
 
-	public PostNotFoundExcpetion(String url) {
+	public PostNotFoundException(String url) {
 		super("url not found <" + url + ">");
 	}
 

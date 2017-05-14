@@ -25,7 +25,7 @@ public class ExceptionController {
 	@Autowired
 	private SqlSession session;
 
-	@ExceptionHandler({ NoHandlerFoundException.class, PostNotFoundExcpetion.class })
+	@ExceptionHandler({ NoHandlerFoundException.class, PostNotFoundException.class })
 	public ModelAndView handleNoHandlerFoundException(Exception e) {
 		HomeDao dao = session.getMapper(HomeDao.class);
 		logger.warn("Redirect to 404", e);
@@ -35,5 +35,12 @@ public class ExceptionController {
 				.addObject("lastcomments", dao.readLastComments());
 	}
 
+
+	@ExceptionHandler({ NotAllowedException.class })
+	public ModelAndView handleNotAllowedException(Exception e) {
+		HomeDao dao = session.getMapper(HomeDao.class);
+		return new ModelAndView("405").addObject("menu", dao.readMenu(0)).addObject("cloodtags", dao.readCloodTags())
+				.addObject("lastcomments", dao.readLastComments());
+	}
 
 }

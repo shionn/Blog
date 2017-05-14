@@ -4,7 +4,7 @@ Moteur de blog en java, developpé initialement pour remplacé mon wordpress. Ce
 * L'écriture des contenus et les commentaires en [CommonMark](http://commonmark.org/)
 * Chaque article et page sont dans une seule categorie, mais peuvent pavoir plusieurs tags.  
 * Coloration syntaxique des codes java (d'autre à venir)
-* Flux RSS
+* Flux RSS (post & commentaires)
 
 Plus d'info sur [shionn.org](http://shionn.org). 
 
@@ -22,7 +22,5 @@ Plus d'info sur [shionn.org](http://shionn.org).
 * highlight-9.8.0
 
 # todo
-* Flux rss commentaires
 * Supprimer le /gallery
-* Traiter les refus de commentaire proprement
 * Statistiques

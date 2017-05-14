@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
+import shionn.blog.db.dbo.Comment;
 import shionn.blog.db.dbo.Post;
 
 /**
@@ -25,5 +26,15 @@ public interface RssDao {
 			+ "LIMIT 10")
 	@Results({ @Result(column = "u.name", property = "author.name") })
 	List<Post> readLastPosts();
+
+	@Select("SELECT c.author_name, c.author_email, c.date, c.content,  p.title, p.url "
+			+ "FROM comment AS c "
+			+ "LEFT JOIN post AS p ON c.post = p.id "
+			+ "ORDER BY c.date DESC "
+			+ "LIMIT 20")
+	@Results({
+			@Result(column = "title", property = "post.title"),
+			@Result(column = "url", property = "post.url") })
+	List<Comment> readLastComments();
 
 }

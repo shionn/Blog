@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.ModelAndView;
 
-import shionn.blog.content.error.PostNotFoundExcpetion;
+import shionn.blog.content.error.NotAllowedException;
+import shionn.blog.content.error.PostNotFoundException;
 import shionn.blog.content.formatter.ContentFormater;
 import shionn.blog.db.dao.PostDao;
 import shionn.blog.db.dbo.Comment;
@@ -48,7 +49,7 @@ public class PostController {
 		PostDao dao = session.getMapper(PostDao.class);
 		Post post = dao.readPost(url);
 		if (post == null) {
-			throw new PostNotFoundExcpetion(url);
+			throw new PostNotFoundException(url);
 		}
 		post.setContent(contentFormatter.fullPost(post.getContent()));
 		for (Comment comment : post.getComments()) {
@@ -73,9 +74,10 @@ public class PostController {
 		comment.setIp(request.getRemoteAddr());
 		PostDao dao = session.getMapper(PostDao.class);
 		dao.saveComment(comment, url, user);
-		if (!isForbidden(comment)) {
-			session.commit();
+		if (isForbidden(comment, request)) {
+			throw new NotAllowedException();
 		}
+		session.commit();
 		return "redirect:/" + url + "#lastcomment";
 	}
 
@@ -85,9 +87,9 @@ public class PostController {
 		return contentFormatter.comment(comment);
 	}
 
-	private boolean isForbidden(Comment comment) {
+	private boolean isForbidden(Comment comment, HttpServletRequest request) {
 		return forbiddenIps.contains(comment.getIp()) || comment.getContent().contains("http://")
-				|| comment.getContent().contains("https://");
+				|| comment.getContent().contains("https://") || request.getHeader("referer").isEmpty();
 	}
 
 	@RequestMapping(value = "/page/{url}", method = RequestMethod.GET)
