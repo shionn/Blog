@@ -2,6 +2,8 @@ package shionn.blog.content;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,12 +32,14 @@ public class HomeController {
 	private ContentFormater contentFormatter;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home() {
+	public ModelAndView home(HttpServletRequest request) {
 		HomeDao dao = session.getMapper(HomeDao.class);
 		List<Post> posts = dao.readPosts();
 		for (Post post : posts) {
 			post.setContent(contentFormatter.shortPost(post.getContent()));
 		}
+		dao.insertStat(request.getRemoteAddr(), "/");
+		session.commit();
 		return new ModelAndView("home").addObject("posts", posts)
 				.addObject("menu", dao.readMenu(0).current("/"))
 				.addObject("cloodtags", dao.readCloodTags())

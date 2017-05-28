@@ -45,7 +45,7 @@ public class PostController {
 	private String forbiddenIps;
 
 	@RequestMapping(value = "/{url}", method = RequestMethod.GET)
-	public ModelAndView get(@PathVariable("url") String url) {
+	public ModelAndView get(@PathVariable("url") String url, HttpServletRequest request) {
 		PostDao dao = session.getMapper(PostDao.class);
 		Post post = dao.readPost(url);
 		if (post == null) {
@@ -56,6 +56,8 @@ public class PostController {
 			comment.setGravatar(gravatar(comment));
 			comment.setContent(contentFormatter.comment(comment.getContent()));
 		}
+		dao.insertStat(request.getRemoteAddr(), url);
+		session.commit();
 		return new ModelAndView("article")
 				.addObject("post",post)
 				.addObject("user", user)
@@ -73,10 +75,10 @@ public class PostController {
 			HttpServletRequest request) {
 		comment.setIp(request.getRemoteAddr());
 		PostDao dao = session.getMapper(PostDao.class);
-		dao.saveComment(comment, url, user);
-		if (isForbidden(comment, request)) {
+		if (!dao.isCommentAllow(request.getRemoteAddr(), url) || isForbidden(comment, request)) {
 			throw new NotAllowedException();
 		}
+		dao.saveComment(comment, url, user);
 		session.commit();
 		return "redirect:/" + url + "#lastcomment";
 	}

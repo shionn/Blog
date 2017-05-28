@@ -110,3 +110,14 @@ CREATE TABLE IF NOT EXISTS `backup_post` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+CREATE TABLE IF NOT EXISTS `stat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `path` varchar(128) CHARACTER SET utf8 NOT NULL,
+  `time` datetime NOT NULL,
+  PRIMARY KEY (`id`), 
+  KEY `ip` (`ip`),
+  KEY `path` (`path`),
+  KEY `time` (`time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+

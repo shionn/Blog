@@ -61,4 +61,12 @@ public interface PostDao extends ContentDao {
 	void saveComment(@Param("comment") Comment comment, @Param("url") String url,
 			@Param("user") User user);
 
+	@Select("SELECT count(*) FROM stat s "
+			+ "INNER JOIN (SELECT MAX(time) AS time FROM stat WHERE path = #{path} AND ip = #{ip}) AS m "
+			+ "WHERE s.path = #{path} "
+			+ "AND ip = #{ip} "
+			+ "AND s.time = m.time "
+			+ "AND s.time < NOW() - INTERVAL 1 MINUTE")
+	boolean isCommentAllow(@Param("ip") String ip, @Param("path") String path);
+
 }
