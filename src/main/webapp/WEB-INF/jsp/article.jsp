@@ -68,7 +68,7 @@
 				<fieldset>
 					<label for="content">Commentaire</label>
 					<textarea name="content"></textarea>
-					<p class="legend">Vous pouvez utilisez du <a href="http://http://commonmark.org" target="_blank">markdown</a> pour la mise en forme<br>
+					<p class="legend">Vous pouvez utilisez du <a href="http://commonmark.org/" target="_blank">markdown</a> pour la mise en forme<br>
 				</fieldset>
 				<p class="legend"><em>Votre adresse de messagerie ne sera pas publiée.</em></p>
 				<p class="legend"><em>Temporairement, pour lutter contre les bots, il n'est pas permis de mettre <strong>http://</strong> dans le commentaire.</em></p>
