@@ -1,8 +1,8 @@
-<%@ page pageEncoding="UTF-8"%> 
+<%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 <t:template>
 	<jsp:attribute name="title">${post.title}</jsp:attribute>
@@ -68,11 +68,11 @@
 				<fieldset>
 					<label for="content">Commentaire</label>
 					<textarea name="content"></textarea>
-					<p class="legend">Vous pouvez utilisez du <a href="http://commonmark.org/" target="_blank">markdown</a> pour la mise en forme<br>
 				</fieldset>
+				<p class="legend">Vous pouvez utilisez du <a href="http://commonmark.org/" target="_blank">markdown</a> pour la mise en forme<br>
 				<p class="legend"><em>Votre adresse de messagerie ne sera pas publiée.</em></p>
 				<p class="legend"><em>Temporairement, pour lutter contre les bots, il n'est pas permis de mettre <strong>http://</strong> dans le commentaire.</em></p>
-				<input type="button" value="Prévisualisation" name="preview"> 
+				<input type="button" value="Prévisualisation" name="preview">
 				<div class="preview hidden">
 					<div></div>
 					<input type="submit" value="Valider">
@@ -88,7 +88,7 @@
 				$.ajax({
 					url : "<spring:url value="/${post.url}/preview"/>",
 					type : 'post',
-					dataType : 'html', 
+					dataType : 'html',
 					headers : {
 						"${_csrf.headerName}" : "${_csrf.token}"
 					},
@@ -98,8 +98,8 @@
 					success : function(html){
 						$(e.target).closest("form").find("div.preview div").html(html);
 						$(e.target).closest("form").find("div.preview").removeClass("hidden");
-					
-					}, 
+
+					},
 					error : function(data) {
 						alert(data);
 					}

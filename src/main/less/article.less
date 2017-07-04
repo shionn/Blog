@@ -1,18 +1,17 @@
 @import "variables.less";
-
 article {
 	margin-top: 3em;
-	&.category, &.tag {
+	&.category , &.tag {
 		h1 {
 			text-align: center;
 		}
 	}
-	
+
 	h1 , h2 , h3 , h4 , h5 , h6 {
 		font-family: @font-alternate;
 		color: @theme-color;
 	}
-	
+
 	h1 {
 		line-height: 1.2em;
 		font-size: 1.4em;
@@ -60,6 +59,13 @@ article {
 			max-width: 90%;
 			display: block;
 		}
+
+		blockquote {
+			border-left: double 3px @theme-color;
+			margin: 0 15px;
+			padding: 0 0 0 15px;
+			font-style: italic;
+		}
 	}
 
 	header {
@@ -74,7 +80,7 @@ article {
 		.date , .category , .tags {
 			padding: 0 3em;
 			color: @theme-color;
-			@media (max-width: @max-xs){
+			@media (max-width: @max-xs) {
 				display: block;
 			}
 		}
@@ -82,19 +88,19 @@ article {
 
 	footer {
 		.author {
-			@media (min-width: @min-sm){
+			@media (min-width: @min-sm) {
 				padding-left: 3em;
 			}
 		}
 
 		a {
 			padding: 0 3em;
-			@media (max-width: @max-xs){
+			@media (max-width: @max-xs) {
 				display: block;
 			}
 		}
 	}
-	
+
 	&.short {
 		footer:after {
 			content: '';
@@ -110,11 +116,10 @@ article {
 	}
 }
 
-
 section.comments {
-	&>ul {
+	& > ul {
 		padding: 0;
-		&>li {
+		& > li {
 			list-style-type: none;
 			display: block;
 			border-bottom: 1px dotted @theme-border-color;
@@ -124,12 +129,16 @@ section.comments {
 				display: block;
 				clear: both;
 			}
+
 			p {
 				text-align: justify;
 				margin: .5em 0 0 0;
-				blockquote p {
-					text-align: left;
-				}
+			}
+			blockquote {
+				border-left: double 3px @theme-color;
+				margin: 0 15px;
+				padding: 0 0 0 15px;
+				font-style: italic;
 			}
 
 			div.author {
@@ -152,9 +161,11 @@ section.comments {
 						border: 1px solid black;
 						border-radius: 3px;
 					}
+
 					span {
 						text-align: center;
 					}
+
 					span.date {
 						font-size: .8em;
 					}
@@ -169,6 +180,7 @@ section.comments {
 				div.author {
 					width: 15%;
 				}
+
 				div.content {
 					width: 85%;
 				}
@@ -178,37 +190,63 @@ section.comments {
 				div.author {
 					width: 10%;
 				}
+
 				div.content {
 					width: 90%;
 				}
 			}
 		}
 	}
+
 	form {
-		background-color : @theme-grey;
-		p {
+		background-color: @theme-grey;
+		p.title {
+			font-family: @font-alternate;
+		}
+		&>p.legend {
 			padding: 0;
 			margin: 0;
-			&.legend {
-				text-align: center;
-			}
-			&.title {
-				font-family: @font-alternate;
-			}
-			em {
-				font-size : 0.8em;
-			}
+			text-align: center;
+			font-size: 0.8em;
 		}
-		fieldset p {
-			font-size : 0.8em;
+
+		fieldset  p {
+			font-size: 0.8em;
 		}
+
 		div.preview > div {
 			border: @theme-dark 1px solid;
 			border-radius: 3px;
 			margin: 8px 0;
-			padding: 5px;	
+			padding: 5px;
+			background: white;
+
+			p {
+				text-align: justify;
+			}
+
+			ul {
+				padding: 0;
+				li {
+					list-style: none;
+					&:before {
+						padding: 0 1em .2em 2.5em;
+						content: "\f111";
+						font-family: FontAwesome;
+						font-size: 0.5em;
+						color: @theme-color;
+						vertical-align: bottom;
+					}
+				}
+			}
+
+			blockquote {
+				border-left: double 3px @theme-color;
+				margin: 0 15px;
+				padding: 0 0 0 15px;
+				font-style: italic;
+			}
 		}
 	}
-	
 }
 
