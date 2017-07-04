@@ -18,7 +18,7 @@ import org.springframework.beans.factory.DisposableBean;
  * @author <b>Shionn</b>, shionn@gmail.com <i>http://shionn.org</i><br>
  *         GCS d- s+:+ a+ C++ UL/M P L+ E--- W++ N K- w-- M+ t+ 5 X R+ !tv b+ D+ G- e+++ h+ r- y+
  */
-public class SqlSession implements org.apache.ibatis.session.SqlSession, DisposableBean {
+class SqlSession implements org.apache.ibatis.session.SqlSession, DisposableBean {
 
 	private org.apache.ibatis.session.SqlSession session;
 	private Logger logger;

@@ -6,9 +6,9 @@ $(function() {
 			$(this).removeClass("fade");
 		},
 		__modalOpen : function() {
-			$(this).css("display","block");
+			$(this).css("display","flex");
 			$(this).addClass("fade");
-		}, 
+		},
 		modal : function() {
 			$(this).off("click");
 			$(this).on("click", function(e) {
