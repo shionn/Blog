@@ -57,11 +57,12 @@
 			<span>
 				<a href="mailto:shionn@gmail.com" title="Contact"><i class="fa fa-envelope" aria-hidden="true"></i></a> |
 				<a href="https://github.com/shionn/Blog" target="_blank" title="Github"><i class="fa fa-github"></i></a> |
-				<a href="http://fontawesome.io/" target="_blank" title="FontAwesome"><i class="fa fa-font-awesome"></i></a> | 
-				<a href="https://spring.io/" target="_blank" title="Spring"><i class="fa fa-leaf"></i></a> | 
-				<a href="http://blog.mybatis.org/" target="_blank" title="MyBatis"><i class="fa fa-twitter"></i></a> | 
-				<a href="https://purecss.io/" target="_blank" title="PureIoCss">P<sub>css</sub></a> | 
-				<a href="http://lesscss.org/" target="_blank" title="Less">{<small>less</small>}</a>
+				<a href="http://fontawesome.io/" target="_blank" title="FontAwesome"><i class="fa fa-font-awesome"></i></a> |
+				<a href="https://spring.io/" target="_blank" title="Spring"><i class="fa fa-leaf"></i></a> |
+				<a href="http://blog.mybatis.org/" target="_blank" title="MyBatis"><i class="fa fa-twitter"></i></a> |
+				<a href="https://purecss.io/" target="_blank" title="PureIoCss">P<sub>css</sub></a> |
+				<a href="http://lesscss.org/" target="_blank" title="Less">{<small>less</small>}</a> |
+				<a href="http://commonmark.org/" target="_blank" title="CommonMark">M<i class="fa fa-long-arrow-down"></i></a>
 			</span>
 		</div>
 	</footer>

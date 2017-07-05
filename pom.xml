@@ -4,7 +4,7 @@
 
 	<groupId>shionn</groupId>
 	<artifactId>Blog</artifactId>
-	<version>0.9</version>
+	<version>0.10-SNAPSHOT</version>
 	<name>Blog</name>
 	<packaging>war</packaging>
 

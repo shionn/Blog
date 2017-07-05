@@ -47,9 +47,7 @@
 							</span>
 							<span class="date"><fmt:formatDate pattern="dd MMMM yyyy HH:mm" value="${comment.date}" /></span>
 						</div>
-						<div class="content">
-							<p>${comment.content}</p>
-						</div>
+						<div class="content">${comment.content}</div>
 					</li>
 				</c:forEach>
 			</ul>
