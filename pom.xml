@@ -4,7 +4,7 @@
 
 	<groupId>shionn</groupId>
 	<artifactId>Blog</artifactId>
-	<version>0.10</version>
+	<version>0.11</version>
 	<name>Blog</name>
 	<packaging>war</packaging>
 
@@ -121,11 +121,11 @@
 			<properties>
 				<skip.test>false</skip.test>
 				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver>
-				<mybatis.url>jdbc:mysql://${mariadb.host}:3306/blog?serverTimezone=Europe/Paris</mybatis.url>
-				<mybatis.username>${mariadb.user}</mybatis.username>
-				<mybatis.password>${mariadb.pass}</mybatis.password>
+				<mybatis.url>jdbc:mysql://${blog.mysql.host}:3306/blog?serverTimezone=Europe/Paris</mybatis.url>
+				<mybatis.username>${blog.mysql.user}</mybatis.username>
+				<mybatis.password>${blog.mysql.user}</mybatis.password>
 				<img.source>/home/shionn/projects/uploads/</img.source>
-				<auth.salt>foobar</auth.salt>
+				<auth.salt>${blog.authsaltkey}</auth.salt>
 			</properties>
 		</profile>
 
