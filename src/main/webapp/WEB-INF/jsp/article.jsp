@@ -107,7 +107,26 @@
 			$("body").on("keyup", "form textarea", function(e){
 				$(e.target).closest("form").find("div.preview").addClass("hidden");
 			});
-		})
+		});
+			<c:if test="${post.url == 'cv'}">
+				$(function() {
+					$("nav.competence").on("click", "a", function(e) {
+						e.preventDefault();
+						$("div.competence").hide();
+						$($(this).attr("href")).show();
+					});
+					$("nav.experience").on("click", "a", function(e) {
+						e.preventDefault();
+						$("div.experience").hide();
+						$($(this).attr("href")).show();
+					});
+					$("nav.stage").on("click", "a", function(e) {
+						e.preventDefault();
+						$("div.stage").hide();
+						$($(this).attr("href")).show();
+					});
+				});
+			</c:if>
 		</script>
 	</jsp:attribute>
 </t:template>
