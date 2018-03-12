@@ -28,7 +28,7 @@ public class ExceptionController {
 	@ExceptionHandler({ NoHandlerFoundException.class, PostNotFoundException.class })
 	public ModelAndView handleNoHandlerFoundException(Exception e) {
 		HomeDao dao = session.getMapper(HomeDao.class);
-		logger.warn("Redirect to 404", e);
+		logger.warn("Redirect to 404", e.getMessage());
 		return new ModelAndView("404")
 				.addObject("menu", dao.readMenu(0))
 				.addObject("cloodtags", dao.readCloodTags())
